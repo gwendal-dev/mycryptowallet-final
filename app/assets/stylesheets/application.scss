@@ -11,3 +11,26 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/market";
+@import "components/item";
+@import "components/main_portfolio";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color:white;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: white;
+}

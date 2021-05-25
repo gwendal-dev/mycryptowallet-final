@@ -17,3 +17,4 @@ Coin.create!([{title: "DOT/USDT", price: 24, avatar: ""}])
 Coin.create!([{title: "BNT/USDT", price: 8.3, avatar: ""}])
 Coin.create!([{title: "AAVE/USDT", price: 358, avatar: ""}])
 positions = Position.create!([{portfolio_id: 1, coin_id: 1, entry_date: DateTime.current.to_date, amount: 230, quantity: 0.5, exchange: "Binance manuel" }])
+

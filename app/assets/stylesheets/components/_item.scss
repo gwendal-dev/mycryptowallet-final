@@ -7,10 +7,10 @@
   font-size: 16px;
   background-color: lightgrey;
   color: $black;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   margin-top: 10px;
-  border: 1px solid $black;
+  border: 1px solid darkgrey;
 }
 
 .item:hover {

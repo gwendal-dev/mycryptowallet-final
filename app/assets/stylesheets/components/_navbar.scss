@@ -5,7 +5,7 @@
   justify-content: space-between;
   font-size: 16px;
   background-color: $main;
-  color: white;
+  color: $black;
   padding-bottom: 1vh;
 }
 
@@ -17,7 +17,7 @@
 }
 
 #header h1 {
-  font-size: px
+  font-size: 16px
 }
 
 #header2{
@@ -26,8 +26,8 @@
   display: flex;
   justify-content: space-between;
   font-size: 16px;
-  background-color: #22333B;
-  color: white;
+  background-color: $main;
+  color: $black;
   padding-bottom: 1vh;}
 
 #header2 img{
@@ -42,8 +42,8 @@
   display: flex;
   justify-content: space-between;
   font-size: 16px;
-  background-color: #22333B;
-  color: white;
+  background-color: $main;
+  color: $black;
   position: fixed;
   top: 0px;
   right: 0px;
@@ -65,8 +65,8 @@
   display: flex;
   justify-content: space-between;
   font-size: 16px;
-  background-color: #22333B;
-  color: white;
+  background-color: $main;
+  color: $black;
   position: fixed;
   top: 0px;
   right: 0px;

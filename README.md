@@ -1,1 +1,7 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+# MyCryptoWallet
+
+#### collaborators
+  * Gwendal Le Loarer
+  * Charlotte Roederer
+  * Damien Vigouroux
+  * Xavier Hernandez

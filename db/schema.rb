@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_101517) do
+ActiveRecord::Schema.define(version: 2021_05_25_103537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "coins", force: :cascade do |t|
+    t.string "title"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "infos", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.float "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_portfolios_on_user_id"
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.bigint "portfolio_id", null: false
+    t.bigint "coin_id", null: false
+    t.date "entry_date"
+    t.float "amount"
+    t.float "quantity"
+    t.date "exit_date"
+    t.string "exchange"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coin_id"], name: "index_positions_on_coin_id"
+    t.index ["portfolio_id"], name: "index_positions_on_portfolio_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +61,13 @@ ActiveRecord::Schema.define(version: 2021_05_25_101517) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nickname"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "portfolios", "users"
+  add_foreign_key "positions", "coins"
+  add_foreign_key "positions", "portfolios"
 end

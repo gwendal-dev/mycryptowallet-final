@@ -1,15 +1,83 @@
-.navbar-lewagon {
+.header2{
+  font-family: 'Itim', cursive;
+  padding: 0px 20px;
+  display: flex;
   justify-content: space-between;
   background: #bdd2b6;
   color: white;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.header2 img{
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: 1.2vh;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+#header h1 {
+  font-size: 16px
+}
+
+#header2{
+  font-family: 'Itim', cursive;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  background-color: $main;
+  color: $black;
+  padding-bottom: 1vh;}
+
+#header2 img{
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: 1.2vh;
+}
+.header{
+  font-family: 'Itim', cursive;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  background-color: $main;
+  color: $black;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 10;
+  padding-bottom: 1vh;
+}
+
+.header img{
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: 1.2vh;
+}
+
+#header{
+  font-family: 'Itim', cursive;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  background-color: $main;
+  color: $black;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 10;
+  padding-bottom: 1vh;
+}
+
+#header img{
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: 1.2vh;
 }
 
 .link-navbar {

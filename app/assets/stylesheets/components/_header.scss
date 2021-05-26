@@ -15,6 +15,7 @@
 }
 
 #header h1 {
+  color: white;
   font-size: 16px
 }
 
@@ -25,7 +26,7 @@
   justify-content: space-between;
   font-size: 16px;
   background-color: $main;
-  color: $black;
+  color: white;
   padding-bottom: 1vh;}
 
 #header2 img{
@@ -41,7 +42,7 @@
   justify-content: space-between;
   font-size: 16px;
   background-color: $main;
-  color: $black;
+  color: white;
   position: fixed;
   top: 0px;
   right: 0px;
@@ -49,7 +50,9 @@
   z-index: 10;
   padding-bottom: 1vh;
 }
-
+.header h1 {
+  color: white;
+}
 .header img{
   border-radius: 50%;
   width: 80px;
@@ -64,7 +67,7 @@
   justify-content: space-between;
   font-size: 16px;
   background-color: $main;
-  color: $black;
+  color: white;
   position: fixed;
   top: 0px;
   right: 0px;

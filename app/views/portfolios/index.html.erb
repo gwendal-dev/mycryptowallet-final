@@ -1,6 +1,8 @@
 <ul>
   <% @portfolios.each do |portfolio| %>
     <li><%= portfolio.title %></li>
-    <li><%= portfolio.total %></li>
+    <li><%= @total %></li>
+    <%= link_to "show", portfolio_path(portfolio) %>
   <% end %>
 </ul>
+

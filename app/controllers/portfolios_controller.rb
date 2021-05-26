@@ -1,12 +1,8 @@
 class PortfoliosController < ApplicationController
   def index
-    @portfolios = Portfolio.all
+    @portfolios = Portfolio.where(user: current_user)
     @coins = Coin.all
-    @total = 0
-    @positions = Position.all
-    @positions.each do |position|
-      @total += position.amount
-    end
+    @positions = Position.where(portfolio: @portfolios)
     @portfolio = Portfolio.new
   end
 

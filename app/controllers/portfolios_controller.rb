@@ -2,18 +2,13 @@ class PortfoliosController < ApplicationController
   def index
     @portfolios = Portfolio.all
     @coins = Coin.all
-    @total = 0
-    @positions = Position.all
-    @positions.each do |position|
-      @total += position.amount
-    end
   end
 
   def show
     @portfolio = Portfolio.find(params[:id])
     @coins = Coin.all
     @total = 0
-    @positions = Position.all
+    @positions = Position.where(portfolio_id: params[:id])
     @positions.each do |position|
       @coins.each do |coin|
         if position.coin == coin

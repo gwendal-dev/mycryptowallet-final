@@ -37,7 +37,11 @@ body {
   background-color: white;
 }
 
-.dark-mode {
-  background-color: black;
-  color: white;
+* {
+  color: black;
+  font-family: 'Poppins', sans-serif;
+}
+
+ul {
+    list-style-type: none;
 }

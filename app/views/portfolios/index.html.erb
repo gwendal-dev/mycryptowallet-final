@@ -1,8 +1,26 @@
-<ul>
+<div id="header2" id="header">
+  <h1>MyCryptoWallet</h1>
+</div>
+<div class="container2">
   <% @portfolios.each do |portfolio| %>
-    <li><%= portfolio.title %></li>
-    <li><%= @total %></li>
-    <%= link_to "show", portfolio_path(portfolio) %>
+   <a href="#">
+   <div class="item">
+   <ul>
+      <li><%= portfolio.title %></li>
+      <% total_quantity = 0 %>
+      <% total = 0 %>
+      <% portfolio.positions.each do |position|%>
+        <% @coins.each do |coin| %>
+          <% if coin.id == position.coin_id %>
+            <% total_quantity = position.quantity %>
+            <% total += total_quantity * coin.price %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <li><%= total %></li>
+   </ul>
+     <%= link_to "show", portfolio_path(portfolio), class: 'show' %>
+   </div>
+   </a>
   <% end %>
-</ul>
-
+</div>

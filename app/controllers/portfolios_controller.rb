@@ -32,7 +32,7 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
     if @portfolio.save
-      redirect_to portfolio_path(@portfolio)
+      redirect_to portfolios_path
     else
       render :index
     end

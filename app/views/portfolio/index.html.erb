@@ -16,9 +16,17 @@
         <div class="logo-text">
           <img src="images/logo-btc.jpg" alt="logo">
           <h1 class="name-coin"><%= coin.title %></h1>
+          <h1 class="value"><%= coin.price %>$</h1>
         </div>
         <div class="small-red">-10%</div>
-        <h1 class="value"><%= coin.price %>$</h1>
+        <% @positions.each do |position| %>
+        <div class="position">
+          <% if coin.id == position.coin_id %>
+            <div><%= position.amount %>$</div>
+            <div><%= position.quantity %></div>
+          <% end %>
+        </div>
+        <% end %>
       </div>
     </a>
   <% end %>

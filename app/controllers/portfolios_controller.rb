@@ -10,7 +10,6 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    @portfolio = Portfolio.find(params[:id])
     @coins = Coin.all
     @total = 0
     @positions = Position.where(portfolio_id: params[:id])

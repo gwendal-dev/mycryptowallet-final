@@ -1,6 +1,12 @@
 class PortfoliosController < ApplicationController
   def index
     @portfolios = Portfolio.all
+    @coins = Coin.all
+    @total = 0
+    @positions = Position.all
+    @positions.each do |position|
+      @total += position.amount
+    end
   end
 
   def show

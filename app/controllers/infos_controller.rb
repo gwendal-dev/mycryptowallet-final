@@ -8,6 +8,7 @@ class InfosController < ApplicationController
   end
 
   def show
+
   end
 
   private

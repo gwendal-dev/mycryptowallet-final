@@ -1,9 +1,10 @@
 <div class="container">
+
+    <div class="row justify-content-center">
+        <h1 class="h1 text-center">Last market news...</h1>
+    </div>
+
     <div class="column">
-      <div>
-        <h1 class="h1">Last market news...</h1>
-      </div>
-      <div class="col-12 col-sm-4">
         <% @data["data"].each do |news| %>
           <div class="card mb-3">
             <img src="<%= news["thumbnail"] %>" class="card-img-top" alt="...">
@@ -11,11 +12,12 @@
               <h5 class="card-title"> <%= news["symbol"] %> - <%= news["name"] %></h5>
               <p class="card-text"><%= news["title"] %></p>
               <p class="card-text"><small class="text-muted">Published by <%= news["publisher"] %> </small></p>
+              <a href='<%= news["url"] %>'><button class="btn btn-outline-primary float-right">More details</button></a>
             </div>
           </div>
         <% end  %>
-      </div>
     </div>
+
 </div>
 
 

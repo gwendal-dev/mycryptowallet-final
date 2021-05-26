@@ -4,7 +4,7 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    @portfolio = Portfolio.find(param[:id])
+    @portfolio = Portfolio.find(params[:id])
   end
 
   def create

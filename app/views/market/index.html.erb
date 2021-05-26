@@ -5,8 +5,8 @@
   <div class="main-portfolio">
     <a href="#"><h1 class="total-value"><%= @total %>$</h1></a>
     <div>
-      <a href="#header2"><div class="small-darkblue"><p>+</p></div></a>
-      <div class="recap"><p class="gain">+10%</p><p class="period">24H</p></div>
+      <%= link_to '+', portfolios_path, class: 'small-darkblue'%>
+      <div class="recap"><p class="gain">$VARIATION</p><p class="period">24H</p></div>
     </div>
 <% end %>
   </div> <% @coins.each do |coin| %>
@@ -18,15 +18,18 @@
           <h1 class="name-coin"><%= coin.title %></h1>
           <h1 class="value"><%= coin.price %>$</h1>
         </div>
-        <div class="small-red">-10%</div>
+        <div class="small-red">$VARIATION</div>
+        <% total_quantity = 0 %>
+        <% total_amount = 0 %>
         <% @positions.each do |position| %>
-        <div class="position">
           <% if coin.id == position.coin_id %>
-            <div><%= position.amount %>$</div>
-            <div><%= position.quantity %></div>
+            <% total_quantity += position.quantity%>
           <% end %>
-        </div>
         <% end %>
+        <div class="position">
+          <div><%= total_quantity * coin.price%>$</div>
+          <div><%= total_quantity %></div>
+        </div>
       </div>
     </a>
   <% end %>

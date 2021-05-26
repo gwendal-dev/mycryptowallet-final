@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :market, only: :index
-  resources :portfolio
+  resources :portfolios, only: [:index, :show, :create, :update, :destroy] do
+    resources :positions, only: [:new, :create, :destroy]
+  end
   resources :infos, only: [:index, :show]
-  resources :positions, only: [:new, :create, :destroy]
 end

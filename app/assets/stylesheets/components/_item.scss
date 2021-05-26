@@ -17,6 +17,7 @@
   background-color: #5D6D7E;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
 .item img{
   border-radius: 50%;
   width: 40px;
@@ -37,9 +38,11 @@
 }
 
 .value {
-  margin-top: 25px;
+  position: relative;
+  left: -50px;
+  bottom: -40px;
   color: $black;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .logo-text {

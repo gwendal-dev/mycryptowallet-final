@@ -2,6 +2,12 @@ class PortfoliosController < ApplicationController
   def index
     @portfolios = Portfolio.all
     @coins = Coin.all
+    @total = 0
+    @positions = Position.all
+    @positions.each do |position|
+      @total += position.amount
+    end
+    @portfolio = Portfolio.new
   end
 
   def show
@@ -18,10 +24,15 @@ class PortfoliosController < ApplicationController
     end
   end
 
+  def new
+    @portfolio = Portfolio.new
+  end
+
   def create
     @portfolio = Portfolio.new(portfolio_params)
-    if @song.save
-      redirect_to portfolio_path(@portfolio)
+    @portfolio.user = current_user
+    if @portfolio.save
+      redirect_to portfolios_path
     else
       render :index
     end
@@ -41,6 +52,6 @@ class PortfoliosController < ApplicationController
   private
 
   def portfolio_params
-    params.require(:portfolio).permit(:coin, :entry_date, :amount, :quantity, :exit_date, :exchange)
+    params.require(:portfolio).permit(:coin, :entry_date, :amount, :quantity, :exit_date, :exchange, :title)
   end
 end

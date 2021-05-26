@@ -1,0 +1,37 @@
+.container_input {
+  margin-top: 30px;
+  width: 400px;
+  border: 1px solid darkgray;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 60px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  color: darkgray;
+  font-family: "Raleway", sans-serif;
+}
+
+.container_form {
+  display: flex;
+  justify-content: space-around;
+  height: 110vh;
+  width: 100vw;
+  background-color: white ;
+  position: absolute;
+  top: 50px;
+}
+
+h1, h2 {
+  font-family: "Raleway", sans-serif;
+}
+
+h2 {
+  font-size: 24px;
+}
+a{
+  text-decoration: none;
+  color: darkgrey;
+}
+a:hover{
+  text-decoration: none;
+  color: grey;
+}

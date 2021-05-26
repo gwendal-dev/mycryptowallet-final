@@ -3,10 +3,8 @@
   padding: 0px 20px;
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
-  background-color: $main;
-  color: $black;
-  padding-bottom: 1vh;
+  background: #bdd2b6;
+  color: white;
 }
 
 .header2 img{
@@ -80,4 +78,13 @@
   width: 80px;
   height: 80px;
   margin-top: 1.2vh;
+}
+
+.link-navbar {
+  color: white;
+  text-decoration: none;
+    &:hover{
+      color: black;
+      text-decoration: none;
+  }
 }

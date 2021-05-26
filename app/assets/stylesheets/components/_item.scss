@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 16px;
-  background-color: lightgrey;
+  background-color: white;
   color: $black;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -28,7 +28,9 @@
 .small-red {
   color: $red;
   font-size: 20px;
-  margin-top: 15px;
+  position: relative;
+  top: 20px;
+  right: 50px;
   height: 40px;
   padding-top: 10px;
   padding: 5px 40px;
@@ -58,4 +60,10 @@
 .name-coin {
   margin-top: 17px;
   font-size: 16px;
+}
+
+.position {
+  position: relative;
+  right: 20px;
+  top: 20px;
 }

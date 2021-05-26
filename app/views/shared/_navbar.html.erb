@@ -1,5 +1,11 @@
 <div class="container_navbar">
-  <a href="../market"><i class="fas fa-university"></i></a>
-  <a href="../portfolios"><i class="fas fa-wallet"></i></a>
-  <a href="../news"><i class="far fa-newspaper"></i></a>
+  <%= link_to market_index_path, :action => 'go' do  %>
+  <i class="fas fa-university"></i>
+  <% end %>
+  <%= link_to portfolios_path, :action => 'go' do  %>
+  <i class="fas fa-wallet"></i>
+  <% end %>
+  <%= link_to infos_path, :action => 'go' do  %>
+  <i class="far fa-newspaper"></i>
+  <% end %>
 </div>

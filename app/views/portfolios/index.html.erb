@@ -3,9 +3,9 @@
 </div>
 <div class="container2">
   <% @portfolios.each do |portfolio| %>
-   <a href="#">
-   <div class="item">
-   <ul>
+    <a href="portfolios/<%= portfolio.id %>">
+    <div class="item">
+    <ul>
       <li><%= portfolio.title %></li>
       <% total_quantity = 0 %>
       <% total = 0 %>
@@ -18,9 +18,8 @@
         <% end %>
       <% end %>
       <li><%= total %></li>
-   </ul>
-     <%= link_to "show", portfolio_path(portfolio), class: 'show' %>
-   </div>
+    </ul>
+    </div>
    </a>
   <% end %>
   <!-- Button trigger modal -->

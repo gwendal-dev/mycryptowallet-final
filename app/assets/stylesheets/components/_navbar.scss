@@ -7,10 +7,10 @@
   right: 0px;
   border: 1px solid black;
   padding: 5px;
-  background-color: white;
+  background-color: $main;
 }
 
-.container_navbar img {
-  height: 30px;
-  width: 30px;
+i {
+  font-size: 30px;
+  color: white;
 }

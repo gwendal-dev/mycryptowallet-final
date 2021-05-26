@@ -1,7 +1,7 @@
 class MarketController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-    @portfolio = Portfolio.all
+    @portfolios = Portfolio.all
     @coins = Coin.all
     @total = 0
     @positions = Position.all

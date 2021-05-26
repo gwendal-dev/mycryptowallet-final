@@ -1,2 +1,32 @@
-<h1>Portfolio#show</h1>
-<p>Find me in app/views/portfolio/show.html.erb</p>
+<div id="header2" id="header">
+  <h1>MyCryptoWallet</h1>
+</div>
+<% if user_signed_in? %>
+  <div class="main-portfolio">
+    <a href="#"><h1 class="total-value"><%= @total %>$</h1></a>
+    <div>
+      <a href="#header2"><div class="small-darkblue"><p>+</p></div></a>
+      <div class="recap"><p class="gain">+10%</p><p class="period">24H</p></div>
+    </div>
+<% end %>
+  </div> <% @coins.each do |coin| %>
+    <div class="container2">
+      <a href="#">
+      <div class="item">
+        <div class="logo-text">
+          <img src="images/logo-btc.jpg" alt="logo">
+          <h1 class="name-coin"><%= coin.title %></h1>
+          <h1 class="value"><%= coin.price %>$</h1>
+        </div>
+        <div class="small-red">-10%</div>
+        <% @positions.each do |position| %>
+        <div class="position">
+          <% if coin.id == position.coin_id %>
+            <div><%= position.amount %>$</div>
+            <div><%= position.quantity %></div>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </a>
+  <% end %>

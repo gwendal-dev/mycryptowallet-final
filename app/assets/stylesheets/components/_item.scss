@@ -14,7 +14,7 @@
 }
 
 .item:hover {
-  background-color: #5D6D7E;
+  background-color: lightgrey;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -64,6 +64,10 @@
 
 .position {
   position: relative;
-  right: 20px;
+  right: 50px;
   top: 20px;
+}
+
+.show {
+  color: black
 }

@@ -16,6 +16,7 @@
 @import "components/market";
 @import "components/item";
 @import "components/main_portfolio";
+@import "components/header";
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
@@ -36,7 +37,11 @@ body {
   background-color: white;
 }
 
-.dark-mode {
-  background-color: black;
-  color: white;
+* {
+  color: black;
+  font-family: 'Poppins', sans-serif;
+}
+
+ul {
+    list-style-type: none;
 }

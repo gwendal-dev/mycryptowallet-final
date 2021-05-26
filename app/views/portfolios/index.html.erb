@@ -20,12 +20,18 @@
       <li><%= total %></li>
    </ul>
      <%= link_to "show", portfolio_path(portfolio), class: 'show' %>
+     <%= link_to edit_portfolio_path(portfolio), action: 'go' do %>
+      <i class="far fa-eye"></i>
+     <% end %>
+     <%= link_to(portfolio_path(portfolio), method: :delete, data: { confirm: "Are you sure?" }) do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
    </div>
    </a>
   <% end %>
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
+    Add a new portfolio
   </button>
 
 <!-- Modal -->

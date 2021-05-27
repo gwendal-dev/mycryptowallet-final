@@ -19,7 +19,7 @@ class PositionsController < ApplicationController
   end
 
   def destroy
-    @position = Booking.find(params[:id])
+    @position = Position.find(params[:id])
     @position.destroy
     redirect_to portfolio_path(:portfolio_id)
   end

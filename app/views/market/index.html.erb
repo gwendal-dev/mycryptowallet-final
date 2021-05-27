@@ -8,29 +8,20 @@
       <%= link_to '+', portfolios_path, class: 'small-darkblue'%>
       <div class="recap"><p class="gain">10%</p><p class="period">24H</p></div>
     </div>
-<% end %>
-  </div> <% @coins.each do |coin| %>
-    <div class="container2">
+  <% end %>
+  </div>
+<div class="container2">
+  <% @coins.each do |coin| %>
       <a href="#">
       <div class="item">
-        <div class="logo-text">
+        <div class="text-logo">
           <%= image_tag(coin.avatar) %>
-          <h1 class="name-coin"><%= coin.title %></h1>
-          <h1 class="value"><%= coin.price %>$</h1>
+          <h1 class="title-coin"><%= coin.title %></h1>
         </div>
-        <div class="small-red">10%</div>
-        <% total_quantity = 0 %>
-        <% total_amount = 0 %>
-        <% @positions.each do |position| %>
-          <% if coin.id == position.coin_id %>
-            <% total_quantity += position.quantity%>
-          <% end %>
-        <% end %>
-        <div class="position">
-          <div><%= total_quantity * coin.price%>$</div>
-          <div><%= total_quantity %></div>
-        </div>
+        <div class="percent">-10%</div>
+        <h1 class="coin-price"><%= coin.price %>$</h1>
       </div>
     </a>
   <% end %>
+
 <img src="https://alternative.me/crypto/fear-and-greed-index.png" alt="Latest Crypto Fear & Greed Index" width="500" style="display: flex; margin: auto; border: 1px solid darkgrey; margin-top: 40px "/>

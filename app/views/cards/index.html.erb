@@ -1,0 +1,34 @@
+<div class="main-portfolio">
+    <a href="#"><h1 class="total-value"><%= @total %>$</h1></a>
+    <div>
+      <%= link_to '+', portfolios_path, class: 'small-darkblue'%>
+      <div class="recap"><p class="gain">10%</p><p class="period">24H</p></div>
+    </div>
+  </div>
+
+<% @coins.each do |coin| %>
+<% @positions.each do |position| %>
+    <% total_quantity = 0 %>
+    <% if position.quantity > 0 && position.coin == coin %>
+      <div class="container">
+        <div class="cards">
+          <div class="container-card-coin">
+            <div class="img-top"><%= image_tag(coin.avatar) %></div>
+            <div class="logo-coin"><%= image_tag(coin.avatar) %></div>
+            <div class="card-coin-title"><%= coin.title %></div>
+            <div class="description">
+              <% if coin.id == position.coin_id %>
+                <% total_quantity += position.quantity%>
+              <% end %>
+              <div class="total-card">Total : <%= total_quantity * coin.price%>$</div>
+              <div class="gain-card">Gain : + 134 $</div>
+              <div class="debit-card">Loss : - 0</div>
+              <div class="last-price-card">Prix actuel : <%= coin.price %>$</div>
+              <div class="variation-card">Variation 24h : - 2.24 %</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+<% end %>
+<% end %>

@@ -11,12 +11,8 @@ class PortfoliosController < ApplicationController
     @coins = Coin.all
     @total = 0
     @positions = Position.where(portfolio_id: params[:id])
-    @positions.each do |position|
-      @coins.each do |coin|
-        if position.coin == coin
-          @total += position.quantity * coin.price
-        end
-      end
+    @coins.each do |coin|
+        @total += coin.quantity * coin.price
     end
   end
 

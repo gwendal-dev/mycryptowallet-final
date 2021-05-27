@@ -2,6 +2,7 @@
   <h1>MyCryptoWallet</h1>
 </div>
 <div class="container2">
+  <% if @portfolios %>
   <% @portfolios.each do |portfolio| %>
     <a href="portfolios/<%= portfolio.id %>">
     <div class="item">
@@ -17,7 +18,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <li><%= total %></li>
+      <li><%= total.round(2) %></li>
    </ul>
      <%= link_to edit_portfolio_path(portfolio), action: 'go' do %>
       <i class="far fa-eye"></i>
@@ -28,6 +29,7 @@
    </div>
    </a>
   <% end %>
+<% end %>
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Add a new portfolio

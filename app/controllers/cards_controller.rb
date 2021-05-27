@@ -1,10 +1,9 @@
-class MarketController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+class CardsController < ApplicationController
   def index
-    @portfolios = Portfolio.where(user: current_user)
+    @portfolio = Portfolio.find(params[:portfolio_id])
     @coins = Coin.all
     @total = 0
-    @positions = Position.where(portfolio: @portfolios)
+    @positions = Position.where(portfolio_id: params[:portfolio_id])
     @positions.each do |position|
       @coins.each do |coin|
         if position.coin == coin

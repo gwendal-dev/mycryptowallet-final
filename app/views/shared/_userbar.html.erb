@@ -1,0 +1,24 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+
+  <div class="nav-link">
+    <%= link_to 'MyCryptoWallet', root_path, class: 'nav-link'%>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <%= image_tag "https://mspgh.unimelb.edu.au/__data/assets/image/0011/3576098/Placeholder.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>
+                <%= link_to 'Log-out', destroy_user_session_path, :method => :delete, class: 'dropdown-item'%>
+              </div>
+          </li>
+      </ul>
+    </div>
+  <% else %>
+    <%= link_to 'Sign-up', new_user_registration_path, class: 'nav-item float-left'%>
+    <%= link_to "Log in", new_user_session_path, class: 'nav-item float-left' %>
+  <% end %>
+
+</div>

@@ -18,7 +18,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <li><%= total %></li>
+      <li><%= total.round(2) %></li>
    </ul>
      <%= link_to edit_portfolio_path(portfolio), action: 'go' do %>
       <i class="far fa-eye"></i>

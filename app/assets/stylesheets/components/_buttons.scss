@@ -1,0 +1,23 @@
+.btn-signin {
+  display: inline-block;
+  background-color:lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.btn-login {
+  display: inline-block;
+  background-color:lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.btn-signin:hover {
+  background-color: #2A458A ;
+}
+
+.btn-login:hover {
+  background-color: #EE7E28;
+}

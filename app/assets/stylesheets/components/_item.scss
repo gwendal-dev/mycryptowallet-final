@@ -32,7 +32,22 @@
   font-size: 20px;
   position: relative;
   top: 20px;
-  right: 50px;
+  right: 30px;
+  height: 40px;
+  width: 30px;
+  padding-top: 10px;
+  padding: 5px 40px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+.percent {
+  color: $red;
+  font-size: 20px;
+  position: relative;
+  top: 20px;
+  right: -10px;
+  width: 30px;
   height: 40px;
   padding-top: 10px;
   padding: 5px 40px;
@@ -40,22 +55,44 @@
   display: flex;
   justify-content: space-around;
 }
-
 .value {
   position: relative;
   left: -50px;
   bottom: -40px;
   color: $black;
   font-size: 16px;
+  width: 75px;
 }
 
+.coin-price {
+  position: relative;
+  bottom: -28px;
+  right: -40px;
+  color: $black;
+  font-size: 16px;
+  width: 100px;
+}
 .logo-text {
+  margin-top: 8px;
+  position: relative;
+  left: 10px;
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+}
+
+.text-logo {
   margin-top: 8px;
   display: flex;
   justify-content: space-around;
+  width: 100px;
 }
 
 .logo-text h1 {
+  margin-left: 16px;
+}
+
+.text-logo h1 {
   margin-left: 16px;
 }
 
@@ -64,10 +101,16 @@
   font-size: 16px;
 }
 
+.title-coin {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
 .position {
   position: relative;
-  right: 40px;
+  right: 0px;
   top: 20px;
+  width: 100px;
 }
 
 .show {

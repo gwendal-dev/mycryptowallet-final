@@ -1,6 +1,12 @@
 <div id="header2" id="header">
   <h1>MyCryptoWallet</h1>
 </div>
+
+<figure class="highcharts-figure">
+    <div id="container" data-positions="<%= @positions.to_json %>" data-coins= "<%= @coins.to_json %>">
+    </div>
+</figure>
+
 <% if user_signed_in? %>
   <div class="main-portfolio">
     <a href="#"><h1 class="total-value"><%= @total %>$</h1></a>
@@ -8,9 +14,13 @@
       <%= link_to '+', new_portfolio_position_path(@portfolio), class: 'small-darkblue'%>
       <div class="recap"><p class="gain">10%</p><p class="period">24H</p></div>
     </div>
+  </div>
 <% end %>
-  </div> <% @coins.each do |coin| %>
     <div class="container2">
+    <% @positions.each do |position| %>
+      <% @coins.each do |coin| %>
+        <% total_quantity = 0 %>
+        <% if position.quantity > 0 && position.coin == coin %>
       <a href="#">
       <div class="item">
         <div class="logo-text">
@@ -19,16 +29,16 @@
           <h1 class="value"><%= coin.price %>$</h1>
         </div>
         <div class="small-red">10%</div>
-        <% total_quantity = 0 %>
-        <% @positions.each do |position| %>
           <% if coin.id == position.coin_id %>
             <% total_quantity += position.quantity%>
           <% end %>
-        <% end %>
-        <div class="position">
+          <div class="position">
           <div><%= total_quantity * coin.price%>$</div>
           <div><%= total_quantity %></div>
         </div>
       </div>
     </a>
+    <% end %>
   <% end %>
+  <% end %>
+</div>

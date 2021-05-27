@@ -17,7 +17,11 @@
   background-color: lightgrey;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
+.fa-eye, .fa-trash-alt {
+  color: black;
+  font-size: 32px;
+  margin-top: 15px;
+}
 .item img{
   width: 40px;
   height: 40px;

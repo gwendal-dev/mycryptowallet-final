@@ -1,0 +1,44 @@
+.img-top img{
+    width: 100%;
+    background-image: cover;
+    border-radius: 10px;
+}
+.logo-coin img{
+    width: 130px;
+    margin-left: 25%;
+    margin-top: -30px;
+    border-radius: 50%;
+    border-style: solid;
+}
+.cards {
+  display: flex;
+  justify-content: space-around;
+}
+.card-coin-title {
+  color : white;
+  text-decoration-style: dotted;
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+}
+.description {
+    color: whitesmoke;
+    padding: 1em;
+    font-size: 16px;
+}
+.gain-card {
+    color: turquoise;
+}
+.debit-card {
+    color: violet;
+}
+.variation-card {
+    color: tomato;
+}
+.container {
+  margin-bottom: 150px;
+  background-color: $main;
+  width: 80%;
+  border-radius: 15px;
+  margin-top: 50px;
+}

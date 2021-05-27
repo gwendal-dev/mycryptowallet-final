@@ -3,7 +3,7 @@
 </div>
 <% if user_signed_in? %>
   <div class="main-portfolio">
-    <a href="#"><h1 class="total-value"><%= @total %>$</h1></a>
+    <a href="#"><h1 class="total-value"><%= @total.round(2) %>$</h1></a>
     <div>
       <%= link_to '+', portfolios_path, class: 'small-darkblue'%>
       <div class="recap"><p class="gain">10%</p><p class="period">24H</p></div>
@@ -19,7 +19,7 @@
           <h1 class="title-coin"><%= coin.title %></h1>
         </div>
         <div class="percent">-10%</div>
-        <h1 class="coin-price"><%= coin.price %>$</h1>
+        <h1 class="coin-price"><%= coin.price.round(2) %>$</h1>
       </div>
     </a>
   <% end %>

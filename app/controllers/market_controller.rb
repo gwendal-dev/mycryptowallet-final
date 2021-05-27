@@ -1,4 +1,5 @@
 class MarketController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
     @portfolios = Portfolio.where(user: current_user)
     @coins = Coin.all

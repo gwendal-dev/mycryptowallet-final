@@ -17,9 +17,9 @@
   </div>
 <% end %>
     <div class="container2">
-    <% @positions.each do |position| %>
       <% @coins.each do |coin| %>
-        <% total_quantity = 0 %>
+      <% total_quantity = 0 %>
+      <% @positions.each do |position| %>
         <% if position.quantity > 0 && position.coin == coin %>
       <a href="#">
       <div class="item">

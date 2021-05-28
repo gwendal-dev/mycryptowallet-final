@@ -72,5 +72,5 @@ const chart = () => {
       }]
   });
 }
-
+window.Highcharts = Highcharts;
 export {chart}

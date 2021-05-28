@@ -15,7 +15,7 @@
   right: 0px;
   border: 1px solid grey;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 99;
+  z-index: 90;
 }
 .main-portfolio2{
   font-family: 'Open Sans', sans-serif;
@@ -61,7 +61,7 @@
 
 .gain {
   margin-left: 30px;
-  color: #2FBF71;
+  color: $red;
   font-size: 24px;
 }
 

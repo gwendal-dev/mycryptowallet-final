@@ -1,24 +1,35 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-
-  <div class="nav-link">
-    <%= link_to 'MyCryptoWallet', root_path, class: 'nav-link'%>
-  </div>
-
-  <% if user_signed_in? %>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <%= image_tag "https://mspgh.unimelb.edu.au/__data/assets/image/0011/3576098/Placeholder.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>
-                <%= link_to 'Log-out', destroy_user_session_path, :method => :delete, class: 'dropdown-item'%>
-              </div>
-          </li>
-      </ul>
+<div id="root">
+  <div id="topnav" class="topnav">
+    <a id="home_link" class="topnav_link" href="/"><h1 class="title">MCW</h1></a>
+    <div class="session-container">
+      <% if user_signed_in? %>
+        <%= link_to 'Log-out', destroy_user_session_path, :method => :delete, class: 'session-text'%>
+      <% else %>
+        <%= link_to 'Sign-up', new_user_registration_path, class: 'session-text'%>
+        <%= link_to "Log in", new_user_session_path, class: 'session-text' %>
+      <% end %>
     </div>
-  <% else %>
-    <%= link_to 'Sign-up', new_user_registration_path, class: 'nav-item float-left'%>
-    <%= link_to "Log in", new_user_session_path, class: 'nav-item float-left' %>
-  <% end %>
+    <% if user_signed_in? %>
+    <a id="topnav_hamburger_icon">
+        <!-- Some spans to act as a hamburger -->
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
 
-</div>
+      <!-- Responsive Menu -->
+      <nav role="navigation" id="topnav_responsive_menu">
+        <ul>
+          <li><%= link_to 'HOME', root_path, class: 'text-navbar'%></li>
+          <li><%= link_to 'MY PROFIL', edit_user_registration_path, class: 'text-navbar pb-3'%></li>
+          <% if Portfolio.where(user: current_user).first %>
+          <li><%= link_to 'CARDS', portfolio_cards_path(Portfolio.where(user: current_user).first), class: 'text-navbar' %></li>
+          <% end %>
+          <li><%= link_to 'PORTFOLIOS', portfolios_path, class: 'text-navbar'%></li>
+          <li><%= link_to 'MARKET', market_index_path, class: 'text-navbar'%></li>
+          <li><%= link_to 'NEWS', infos_path, class: 'text-navbar' %></li>
+        </ul>
+      </nav>
+      <% end %>
+    </div>
+  </div>

@@ -7,12 +7,13 @@ class PortfoliosController < ApplicationController
   end
 
   def show
+    @card = 0
     @portfolio = Portfolio.find(params[:id])
     @coins = Coin.all
     @total = 0
     @positions = Position.where(portfolio_id: params[:id])
     @coins.each do |coin|
-        @total += coin.quantity * coin.price
+      @total += coin.quantity * coin.price
     end
   end
 

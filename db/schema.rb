@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_082421) do
+ActiveRecord::Schema.define(version: 2021_05_28_102905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_082421) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "avatar"
+    t.string "background"
   end
 
   create_table "infos", force: :cascade do |t|
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_082421) do
     t.string "exchange"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "card"
     t.index ["coin_id"], name: "index_positions_on_coin_id"
     t.index ["portfolio_id"], name: "index_positions_on_portfolio_id"
   end

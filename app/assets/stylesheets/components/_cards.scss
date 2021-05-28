@@ -1,18 +1,19 @@
 .img-top img{
     width: 100%;
+    height: 50%;
     background-image: cover;
     border-radius: 10px;
 }
 .logo-coin img{
-    width: 130px;
-    margin-left: 25%;
+    width: 90px;
+    margin-left: 36%;
     margin-top: -30px;
     border-radius: 50%;
-    border-style: solid;
-}
+  }
 .cards {
   display: flex;
   justify-content: space-around;
+  background-color: white;
 }
 .card-coin-title {
   color : white;
@@ -21,10 +22,23 @@
   font-weight: bold;
   text-align: center;
 }
+.container-card-coin {
+    display: block;
+    background-color: rgb(10, 4, 82);
+    width: 100%;
+    margin-bottom: 70px;
+    border-style: solid;
+    border-radius: 10px;
+    font-family: 'Itim', cursive;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 .description {
     color: whitesmoke;
     padding: 1em;
     font-size: 16px;
+}
+.total-card, .last-price-card {
+  color: whitesmoke;
 }
 .gain-card {
     color: turquoise;
@@ -35,10 +49,12 @@
 .variation-card {
     color: tomato;
 }
-.container {
-  margin-bottom: 150px;
+.container-card {
+  margin-bottom: 20px;
   background-color: $main;
   width: 80%;
   border-radius: 15px;
   margin-top: 50px;
+  margin-left: 40px;
+  margin-right: 40px;
 }

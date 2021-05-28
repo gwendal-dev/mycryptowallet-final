@@ -13,7 +13,7 @@
   top: 0px;
   left: 0px;
   right: 0px;
-  border: 1px solid grey;
+  border: 1px solid lightgray;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 90;
 }
@@ -34,10 +34,10 @@
   z-index: 99;
 }
 .small-darkblue {
-  background-color: #22333B;
+  background-color: $main;
   border-radius: 10px;
   text-align: center;
-  padding: 0px 20px;
+  padding: 0px 14px;
   color: white;
   font-size: 24px;
   margin-top: 5px;
@@ -67,10 +67,11 @@
 
 .total-value {
   margin-top: 40px;
-  color: $black;
+  color:grey;
   font-size: 32px;
 }
 
 .period {
   font-size: 24px;
+  color: grey;
 }

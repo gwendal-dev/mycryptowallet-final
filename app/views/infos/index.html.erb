@@ -4,7 +4,7 @@
         <h1 class="h1 text-center">Last market news...</h1>
     </div>
 
-    <div class="row p-3 justify-content-center">
+    <div class="row p-3 justify-content-center" id="particles">
         <% @data["data"].each do |news| %>
           <div class="card mb-3 m-2" style="width: 18rem; border-radius: 5%">
             <img src="<%= news["thumbnail"] %>" class="card-img-top" alt="..." height="200px" style="border-radius: 5%">

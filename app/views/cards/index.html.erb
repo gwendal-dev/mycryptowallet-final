@@ -1,3 +1,7 @@
+<figure class="highcharts-figure">
+    <div id="container" data-positions="<%= @positions.to_json %>" data-coins="<%= @coins.to_json %>" data-title="<%= @portfolio.title.to_json %>">
+    </div>
+</figure>
 <div class="main-portfolio">
     <a href="#"><h1 class="total-value"><%= @total %>$</h1></a>
     <div>
@@ -17,9 +21,9 @@
           <%= image_tag(coin.avatar, class: 'logo-coin') %>
           <div class="card-coin-title"><%= coin.title %></div>
           <div class="description">
-            <div class="total-card">Total : <%= total_quantity.round(4) %></div>
-            <div class="gain-card">Gain : + 134 $</div>
-            <div class="debit-card">Loss : - 0</div>
+            <div class="total-card">Total : <%= coin.quantity.round(4) %></div>
+            <div class="value-card">Value : <%= coin.quantity.round(4) * coin.price %>$</div>
+            <div class="debit-card">Loss : -10%</div>
             <div class="last-price-card">Prix actuel : <%= coin.price %>$</div>
             <div class="variation-card">Variation 24h : - 2.24 %</div>
           </div>

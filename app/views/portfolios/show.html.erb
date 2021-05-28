@@ -4,29 +4,33 @@
 </figure>
 
   <div class="main-portfolio">
+    <%= link_to portfolio_position_path(@portfolio, @positions.first), action: 'go' do %>
     <a href="#"><h1 class="total-value"><%= @total.round(2) %>$</h1></a>
     <div>
       <%= link_to '+', new_portfolio_position_path(@portfolio, card: 0), class: 'small-darkblue'%>
       <div class="recap"><p class="gain">-10%</p><p class="period">24H</p></div>
     </div>
   </div>
+  <% i = 0 %>
     <div class="container2">
-      <% @coins.each do |coin| %>
-      <% if coin.quantity > 0 %>
-      <a href="#">
-      <div class="item">
-        <div class="logo-text">
-          <%= image_tag(coin.avatar) %>
-          <h1 class="name-coin"><%= coin.title %></h1>
-          <h1 class="value"><%= coin.price %>$</h1>
+        <% @coins.each do |coin| %>
+        <% i += 1 %>
+        <% if coin.quantity > 0 %>
+        <%= link_to coin_index_path(i), action: 'go' do %>
+        <div class="item">
+          <div class="logo-text">
+            <%= image_tag(coin.avatar) %>
+            <h1 class="name-coin"><%= coin.title %></h1>
+            <h1 class="value"><%= coin.price %>$</h1>
+          </div>
+          <div class="small-red">-10%</div>
+            <div class="position">
+            <div><%= (coin.quantity * coin.price).round(2)%>$</div>
+            <div><%= coin.quantity.round(2) %></div>
+          </div>
         </div>
-        <div class="small-red">-10%</div>
-          <div class="position">
-          <div><%= (coin.quantity * coin.price).round(2)%>$</div>
-          <div><%= coin.quantity.round(2) %></div>
-        </div>
-      </div>
-    </a>
+         <% end %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

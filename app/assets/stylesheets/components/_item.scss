@@ -17,7 +17,7 @@
   background-color: lightgrey;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.fa-eye, .fa-trash-alt {
+.fa-edit, .fa-trash-alt {
   color: black;
   font-size: 32px;
   margin-top: 15px;
@@ -94,6 +94,22 @@
 
 .logo-text h1 {
   margin-left: 16px;
+}
+#wallet {
+  color: $main;
+  position: relative;
+  top: 30px;
+  margin: 0;
+  padding: 0;
+  font-size: 32px;
+}
+
+.line {
+  width: 120%;
+  position: relative;
+  background-color: grey;
+  height: 1px;
+  top: -10px;
 }
 
 .text-logo h1 {

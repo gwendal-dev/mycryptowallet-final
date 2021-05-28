@@ -52,8 +52,8 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   burger();
   flip();
-  showCoin();
   tradingview();
+  showCoin();
   chart();
 });
 

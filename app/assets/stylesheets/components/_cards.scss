@@ -2,11 +2,15 @@
     width: 100%;
     height: 50%;
     background-image: cover;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 .logo-coin img{
-    width: 90px;
-    margin-left: 36%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+    width: 60px;
+   
+    text-align: center;
     margin-top: -30px;
     border-radius: 50%;
   }
@@ -50,11 +54,13 @@
     color: tomato;
 }
 .container-card {
+  display: flex;
+  margin: auto;
+  justify-content: center;
   margin-bottom: 20px;
   background-color: $main;
-  width: 80%;
-  border-radius: 15px;
+  width: 50%;
+  border-radius: 8px;
   margin-top: 50px;
-  margin-left: 40px;
-  margin-right: 40px;
+  
 }

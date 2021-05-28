@@ -9,7 +9,6 @@ require('highcharts/modules/accessibility')(Highcharts);
 const chart = () => {
   let i = 0;
   const container = document.querySelector('#container');
-
         // Make monochrome colors
   var pieColors = (function () {
       var colors = [],
@@ -63,8 +62,12 @@ const chart = () => {
           innerSize: '60%',
           name: 'Share',
           data: [
-              { name: JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[0].coin_id - 1].title, y: JSON.parse(container.dataset.positions)[0].quantity },
-              { name: JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[1].coin_id - 1].title, y: JSON.parse(container.dataset.positions)[1].quantity },
+              // { name: JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[0].coin_id - 1].title, y: JSON.parse(container.dataset.positions)[0].quantity * JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[0].coin_id - 1].price },
+              // { name: JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[1].coin_id - 1].title, y: JSON.parse(container.dataset.positions)[1].quantity * JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[1].coin_id - 1].price },
+              { name: 'ETH', y: 20},
+              { name: 'ADA', y: 5},
+              { name: 'BNB', y: 10},
+              { name: 'other', y: 10}
           ]
       }]
   });

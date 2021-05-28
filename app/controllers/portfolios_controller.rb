@@ -13,6 +13,7 @@ class PortfoliosController < ApplicationController
     @total = 0
     @positions = Position.where(portfolio_id: params[:id])
     @coins.each do |coin|
+      coin.quantity = coin.sum(params[:id])
       @total += coin.quantity * coin.price
     end
   end

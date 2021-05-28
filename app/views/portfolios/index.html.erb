@@ -3,8 +3,9 @@
   <% @portfolios.each do |portfolio| %>
     <a href="portfolios/<%= portfolio.id %>">
     <div class="item">
+      <i class="fas fa-wallet" id="wallet"></i>
     <ul>
-      <li><%= portfolio.title %></li>
+      <li><strong><%= portfolio.title %></strong></li>
       <% total_quantity = 0 %>
       <% total = 0 %>
       <% portfolio.positions.each do |position|%>
@@ -17,8 +18,9 @@
       <% end %>
       <li><%= total.round(2) %></li>
    </ul>
+   <div class="line"></div>
      <%= link_to edit_portfolio_path(portfolio), action: 'go' do %>
-      <i class="far fa-eye"></i>
+      <i class="far fa-edit"></i>
      <% end %>
      <%= link_to(portfolio_path(portfolio), method: :delete, data: { confirm: "Are you sure?" }) do %>
       <i class="far fa-trash-alt"></i>

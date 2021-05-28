@@ -45,11 +45,15 @@ import {chart} from '../plugins/chart.js'
 import {burger} from '../plugins/burger.js'
 import {flip} from '../plugins/flip.js'
 import {tradingview} from '../plugins/tradingview.js'
+import {showCoin} from '../plugins/showCoin.js'
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   burger();
   flip();
+  showCoin();
   tradingview();
   chart();
 });
+

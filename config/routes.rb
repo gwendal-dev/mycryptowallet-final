@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :positions, only: [:new, :create, :destroy]
   end
   resources :infos, only: [:index, :show]
+  resources :coin, only: :index
 end

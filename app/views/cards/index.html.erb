@@ -5,26 +5,36 @@
       <div class="recap"><p class="gain">10%</p><p class="period">24H</p></div>
     </div>
   </div>
-
+<% i = 0 %>
 <% @coins.each do |coin| %>
     <% total_quantity = 0 %>
     <% if coin.quantity > 0 %>
-      <div class="container-card">
-        <div class="cards">
-          <div class="container-card-coin">
-            <div class="img-top"><%= image_tag(coin.background) %></div>
-            <div class="logo-coin"><%= image_tag(coin.avatar) %></div>
-            <div class="card-coin-title"><%= coin.title %></div>
-            <div class="description">
-                <% total_quantity += coin.quantity%>
-              <div class="total-card">Total : <%= total_quantity.round(4) %></div>
-              <div class="gain-card">Gain : + 134 $</div>
-              <div class="debit-card">Loss : - 0</div>
-              <div class="last-price-card">Current price : <%= coin.price %>$</div>
-              <div class="variation-card">Variation 24h : - 2.24 %</div>
-            </div>
+      <div class="card">
+    <div class="card__inner">
+      <div class="card__face card__face--front">
+        <div class="container-card-coin">
+          <%= image_tag(coin.background, class: 'img-top') %>
+          <%= image_tag(coin.avatar, class: 'logo-coin') %>
+          <div class="card-coin-title"><%= coin.title %></div>
+          <div class="description">
+            <div class="total-card">Total : <%= total_quantity.round(4) %></div>
+            <div class="gain-card">Gain : + 134 $</div>
+            <div class="debit-card">Loss : - 0</div>
+            <div class="last-price-card">Prix actuel : <%= coin.price %>$</div>
+            <div class="variation-card">Variation 24h : - 2.24 %</div>
           </div>
         </div>
       </div>
+      <div class="card__face card__face--back">
+        <div class="card__content">
+          <div class="tradingview-widget-container">
+            <div id="tradingview<%= i += 1 %>" data-coin="<%= coin.title.to_json %>"></div>
+            <div class="tradingview-widget-copyright"></a><span>Flip</span></div>
+
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
     <% end %>
 <% end %>

@@ -49,5 +49,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   burger();
   chart();
+  
 //  flip();
 });
+window.Highcharts = Highcharts;

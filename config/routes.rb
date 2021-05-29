@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :cards, only: :index
     resources :positions, only: [:new, :create, :destroy]
     resources :coin, only: :index
+    resources :api, only: :index
   end
   resources :infos, only: [:index, :show]
 end

@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2021_05_29_083117) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "avatar"
     t.string "background"
-    t.integer "walletid"
     t.float "change"
     t.string "marketcap"
     t.float "quantity"

@@ -1,6 +1,6 @@
 function showCoin() {
   let tradingview = document.querySelector(`#tradingview`);
-  if (JSON.parse(tradingview.dataset.coin)) {
+  if (tradingview) {
   new TradingView.widget(
     {
     "width": "100%",

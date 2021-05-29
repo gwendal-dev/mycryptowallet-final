@@ -1,0 +1,14 @@
+<figure class="highcharts-figure">
+    <div id="container" data-positions="<%= @positions.to_json %>" data-coins= "<%= @coins.to_json %>">
+    </div>
+</figure>
+
+  <div class="main-portfolio">
+    <h1 class="total-value"></h1>
+    <div>
+      <%= link_to '+', new_portfolio_position_path(@portfolio, card: 0), class: 'small-darkblue'%>
+      <div class="recap"><p class="gain">10%</p><p class="period">24H</p></div>
+    </div>
+  </div>
+
+<div class="container5"></div>

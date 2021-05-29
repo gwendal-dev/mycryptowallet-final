@@ -31,6 +31,36 @@
   margin-top: 25px;
 }
 
+.item2{
+  font-family: 'Open Sans', sans-serif;
+  margin: 5px 5px;
+  padding: 10px 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  background-color: white;
+  color: $black;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-top: 10px;
+  border: 1px solid darkgrey;
+}
+
+.item2:hover {
+  background-color: lightgrey;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.item2 img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 15px;
+  margin-top: 25px;
+}
+
 .small-red {
   color: $red;
   font-size: 20px;
@@ -46,7 +76,36 @@
   justify-content: space-around;
 }
 
+.small-red2 {
+  color: $red;
+  font-size: 20px;
+  position: relative;
+  top: 20px;
+  right: 30px;
+  height: 40px;
+  width: 30px;
+  padding-top: 10px;
+  padding: 5px 40px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
 .small-green {
+  color: $red;
+  font-size: 20px;
+  position: relative;
+  top: 20px;
+  right: 30px;
+  height: 40px;
+  width: 30px;
+  padding-top: 10px;
+  padding: 5px 40px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+.small-green2 {
   color: $red;
   font-size: 20px;
   position: relative;
@@ -104,6 +163,16 @@
   width: 75px;
 }
 
+.value2 {
+  position: relative;
+  left: -50px;
+  bottom: -40px;
+  color: $black;
+  font-size: 16px;
+  width: 75px;
+}
+
+
 .coin-price {
   position: relative;
   right: 15px;
@@ -157,12 +226,24 @@
   font-size: 16px;
 }
 
+.name-coin2 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
 .title-coin {
   margin-top: 20px;
   font-size: 16px;
 }
 
 .position {
+  position: relative;
+  right: 15px;
+  top: 20px;
+  width: 50px;
+}
+
+.position2 {
   position: relative;
   right: 15px;
   top: 20px;

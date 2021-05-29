@@ -1,12 +1,18 @@
+var Highcharts = require('highcharts');
+require('highcharts/highcharts');
+require('highcharts/modules/exporting')(Highcharts);
+// Create the chart
+require('highcharts/modules/export-data')(Highcharts);
+require('highcharts/modules/accessibility')(Highcharts);
 
-const api = () => {
-const ccxt = require ('ccxt');
-let sum = 0;
-let i = 0;
-let k = 0;
-let coins = [];
-let title = [];
-let position = [];
+const chartApi = () => {
+  const ccxt = require ('ccxt');
+  let sum = 0;
+  let i = 0;
+  let k = 0;
+  let coins = {};
+  console.log(document.querySelector(".container5"));
+if (document.querySelector(".container5") != null) {
 
 (async function () {
     const exchangeId = 'binance'
@@ -60,8 +66,7 @@ let position = [];
 
               aTag4.insertAdjacentHTML('beforeEnd', `<br>${Math.round((obj.lastPrice * item[1]) * 100) / 100}$`);
 
-              title.push(item[0]);
-              position.push(obj.lastPrice * item[1]);
+              coins[item[0]] = obj.lastPrice * item[1];
 
               if (mydiv != null) {
                 mydiv.appendChild(aTag);
@@ -116,15 +121,85 @@ let position = [];
       }
     });
 }) ();
-  var myfigure = document.querySelector(".highcharts-figure");
-  coins.push(title);
-  coins.push(position);
+  var myfigure = document.querySelector(".highcharts-figure2");
   var aTag6 = document.createElement('div');
   aTag6.setAttribute('id',"container7");
   if (myfigure != null) {
     myfigure.appendChild(aTag6);
   }
-  return coins;
+
+  let l = 0;
+  const container = document.querySelector('#container7');
+        // Make monochrome colors
+  var pieColors = (function () {
+      var colors = [],
+          base = Highcharts.getOptions().colors[0],
+          i;
+
+      for (l = 0; l < 10; l += 1) {
+          // Start out with a darkened base color (negative brighten), and end
+          // up with a much brighter color
+          colors.push(Highcharts.color(base).brighten((l - 3) / 7).get());
+      }
+      return colors;
+  }());
+  // Build the chart
+  let charts = Highcharts.chart('container7', {
+      chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+      },
+      title: {
+          text: 'MY Crypto Wallet'
+      },
+      tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      },
+      accessibility: {
+          point: {
+              valueSuffix: '%'
+          }
+      },
+      plotOptions: {
+          pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              colors: pieColors,
+              dataLabels: {
+                  enabled: true,
+                  format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                  distance: -50,
+                  filter: {
+                      property: 'percentage',
+                      operator: '>',
+                      value: 4
+                  }
+              }
+          }
+      },
+      series: [{
+          innerSize: '60%',
+          name: 'Share',
+          data: [
+              // JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[0].coin_id - 1].title
+              // JSON.parse(container.dataset.positions)[0].quantity * JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[0].coin_id - 1].price
+          ]
+      }]
+  });
+  //charts.title.update({ text: JSON.parse(container.dataset.title)})
+    setTimeout(function() {
+      //your code to be executed after 5 second
+      for (const [key, value] of Object.entries(coins)) {
+      charts.series[0].addPoint({
+              name: key,
+              y: value
+            });
+      }
+    }, 4000);
+
+  }
 }
 
-export {api}
+export {chartApi}

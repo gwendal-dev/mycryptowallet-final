@@ -18,6 +18,6 @@ Coin.create!([{title: "LINK", price: 34, avatar: "LINK.jpg", background: "link2.
 Coin.create!([{title: "BNB", price: 346, avatar: "BNB.jpg", background: "bnb2.png"}])
 Coin.create!([{title: "DOGE", price: 0.34, avatar: "DOGE.jpg", background: "doge2.jpeg"}])
 Coin.create!([{title: "DOT", price: 24, avatar: "DOT.jpg", background: "dot2.jpeg"}])
-Coin.create!([{title: "BNT", price: 8.3, avatar: "BTN.jpg", background: "bnt2.jpeg"}])
+Coin.create!([{title: "BNT", price: 8.3, avatar: "BNT.jpg", background: "bnt2.jpeg"}])
 Coin.create!([{title: "AAVE", price: 358, avatar: "AAVE.jpg", background: "aave2.jpeg"}])
 puts 'coins done'

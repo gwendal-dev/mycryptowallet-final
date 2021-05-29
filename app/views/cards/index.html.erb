@@ -3,15 +3,26 @@
     </div>
 </figure>
 <div class="main-portfolio">
-    <a href="#"><h1 class="total-value"><%= @total > 1000000 ? @total.round(0) : @total.round(2) %>$</h1></a>
+      <h1 class="total-value">
+      <% if @total_value >= 1000000 %>
+                <% million  = @total_value.to_i %>
+                <% million = million.to_s.reverse.gsub(/\A....../, 'M').reverse %>
+                <%= million %>$
+      <% elsif @total_value >= 100000 %>
+          <%= @total_value.round(0) %>$
+      <% elsif @total_value < 100000 && @total_value > 0%>
+        <%= @total_value.round(2) %>$
+      <% else %>
+        0$
+      <% end %>
+    </h1>
     <div>
-      <%= link_to '+', new_portfolio_position_path(@portfolio, :card => 1), class: 'small-darkblue'%>
-      <div class="recap"><p class="gain">10%</p><p class="period">24H</p></div>
+      <%= link_to '+', new_portfolio_position_path(@portfolio, card: 1), class: 'small-darkblue'%>
+      <div class="recap"><p class="gain"><%= @moyenne_change.round(2) %>%</p><p class="period">24H</p></div>
     </div>
   </div>
 <% i = 0 %>
 <% @coins.each do |coin| %>
-    <% total_quantity = 0 %>
     <% if coin.quantity > 0 %>
       <div class="card">
     <div class="card__inner">
@@ -21,11 +32,15 @@
           <%= image_tag(coin.avatar, class: 'logo-coin') %>
           <div class="card-coin-title"><%= coin.title %></div>
           <div class="description">
-            <div class="total-card">Total : <%= coin.quantity.round(4) %></div>
-            <div class="value-card">Value : <%= coin.quantity.round(4) * coin.price %>$</div>
-            <div class="debit-card">Loss : -10%</div>
-            <div class="last-price-card">Prix actuel : <%= coin.price %>$</div>
-            <div class="variation-card">Variation 24h : - 2.24 %</div>
+            <div class="total-card">Total : <%= coin.quantity.round(2) %></div>
+            <div class="value-card">Value : <%= (coin.quantity * coin.price).round(2) %>$</div>
+            <% if coin.change < 0 %>
+              <div class="debit-card">Loss : <%= coin.change.round(2) %>%</div>
+            <% else %>
+              <div class="gain-card">Gain : <%= coin.change.round(2) %>%</div>
+            <% end %>
+            <div class="last-price-card">Current price : <%= coin.price.round(2) %>$</div>
+            <div class="variation-card">Variation 24h : <%= coin.change %>%</div>
           </div>
         </div>
       </div>

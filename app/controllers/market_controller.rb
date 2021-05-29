@@ -28,6 +28,7 @@ class MarketController < ApplicationController
     end
     @moyenne_change = @moyenne_change / i.to_f
     @portfolios = Portfolio.where(user: current_user)
+    @portfolio = @portfolios.first
     @positions = Position.where(portfolio: @portfolios)
   end
 end

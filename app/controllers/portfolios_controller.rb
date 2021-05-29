@@ -13,6 +13,7 @@ class PortfoliosController < ApplicationController
     i = 0
     @moyenne_change = 0
     @total_value = 0
+    @quantity_total = 0
     @coins.each do |coin|
       coin.quantity = coin.sum(params[:id])
       if coin.quantity > 0
@@ -27,9 +28,14 @@ class PortfoliosController < ApplicationController
       @moyenne_change += change * (coin.price * coin.quantity)
       @total_value += price * coin.quantity
       i += 1 * (coin.price * coin.quantity)
+      @quantity_total += coin.quantity
       end
     end
-    @moyenne_change = @moyenne_change / i.to_f
+    if @quantity_total == 0
+      @moyenne_change = 0
+    else
+      @moyenne_change = @moyenne_change / i.to_f
+    end
     @card = 0
     @portfolio = Portfolio.find(params[:id])
     @positions = Position.where(portfolio_id: params[:id])

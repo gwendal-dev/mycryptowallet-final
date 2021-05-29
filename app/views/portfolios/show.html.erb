@@ -4,8 +4,7 @@
 </figure>
 
   <div class="main-portfolio">
-    <%= link_to portfolio_position_path(@portfolio, @positions.first), action: 'go' do %>
-    <a href="#"><h1 class="total-value">
+    <h1 class="total-value">
       <% if @total_value >= 1000000 %>
                 <% million  = @total_value.to_i %>
                 <% million = million.to_s.reverse.gsub(/\A....../, 'M').reverse %>
@@ -17,7 +16,7 @@
       <% else %>
         0$
       <% end %>
-    </h1></a>
+    </h1>
     <div>
       <%= link_to '+', new_portfolio_position_path(@portfolio, card: 0), class: 'small-darkblue'%>
       <div class="recap"><p class="gain"><%= @moyenne_change.round(2) %>%</p><p class="period">24H</p></div>
@@ -28,7 +27,7 @@
         <% @coins.each do |coin| %>
         <% i += 1 %>
         <% if coin.quantity > 0 %>
-        <%= link_to coin_index_path(i), action: 'go' do %>
+        <%= link_to portfolio_coin_index_path(@portfolio, i), action: 'go' do %>
         <div class="item">
           <div class="logo-text">
             <%= image_tag(coin.avatar) %>
@@ -44,7 +43,7 @@
               <% if coin.quantity >= 10000000 %>
                 <% million  = coin.quantity.to_i %>
                 <% million = million.to_s.reverse.gsub(/\A....../, 'M').reverse %>
-                <div><%= million %>$</div>
+                <div><%= million %></div>
               <% elsif coin.quantity > 10 %>
                 <div><%= coin.quantity.round(3) %></div>
               <% elsif coin.quantity > 0 && coin.quantity <= 10%>
@@ -66,5 +65,4 @@
          <% end %>
       <% end %>
     <% end %>
-  <% end %>
 </div>

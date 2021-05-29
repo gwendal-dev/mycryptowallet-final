@@ -1,0 +1,15 @@
+.container_navbar {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  background-color: $main;
+}
+
+i {
+  font-size: 30px;
+  color: white;
+}

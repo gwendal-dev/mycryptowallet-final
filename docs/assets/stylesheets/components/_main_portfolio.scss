@@ -1,0 +1,77 @@
+.main-portfolio{
+  font-family: 'Open Sans', sans-serif;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 32px;
+  background: white;
+  color: $black;
+  margin: 0px 5px;
+  margin-top: 10px;
+  border-radius: 15px;
+  position: sticky;
+  top: 80px;
+  left: 0px;
+  right: 0px;
+  border: 1px solid lightgray;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 90;
+}
+.main-portfolio2{
+  font-family: 'Open Sans', sans-serif;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 32px;
+  background: white;
+  color: $black;
+  border-radius: 15px;
+  position: sticky;
+  top: 120px;
+  left: 0px;
+  right: 0px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 99;
+}
+.small-darkblue {
+  background-color: $main;
+  border-radius: 10px;
+  text-align: center;
+  padding: 0px 14px;
+  color: white;
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 90px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.small-darkblue p {
+  padding-bottom: 5px;
+}
+
+.small-darkblue:hover{
+  background-color: #5D6D7E;
+  cursor: pointer;
+}
+
+.recap {
+  display: flex;
+  justify-content: space-around;
+}
+
+.gain {
+  margin-left: 30px;
+  color: $red;
+  font-size: 24px;
+}
+
+.total-value {
+  margin-top: 40px;
+  color:grey;
+  font-size: 32px;
+}
+
+.period {
+  font-size: 24px;
+  color: grey;
+}

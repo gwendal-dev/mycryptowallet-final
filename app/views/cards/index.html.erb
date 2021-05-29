@@ -3,7 +3,7 @@
     </div>
 </figure>
 <div class="main-portfolio">
-    <a href="#"><h1 class="total-value"><%= @total %>$</h1></a>
+    <a href="#"><h1 class="total-value"><%= @total > 1000000 ? @total.round(0) : @total.round(2) %>$</h1></a>
     <div>
       <%= link_to '+', new_portfolio_position_path(@portfolio, :card => 1), class: 'small-darkblue'%>
       <div class="recap"><p class="gain">10%</p><p class="period">24H</p></div>

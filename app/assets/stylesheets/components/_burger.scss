@@ -61,7 +61,7 @@
     position: sticky;
     top: 0px;
     overflow-x: hidden;
-    z-index: 99;
+    z-index: 95;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
@@ -96,7 +96,7 @@
 
     border-radius: 15px;
     min-width: 50vw;
-    max-height: 48vh;
+    min-height: 55vh;
     padding: 10px 0 0;
 
     text-align: center;

@@ -19,7 +19,11 @@
     </h1>
     <div>
       <%= link_to '+', new_portfolio_position_path(@portfolio, card: 0), class: 'small-darkblue'%>
-      <div class="recap"><p class="gain"><%= @moyenne_change.round(2) %>%</p><p class="period">24H</p></div>
+      <% if @moyenne_change <= 0 %>
+        <div class="recap"><p class="loss"><%= @moyenne_change.round(2) %>%</p><p class="period">24H</p></div>
+      <% else %>
+        <div class="recap"><p class="gain"><%= @moyenne_change.round(2) %>%</p><p class="period">24H</p></div>
+      <% end %>
     </div>
   </div>
   <% i = 0 %>

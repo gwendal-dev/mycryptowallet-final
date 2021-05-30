@@ -4,7 +4,14 @@ class Coin < ApplicationRecord
   validates :price, presence: true
 
   def sum(portfolio_id)
-    self.positions.where(portfolio_id: portfolio_id)&.map(&:quantity).sum
+    sum = 0
+    arr = self.positions.where(portfolio_id: portfolio_id)&.map(&:quantity)
+    arr.each do |quantity|
+      if quantity != nil
+        sum += quantity
+      end
+    end
+    return sum
   end
 
 end

@@ -11,8 +11,7 @@ const chartApi = () => {
   let i = 0;
   let k = 0;
   let coins = {};
-  console.log(document.querySelector(".container5"));
-if (document.querySelector(".container5") != null) {
+if (document.querySelector(".container5") != null || document.querySelector(".api") != null) {
 
 (async function () {
     const exchangeId = 'binance'
@@ -44,6 +43,7 @@ if (document.querySelector(".container5") != null) {
         ourRequest.onload = function(){
             const obj = JSON.parse(ourRequest.responseText);
             if (item[0] != 'USDT') {
+
               var mydiv = document.querySelector(".container5");
 
               var aTag5 = document.createElement('img');
@@ -123,7 +123,10 @@ if (document.querySelector(".container5") != null) {
 }) ();
   var myfigure = document.querySelector(".highcharts-figure2");
   var aTag6 = document.createElement('div');
+
   aTag6.setAttribute('id',"container7");
+  aTag6.setAttribute("class", "container7");
+
   if (myfigure != null) {
     myfigure.appendChild(aTag6);
   }
@@ -144,6 +147,8 @@ if (document.querySelector(".container5") != null) {
       return colors;
   }());
   // Build the chart
+  if (document.querySelector(".container7") != null) {
+
   let charts = Highcharts.chart('container7', {
       chart: {
           plotBackgroundColor: null,
@@ -188,6 +193,7 @@ if (document.querySelector(".container5") != null) {
           ]
       }]
   });
+
   //charts.title.update({ text: JSON.parse(container.dataset.title)})
     setTimeout(function() {
       //your code to be executed after 5 second
@@ -198,7 +204,42 @@ if (document.querySelector(".container5") != null) {
             });
       }
     }, 4000);
+}
+  var mydiv = document.querySelector(".api");
 
+  var apiWallet = document.createElement('div');
+  apiWallet.setAttribute('class',"item");
+
+  var apiWallet2 = document.createElement('div');
+  apiWallet2.setAttribute('class',"fas fa-wallet")
+  apiWallet2.setAttribute("id", "wallet");
+
+  var apiWallet3 = document.createElement('ul');
+
+  var apiWallet4 = document.createElement('li');
+  apiWallet4.innerHTML = "<strong>API binance</strong>";
+
+  var apiWallet6 = document.createElement('div');
+      apiWallet6.setAttribute("class", "line");
+
+  var apiWallet5 = document.createElement('li');
+  apiWallet5.innerHTML = `Loading...`;
+      if (mydiv != null) {
+          mydiv.appendChild(apiWallet);
+          apiWallet.appendChild(apiWallet2);
+          apiWallet.appendChild(apiWallet3);
+          apiWallet3.appendChild(apiWallet4);
+          apiWallet3.appendChild(apiWallet5);
+          apiWallet.appendChild(apiWallet6);
+        }
+
+    setTimeout(function() {
+      //your code to be executed after 5 second
+      apiWallet5.innerHTML = `${Math.round((sum * 100) / 100)}$`;
+      if (mydiv != null) {
+          apiWallet3.appendChild(apiWallet5);
+        }
+    }, 2500);
   }
 }
 

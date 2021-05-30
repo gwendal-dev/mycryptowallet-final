@@ -6,7 +6,7 @@ class MarketController < ApplicationController
     require 'json'
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
-    @coins = Coin.all
+    @coins = Coin.all.order(:marketcap)
     i = 0
     @moyenne_change = 0
     @total_value = 0

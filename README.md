@@ -8,8 +8,6 @@
 
 #### Go to [MyCryptoWallet](http://www.mycryptowallet.fr) !
 
-#### To have the last version go to [MyCryptoWallet/github](https://gwendal-dev.github.io/mycryptowallet-final/) !
-
 #### collaborators
   * Gwendal Le Loarer
   * Charlotte Roederer

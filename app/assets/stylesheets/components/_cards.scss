@@ -57,6 +57,23 @@
     font-size: 20px;
 }
 
+.info-flip {
+  font-size: 24px;
+  color: darkgrey;
+  margin: 0 auto;
+  margin-top: 30px;
+  position: absolute;
+  top: 600px;
+  left: 17%;
+}
+ .flip-card {
+  color: white;
+  text-decoration: underline;
+ }
+.value-card {
+  color: $yellow;
+}
+
 .total-card, .last-price-card {
   color: whitesmoke;
 }
@@ -66,8 +83,12 @@
 .debit-card {
     color: violet;
 }
-.variation-card {
-    color: tomato;
+.variation-card-red {
+    color: $orange;
+}
+
+.variation-card-green {
+  color: turquoise;
 }
 
 .container {
@@ -125,7 +146,7 @@
 }
 
 .card__face--back {
-  background-color: var(--light);
+  background-color: $main;
   transform: rotateY(180deg);
 }
 

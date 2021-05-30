@@ -3,6 +3,7 @@ function burger() {
     const icon = document.getElementById("topnav_hamburger_icon");
     const root = document.getElementById("root");
 
+  if (icon != null) {
     icon.addEventListener('click',function(){
       if (menu.className === "") {
         menu.className = "open";
@@ -14,6 +15,7 @@ function burger() {
         root.style.overflowY = "";
     }
     });
+    }
 }
 
 export {burger};

@@ -8,6 +8,8 @@ require('highcharts/modules/accessibility')(Highcharts);
 
 const chart = () => {
   let i = 0;
+  if (document.querySelector("#container") != null) {
+
   const container = document.querySelector('#container');
         // Make monochrome colors
   var pieColors = (function () {
@@ -23,7 +25,7 @@ const chart = () => {
       return colors;
   }());
   // Build the chart
-  Highcharts.chart('container', {
+  let charts = Highcharts.chart('container', {
       chart: {
           plotBackgroundColor: null,
           plotBorderWidth: null,
@@ -62,15 +64,25 @@ const chart = () => {
           innerSize: '60%',
           name: 'Share',
           data: [
-              // { name: JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[0].coin_id - 1].title, y: JSON.parse(container.dataset.positions)[0].quantity * JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[0].coin_id - 1].price },
-              // { name: JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[1].coin_id - 1].title, y: JSON.parse(container.dataset.positions)[1].quantity * JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[1].coin_id - 1].price },
-              { name: 'ETH', y: 20},
-              { name: 'ADA', y: 5},
-              { name: 'BNB', y: 10},
-              { name: 'other', y: 10}
+              // JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[0].coin_id - 1].title
+              // JSON.parse(container.dataset.positions)[0].quantity * JSON.parse(container.dataset.coins)[JSON.parse(container.dataset.positions)[0].coin_id - 1].price
           ]
       }]
   });
+  let j = 0;
+  //charts.title.update({ text: JSON.parse(container.dataset.title)})
+  if (container.dataset.coins != "null") {
+    while (JSON.parse(container.dataset.coins)[j] != null) {
+    if (JSON.parse(container.dataset.coins)[j].quantity > 0) {
+      charts.series[0].addPoint({
+        name: JSON.parse(container.dataset.coins)[j].title,
+        y: JSON.parse(container.dataset.coins)[j].quantity * JSON.parse(container.dataset.coins)[j].price
+      });
+    }
+      j += 1;
+    }
+  }
+}
 }
 
 export {chart}

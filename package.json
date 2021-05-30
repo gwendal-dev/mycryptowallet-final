@@ -7,11 +7,22 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "bootstrap": "4.6",
+    "ccxt": "^1.50.64",
+    "cors": "^2.8.5",
+    "cors-anywhere": "^0.4.4",
+    "db": "^3.3.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "highcharts": "^9.1.0",
+    "http-proxy-middleware": "^2.0.0",
     "jquery": "^3.6.0",
     "lightweight-charts": "^3.3.0",
+    "node-binance-api": "^0.12.5",
     "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+    "stripe-client": "^1.1.5",
+    "submodules": "^3.0.0",
+    "turbolinks": "^5.2.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "version": "0.1.0",
   "devDependencies": {

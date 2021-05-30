@@ -17,8 +17,8 @@ const chartApi = () => {
   let j = 0;
   let price = 0;
   let pourcentChange = 0;
-  const moyenneChange = document.querySelector(".gain");
-  const loss = document.querySelector(".loss");
+  const moyenneChange = document.querySelector(".gain2");
+  const loss = document.querySelector(".loss2");
   const moyenneArr = [];
 
 if (document.querySelector(".container5") != null || document.querySelector(".api") != null) {

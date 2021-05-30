@@ -11,8 +11,15 @@ const chartApi = () => {
   let sum = 0;
   let i = 0;
   let k = 0;
+  let m = 0;
   let coins = {};
-  let EXCHANGE = 0;
+  let moyenne = 0;
+  let j = 0;
+  let price = 0;
+  let pourcentChange = 0;
+  const moyenneChange = document.querySelector(".gain");
+  const loss = document.querySelector(".loss");
+  const moyenneArr = [];
 
 if (document.querySelector(".container5") != null || document.querySelector(".api") != null) {
 
@@ -27,10 +34,15 @@ const create = (async function () {
         })
         const key = 'ySuKhuOVLAC0WExO0UkaEXJzpDSWUYtNU0r69I8cCf25pZm5N7NHUUGMNaMfq92m';
 
-        EXCHANGE = exchange;
     Object.entries((await exchange.fetchBalance()).total).forEach(item => {
       if (Math.round((item[1] * 100) / 100) > 0) {
 
+        const pourcentChangePromise = (async function () {
+            return (await exchange.fetchTicker(`${item[0]}/USDT`)).info.priceChangePercent;
+          }) ();
+
+      pourcentChangePromise.then((value) => {
+        pourcentChange = value;
 
         const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
@@ -81,6 +93,37 @@ const create = (async function () {
               }
 
               sum += obj.lastPrice * item[1];
+
+              price = obj.lastPrice;
+
+              var mydiv = document.querySelector(".container5");
+              var aTags = document.querySelectorAll(".item2");
+              moyenne += parseInt(pourcentChange) * (price * item[1]);
+              moyenneArr.push(moyenne);
+
+              j = j + (price * item[1]);
+
+            if (pourcentChange <= 0) {
+              var change = document.createElement('div');
+              change.setAttribute('class',"small-red");
+              change.innerHTML = `${Math.round(pourcentChange * 100) / 100}%`;
+            } else {
+              var change = document.createElement('div');
+              change.setAttribute('class',"small-green");
+              change.innerHTML = `${Math.round(pourcentChange * 100) / 100}%`;
+            }
+
+            var aTag4 = document.createElement('div');
+            aTag4.setAttribute('class',"position2");
+            aTag4.innerHTML = Math.round(item[1] * 100) / 100;
+
+            aTag4.insertAdjacentHTML('beforeEnd', `<br>${Math.round((price * item[1]) * 100) / 100}$`);
+
+            if (mydiv != null) {
+              aTag.appendChild(change);
+              aTag.appendChild(aTag4);
+            }
+
             }
 
             k += 1;
@@ -89,8 +132,23 @@ const create = (async function () {
             }
         }
         ourRequest.send();
+
       }
       else {
+        j = j + (1 * item[1]);
+
+        if (pourcentChange <= 0) {
+          var change = document.createElement('div');
+          change.setAttribute('class',"small-red");
+          change.innerHTML = `${Math.round(pourcentChange * 100) / 100}%`;
+        } else {
+          var change = document.createElement('div');
+          change.setAttribute('class',"small-green");
+          change.innerHTML = `${Math.round(pourcentChange * 100) / 100}%`;
+        }
+
+        moyenne += parseInt(pourcentChange) * (1 * item[1]);
+
         var mydiv = document.querySelector(".container5");
 
         var aTag5 = document.createElement('img');
@@ -102,6 +160,8 @@ const create = (async function () {
         var link = document.createElement('a');
         link.setAttribute("action", "go");
         link.setAttribute("href", `../../coin.${item[0]}`);
+
+        price = parseInt(obj.lastPrice);
 
         var aTag2 = document.createElement('h1');
         aTag2.setAttribute('class',"name-coin2");
@@ -120,40 +180,21 @@ const create = (async function () {
         }
         sum += item[1];
       }
-      const pourcentChangePromise = (async function () {
-          return (await EXCHANGE.fetchTicker(`${item[0]}/USDT`)).info.priceChangePercent;
-        }) ();
-
-        pourcentChangePromise.then((value) => {
-          create.then(() => {
-              var mydiv = document.querySelector(".container5");
-              var aTags = document.querySelectorAll(".item2");
-
-            if (value <= 0) {
-              var change = document.createElement('div');
-              change.setAttribute('class',"small-red");
-              change.innerHTML = `${value}%`;
-            } else {
-              var change = document.createElement('div');
-              change.setAttribute('class',"small-green");
-              change.innerHTML = `${value}%`;
-            }
-
-            var aTag4 = document.createElement('div');
-            aTag4.setAttribute('class',"position2");
-            aTag4.innerHTML = Math.round((item[1] * 100) / 100);
-
-            aTag4.insertAdjacentHTML('beforeEnd', `<br>${Math.round(item[1] * 100) / 100}$`);
-
-            if (mydiv != null) {
-              aTag.appendChild(change);
-              aTag.appendChild(aTag4);
-            }
-          })
-        })
+      })
       }
     });
 }) ();
+if (moyenneChange != null || loss != null) {
+  setTimeout(function() {
+      //your code to be executed after 5 second
+      if ((moyenne / j) <= 0) {
+        loss.innerHTML = `${Math.round((moyenne / j)* 100) / 100}%`;
+      }
+      else {
+        moyenneChange.innerHTML = `${Math.round((moyenne / j)* 100) / 100}%`;
+      }
+    }, 7000);
+}
   var myfigure = document.querySelector(".highcharts-figure2");
   var aTag6 = document.createElement('div');
 
@@ -239,7 +280,7 @@ const create = (async function () {
     }, 4000);
 }
   var mydiv = document.querySelector(".api");
-
+if (document.querySelector('item3') === null) {
   var apiWallet = document.createElement('div');
   apiWallet.setAttribute('class',"item3");
 
@@ -276,7 +317,8 @@ const create = (async function () {
       if (mydiv != null) {
           apiWallet3.appendChild(apiWallet5);
         }
-    }, 3000);
+    }, 7000);
+  }
   }
 }
 

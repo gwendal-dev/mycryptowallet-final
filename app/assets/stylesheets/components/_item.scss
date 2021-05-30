@@ -61,6 +61,36 @@
   margin-top: 25px;
 }
 
+.item3{
+  font-family: 'Open Sans', sans-serif;
+  margin: 5px 5px;
+  padding: 10px 20px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  background-color: white;
+  color: $black;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-top: 10px;
+  border: 1px solid darkgrey;
+}
+
+.item3:hover {
+  background-color: lightgrey;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.item3 img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 15px;
+  margin-top: 25px;
+}
+
 .small-red {
   color: $red;
   font-size: 20px;
@@ -92,7 +122,7 @@
 }
 
 .small-green {
-  color: $red;
+  color: $green;
   font-size: 20px;
   position: relative;
   top: 20px;
@@ -106,7 +136,7 @@
   justify-content: space-around;
 }
 .small-green2 {
-  color: $red;
+  color: $green;
   font-size: 20px;
   position: relative;
   top: 20px;
@@ -133,6 +163,11 @@
   display: flex;
   justify-content: space-around;
 }
+
+.link-wallet{
+  width: 175px;
+}
+
 .percent-green {
   color: $green;
   font-size: 20px;
@@ -210,11 +245,24 @@
 }
 
 .line {
-  width: 120%;
+  width: 80%;
   position: relative;
   background-color: grey;
   height: 1px;
   top: -10px;
+}
+
+.line3 {
+  width: 100%;
+  position: relative;
+  background-color: grey;
+  height: 1px;
+  top: -10px;
+}
+
+.divContainer {
+  position: relative;
+  top: -20px;
 }
 
 .text-logo h1 {

@@ -6,14 +6,17 @@ require('highcharts/modules/export-data')(Highcharts);
 require('highcharts/modules/accessibility')(Highcharts);
 
 const chartApi = () => {
+
   const ccxt = require ('ccxt');
   let sum = 0;
   let i = 0;
   let k = 0;
   let coins = {};
+  let EXCHANGE = 0;
+
 if (document.querySelector(".container5") != null || document.querySelector(".api") != null) {
 
-(async function () {
+const create = (async function () {
     const exchangeId = 'binance'
         , exchangeClass = ccxt[exchangeId]
         , exchange = new exchangeClass ({
@@ -24,8 +27,11 @@ if (document.querySelector(".container5") != null || document.querySelector(".ap
         })
         const key = 'ySuKhuOVLAC0WExO0UkaEXJzpDSWUYtNU0r69I8cCf25pZm5N7NHUUGMNaMfq92m';
 
+        EXCHANGE = exchange;
     Object.entries((await exchange.fetchBalance()).total).forEach(item => {
-      if (item[1] > 0) {
+      if (Math.round((item[1] * 100) / 100) > 0) {
+
+
         const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
         const burl = "https://api.binance.com";
@@ -40,17 +46,21 @@ if (document.querySelector(".container5") != null || document.querySelector(".ap
         if (item[0] != 'USDT') {
         ourRequest.open('GET',url, true);
 
+        var aTag = document.createElement('div');
+        aTag.setAttribute('class',"item2");
+
         ourRequest.onload = function(){
             const obj = JSON.parse(ourRequest.responseText);
             if (item[0] != 'USDT') {
 
               var mydiv = document.querySelector(".container5");
 
+              var link = document.createElement('a');
+              link.setAttribute("action", "go");
+              link.setAttribute("href", `../../coin.${item[0]}`);
+
               var aTag5 = document.createElement('img');
               aTag5.setAttribute('src',`../../assets/${item[0]}.jpg`);
-
-              var aTag = document.createElement('div');
-              aTag.setAttribute('class',"item2");
 
               var aTag2 = document.createElement('h1');
               aTag2.setAttribute('class',"name-coin2");
@@ -60,20 +70,14 @@ if (document.querySelector(".container5") != null || document.querySelector(".ap
               aTag3.setAttribute('class',"value2");
               aTag3.innerHTML = `${Math.round(obj.lastPrice * 100) / 100}$`;
 
-              var aTag4 = document.createElement('div');
-              aTag4.setAttribute('class',"position2");
-              aTag4.innerHTML = Math.round((item[1] * 100) / 100);
-
-              aTag4.insertAdjacentHTML('beforeEnd', `<br>${Math.round((obj.lastPrice * item[1]) * 100) / 100}$`);
-
               coins[item[0]] = obj.lastPrice * item[1];
 
               if (mydiv != null) {
-                mydiv.appendChild(aTag);
+                mydiv.appendChild(link);
+                link.appendChild(aTag);
                 aTag.appendChild(aTag5);
                 aTag.appendChild(aTag2);
                 aTag.appendChild(aTag3);
-                aTag.appendChild(aTag4);
               }
 
               sum += obj.lastPrice * item[1];
@@ -95,6 +99,10 @@ if (document.querySelector(".container5") != null || document.querySelector(".ap
         var aTag = document.createElement('div');
         aTag.setAttribute('class',"item2");
 
+        var link = document.createElement('a');
+        link.setAttribute("action", "go");
+        link.setAttribute("href", `../../coin.${item[0]}`);
+
         var aTag2 = document.createElement('h1');
         aTag2.setAttribute('class',"name-coin2");
         aTag2.innerHTML = item[0];
@@ -103,21 +111,46 @@ if (document.querySelector(".container5") != null || document.querySelector(".ap
         aTag3.setAttribute('class',"value2");
         aTag3.innerHTML = `1$`;
 
-        var aTag4 = document.createElement('div');
-        aTag4.setAttribute('class',"position2");
-        aTag4.innerHTML = Math.round((item[1] * 100) / 100);
-
-        aTag4.insertAdjacentHTML('beforeEnd', `<br>${Math.round(item[1] * 100) / 100}$`);
-
         if (mydiv != null) {
-          mydiv.appendChild(aTag);
+          mydiv.appendChild(link);
+          link.appendChild(aTag);
           aTag.appendChild(aTag5);
           aTag.appendChild(aTag2);
           aTag.appendChild(aTag3);
-          aTag.appendChild(aTag4);
         }
         sum += item[1];
       }
+      const pourcentChangePromise = (async function () {
+          return (await EXCHANGE.fetchTicker(`${item[0]}/USDT`)).info.priceChangePercent;
+        }) ();
+
+        pourcentChangePromise.then((value) => {
+          create.then(() => {
+              var mydiv = document.querySelector(".container5");
+              var aTags = document.querySelectorAll(".item2");
+
+            if (value <= 0) {
+              var change = document.createElement('div');
+              change.setAttribute('class',"small-red");
+              change.innerHTML = `${value}%`;
+            } else {
+              var change = document.createElement('div');
+              change.setAttribute('class',"small-green");
+              change.innerHTML = `${value}%`;
+            }
+
+            var aTag4 = document.createElement('div');
+            aTag4.setAttribute('class',"position2");
+            aTag4.innerHTML = Math.round((item[1] * 100) / 100);
+
+            aTag4.insertAdjacentHTML('beforeEnd', `<br>${Math.round(item[1] * 100) / 100}$`);
+
+            if (mydiv != null) {
+              aTag.appendChild(change);
+              aTag.appendChild(aTag4);
+            }
+          })
+        })
       }
     });
 }) ();
@@ -139,7 +172,7 @@ if (document.querySelector(".container5") != null || document.querySelector(".ap
           base = Highcharts.getOptions().colors[0],
           i;
 
-      for (l = 0; l < 10; l += 1) {
+      for (l = 0; l < 10; l += 0.5) {
           // Start out with a darkened base color (negative brighten), and end
           // up with a much brighter color
           colors.push(Highcharts.color(base).brighten((l - 3) / 7).get());
@@ -208,7 +241,10 @@ if (document.querySelector(".container5") != null || document.querySelector(".ap
   var mydiv = document.querySelector(".api");
 
   var apiWallet = document.createElement('div');
-  apiWallet.setAttribute('class',"item");
+  apiWallet.setAttribute('class',"item3");
+
+  var divContainer = document.createElement('div');
+  divContainer.setAttribute('class',"divContainer");
 
   var apiWallet2 = document.createElement('div');
   apiWallet2.setAttribute('class',"fas fa-wallet")
@@ -220,17 +256,18 @@ if (document.querySelector(".container5") != null || document.querySelector(".ap
   apiWallet4.innerHTML = "<strong>API binance</strong>";
 
   var apiWallet6 = document.createElement('div');
-      apiWallet6.setAttribute("class", "line");
+      apiWallet6.setAttribute("class", "line3");
 
   var apiWallet5 = document.createElement('li');
   apiWallet5.innerHTML = `Loading...`;
       if (mydiv != null) {
           mydiv.appendChild(apiWallet);
-          apiWallet.appendChild(apiWallet2);
-          apiWallet.appendChild(apiWallet3);
+          apiWallet.appendChild(divContainer);
+          divContainer.appendChild(apiWallet2);
+          divContainer.appendChild(apiWallet3);
           apiWallet3.appendChild(apiWallet4);
           apiWallet3.appendChild(apiWallet5);
-          apiWallet.appendChild(apiWallet6);
+          divContainer.appendChild(apiWallet6);
         }
 
     setTimeout(function() {
@@ -239,7 +276,7 @@ if (document.querySelector(".container5") != null || document.querySelector(".ap
       if (mydiv != null) {
           apiWallet3.appendChild(apiWallet5);
         }
-    }, 2500);
+    }, 3000);
   }
 }
 

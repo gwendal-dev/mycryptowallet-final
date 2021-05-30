@@ -71,7 +71,7 @@
   text-decoration: underline;
  }
 .value-card {
-  color: $orange;
+  color: $yellow;
 }
 
 .total-card, .last-price-card {
@@ -83,8 +83,12 @@
 .debit-card {
     color: violet;
 }
-.variation-card {
+.variation-card-red {
     color: $orange;
+}
+
+.variation-card-green {
+  color: turquoise;
 }
 
 .container {

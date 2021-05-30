@@ -27,7 +27,7 @@
         <% @coins.each do |coin| %>
         <% i += 1 %>
         <% if coin.quantity > 0 %>
-        <%= link_to portfolio_coin_index_path(@portfolio, i), action: 'go' do %>
+        <%= link_to coin_index_path(coin.title), action: 'go' do %>
         <div class="item">
           <div class="logo-text">
             <%= image_tag(coin.avatar) %>

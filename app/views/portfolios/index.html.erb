@@ -2,36 +2,36 @@
 <div class="container2">
   <% if @portfolios %>
   <% @portfolios.each do |portfolio| %>
-    <a href="portfolios/<%= portfolio.id %>">
-    <div class="item">
-      <i class="fas fa-wallet" id="wallet"></i>
-    <ul>
-      <li><strong><%= portfolio.title %></strong></li>
-      <% total_quantity = 0 %>
-      <% total = 0 %>
-      <% portfolio.positions.each do |position|%>
-        <% @coins.each do |coin| %>
-          <% if coin.id == position.coin_id %>
-            <% total_quantity = position.quantity %>
-            <% total += total_quantity * coin.price %>
+    <a href="portfolios/<%= portfolio.id %>" class="link-wallet">
+      <div class="item">
+        <i class="fas fa-wallet" id="wallet"></i>
+      <ul>
+        <li><strong><%= portfolio.title %></strong></li>
+        <% total_quantity = 0 %>
+        <% total = 0 %>
+        <% portfolio.positions.each do |position|%>
+          <% @coins.each do |coin| %>
+            <% if coin.id == position.coin_id %>
+              <% total_quantity = position.quantity %>
+              <% total += total_quantity * coin.price %>
+            <% end %>
           <% end %>
         <% end %>
+        <li><%= total.round(2) %>$</li>
+     </ul>
+     <div class="line"></div>
+       <%= link_to edit_portfolio_path(portfolio), action: 'go' do %>
+        <i class="far fa-edit"></i>
+       <% end %>
+       <%= link_to(portfolio_path(portfolio), method: :delete, data: { confirm: "Are you sure?" }) do %>
+        <i class="far fa-trash-alt"></i>
       <% end %>
-      <li><%= total.round(2) %>$</li>
-   </ul>
-   <div class="line"></div>
-     <%= link_to edit_portfolio_path(portfolio), action: 'go' do %>
-      <i class="far fa-edit"></i>
-     <% end %>
-     <%= link_to(portfolio_path(portfolio), method: :delete, data: { confirm: "Are you sure?" }) do %>
-      <i class="far fa-trash-alt"></i>
-    <% end %>
-   </div>
+     </div>
    </a>
   <% end %>
 <% end %>
 
-<% if (@portfolios.first) %>
+<% if (@portfolios) %>
   <a href="/portfolios/<%= @portfolios.first.id %>/api" class="api"></a>
 <% end %>
  <!-- Button trigger modal -->

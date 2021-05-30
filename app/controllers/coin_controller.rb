@@ -1,6 +1,7 @@
 class CoinController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
+
   def index
-    @portfolio = Portfolio.find(params[:portfolio_id])
-    @coin = Coin.find(params[:format])
+    @coin = Coin.where(title: params[:format])
   end
 end

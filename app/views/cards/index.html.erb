@@ -41,7 +41,11 @@
               <div class="gain-card">Gain : <%= coin.change.round(2) %>%</div>
             <% end %>
             <div class="last-price-card">Current price : <%= coin.price.round(2) %>$</div>
-            <div class="variation-card">Variation 24h : <%= coin.change %>%</div>
+            <% if coin.change <= 0 %>
+              <div class="variation-card-red">Variation 24h : <%= coin.change %>%</div>
+            <% else %>
+              <div class="variation-card-green">Variation 24h : <%= coin.change %>%</div>
+            <% end %>
           </div>
         </div>
       </div>

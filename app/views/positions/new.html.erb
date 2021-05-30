@@ -2,7 +2,7 @@
   <div class="container_input">
     <%= simple_form_for [@portfolio, @position] do |f| %>
       <%= f.input :entry_date, as: :date %>
-      <%= f.input :quantity, as: :float %>
+      <%= f.input :quantity, as: :float, placeholder: 'use less to sell'%>
       <%= f.input :exchange, as: :string %>
       <%= f.input :coin, collection: @coins %>
       <%= f.input :card, :as => :hidden, :input_html => { :value =>  params[:card] } %>

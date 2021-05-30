@@ -1,3 +1,4 @@
+
 <div class="container2">
   <% if @portfolios %>
   <% @portfolios.each do |portfolio| %>
@@ -29,7 +30,11 @@
    </a>
   <% end %>
 <% end %>
-  <!-- Button trigger modal -->
+
+<% if (@portfolios.first) %>
+  <a href="/portfolios/<%= @portfolios.first.id %>/api" class="api"></a>
+<% end %>
+ <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Add a new portfolio
   </button>
@@ -54,5 +59,4 @@
       </div>
     </div>
   </div>
-</ul>
 </div>

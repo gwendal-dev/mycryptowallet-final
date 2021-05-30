@@ -52,7 +52,7 @@ import {load} from '../plugins/load.js'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  setTimeout(load(), 3000);
+  load();
   burger();
   flip();
   tradingview();

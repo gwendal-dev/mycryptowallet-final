@@ -60,6 +60,13 @@
 }
 
 .gain {
+  position: relative;
+  left: 20px;
+  color: $green;
+  font-size: 24px;
+}
+
+.loss {
   margin-left: 30px;
   color: $red;
   font-size: 24px;

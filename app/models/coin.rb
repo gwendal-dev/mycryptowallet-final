@@ -6,4 +6,5 @@ class Coin < ApplicationRecord
   def sum(portfolio_id)
     self.positions.where(portfolio_id: portfolio_id)&.map(&:quantity).sum
   end
+
 end

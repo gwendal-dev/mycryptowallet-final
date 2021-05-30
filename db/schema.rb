@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_170526) do
+
+
+
+ActiveRecord::Schema.define(version: 2021_05_30_125415) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +27,8 @@ ActiveRecord::Schema.define(version: 2021_05_29_170526) do
     t.string "avatar"
     t.string "background"
     t.float "change"
-    t.string "marketcap"
     t.float "quantity"
+    t.integer "marketcap"
   end
 
   create_table "infos", force: :cascade do |t|

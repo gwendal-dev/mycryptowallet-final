@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     resources :coin, only: :index
     resources :api, only: :index
   end
+  resources :room_messages
+  resources :rooms
   resources :infos, only: [:index, :show]
+  
 end

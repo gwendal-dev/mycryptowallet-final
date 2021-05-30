@@ -48,14 +48,18 @@ import {tradingview} from '../plugins/tradingview.js'
 import {showCoin} from '../plugins/showCoin.js'
 import {api} from '../plugins/api.js'
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+ 
   burger();
   flip();
   tradingview();
   showCoin();
   api();
   chart();
+ 
+ 
 });
 

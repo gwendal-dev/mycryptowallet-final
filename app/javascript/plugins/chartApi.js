@@ -277,7 +277,7 @@ if (moyenneChange != null || loss != null) {
               y: value
             });
       }
-    }, 4000);
+    }, 7000);
 }
   var mydiv = document.querySelector(".api");
 if (document.querySelector('item3') === null) {

@@ -29,7 +29,7 @@
     <div class="card__inner">
       <div class="card__face card__face--front">
         <div class="container-card-coin">
-          <%= image_tag(coin.background, class: 'img-top') %>
+          <div class="img-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://localhost:3000/assets/<%= coin.background %>'); background-position: center center; background-size: cover;"></div>
           <%= image_tag(coin.avatar, class: 'logo-coin') %>
           <div class="card-coin-title"><%= coin.title %></div>
           <div class="description">

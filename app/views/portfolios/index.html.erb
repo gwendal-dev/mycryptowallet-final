@@ -13,7 +13,9 @@
           <% @coins.each do |coin| %>
             <% if coin.id == position.coin_id %>
               <% total_quantity = position.quantity %>
-              <% total += total_quantity * coin.price %>
+              <% if total_quantity != nil %>
+                <% total += total_quantity * coin.price %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
@@ -31,8 +33,10 @@
   <% end %>
 <% end %>
 
-<% if (@portfolios) %>
-  <a href="/portfolios/<%= @portfolios.first.id %>/api" class="api"></a>
+<% if @portfolios %>
+  <% if (@portfolios.first) %>
+    <a href="/portfolios/<%= @portfolios.first.id %>/api" class="api"></a>
+  <% end %>
 <% end %>
  <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

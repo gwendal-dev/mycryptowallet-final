@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   def home
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
+    @homes = 1
   end
 end

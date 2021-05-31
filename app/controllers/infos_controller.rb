@@ -5,7 +5,7 @@ class InfosController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
     @data = get_API
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
   end
 
   def show
@@ -15,7 +15,7 @@ class InfosController < ApplicationController
   private
 
   def get_API
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
     url = 'https://api.lunarcrush.com/v2?data=feeds&sources=news&type=chronological&key=bju9urccdhffjgowh16was'
     uri = URI(url)
     response = Net::HTTP.get(uri)

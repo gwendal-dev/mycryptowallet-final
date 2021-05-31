@@ -46,13 +46,13 @@ class PortfoliosController < ApplicationController
 
   def new
     @portfolio = Portfolio.new
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
   end
 
   def create
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
     if @portfolio.save
       redirect_to portfolios_path
     else
@@ -62,21 +62,21 @@ class PortfoliosController < ApplicationController
 
   def edit
     @portfolio = Portfolio.find(params[:id])
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
   end
 
   def update
     @portfolio = Portfolio.find(params[:id])
     @portfolio.update(portfolio_params)
     redirect_to portfolios_path
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
   end
 
   def destroy
     @portfolio = Portfolio.find(params[:id])
     @portfolio.destroy
     redirect_to portfolios_path
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
   end
 
   private

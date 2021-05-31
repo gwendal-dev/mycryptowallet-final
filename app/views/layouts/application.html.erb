@@ -16,6 +16,8 @@
     <%= render 'shared/userbar' %>
 
     <%= yield %>
-    <%= render 'shared/navbar' %>
+    <% if @home === nil%>
+      <%= render 'shared/navbar' %>
+    <% end %>
   </body>
 </html>

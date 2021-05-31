@@ -3,6 +3,6 @@ class CoinController < ApplicationController
 
   def index
     @coin = Coin.where(title: params[:format])
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
   end
 end

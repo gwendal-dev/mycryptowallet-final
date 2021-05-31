@@ -1,0 +1,14 @@
+<% @apis.each do |api| %>
+  <div class="item">
+    <a href="portfolios/<%= api.id %>" class="link-wallet">
+      <p>API <%= api.exchange %></p>
+      <p><%= api.key.reverse.gsub(/.{59}/, '********').reverse %></p>
+       <%= link_to edit_portfolio_api_path(@portfolio, api), action: 'go' do %>
+        <i class="far fa-edit"></i>
+       <% end %>
+       <%= link_to(portfolio_api_path(@portfolio, api), method: :delete, data: { confirm: "Are you sure?" }) do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+      </div>
+    </a>
+<% end %>

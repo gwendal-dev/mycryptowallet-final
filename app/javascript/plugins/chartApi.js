@@ -20,19 +20,31 @@ const chartApi = () => {
   const moyenneChange = document.querySelector(".gain2");
   const loss = document.querySelector(".loss2");
   const moyenneArr = [];
+  const container5 = document.querySelector(".container5");
+  const api = document.querySelector(".api");
+  let key = '';
+  let secret_key = '';
+  let exchange2 ='';
 
-if (document.querySelector(".container5") != null || document.querySelector(".api") != null) {
-
+if ( container5 != null || api != null) {
+if (container5) {
+  exchange2 = container5.dataset.exchange;
+  key = container5.dataset.key;
+  secret_key = container5.dataset.secret_key;
+} else {
+  exchange2 = api.dataset.exchange;
+  key = api.dataset.key;
+  secret_key = api.dataset.secret_key;
+}
 const create = (async function () {
-    const exchangeId = 'binance'
+    const exchangeId = exchange2
         , exchangeClass = ccxt[exchangeId]
         , exchange = new exchangeClass ({
-            'apiKey': process.env.KEY.toString(),
-            'secret': process.env.SECRETKEY.toString(),
+            'apiKey': key,
+            'secret': secret_key,
             'timeout': 30000,
             'enableRateLimit': true, // required! https://github.com/ccxt/ccxt/wiki/Manual#rate-limit
         })
-        const key = 'ySuKhuOVLAC0WExO0UkaEXJzpDSWUYtNU0r69I8cCf25pZm5N7NHUUGMNaMfq92m';
 
     Object.entries((await exchange.fetchBalance()).total).forEach(item => {
       if (Math.round((item[1] * 100) / 100) > 0) {
@@ -69,10 +81,10 @@ const create = (async function () {
 
               var link = document.createElement('a');
               link.setAttribute("action", "go");
-              link.setAttribute("href", `../../coin.${item[0]}`);
+              link.setAttribute("href", `/coin.${item[0]}`);
 
               var aTag5 = document.createElement('img');
-              aTag5.setAttribute('src',`../../assets/${item[0]}.jpg`);
+              aTag5.setAttribute('src',`/assets/${item[0]}.jpg`);
 
               var aTag2 = document.createElement('h1');
               aTag2.setAttribute('class',"name-coin2");
@@ -128,7 +140,7 @@ const create = (async function () {
 
             k += 1;
             if (mydiv != null) {
-              document.querySelector(".total-value2").innerHTML = Math.round(sum * 100) / 100;
+              document.querySelector(".total-value2").innerHTML = `$${Math.round(sum * 100) / 100}`;
             }
         }
         ourRequest.send();
@@ -152,14 +164,14 @@ const create = (async function () {
         var mydiv = document.querySelector(".container5");
 
         var aTag5 = document.createElement('img');
-        aTag5.setAttribute('src',`../../assets/${item[0]}.jpg`);
+        aTag5.setAttribute('src',`/assets/${item[0]}.jpg`);
 
         var aTag = document.createElement('div');
         aTag.setAttribute('class',"item2");
 
         var link = document.createElement('a');
         link.setAttribute("action", "go");
-        link.setAttribute("href", `../../coin.${item[0]}`);
+        link.setAttribute("href", `/coin.${item[0]}`);
 
         price = parseInt(obj.lastPrice);
 
@@ -279,6 +291,7 @@ if (moyenneChange != null || loss != null) {
       }
     }, 7000);
 }
+
   var mydiv = document.querySelector(".api");
 if (document.querySelector('item3') === null) {
   var apiWallet = document.createElement('div');
@@ -294,7 +307,12 @@ if (document.querySelector('item3') === null) {
   var apiWallet3 = document.createElement('ul');
 
   var apiWallet4 = document.createElement('li');
-  apiWallet4.innerHTML = "<strong>API binance</strong>";
+  if (container5) {
+    apiWallet4.innerHTML = `<strong>API ${container5.dataset.exchange}</strong>`;
+  } else {
+    apiWallet4.innerHTML = `<strong>API ${api.dataset.exchange}</strong>`;
+  }
+
 
   var apiWallet6 = document.createElement('div');
       apiWallet6.setAttribute("class", "line3");
@@ -319,7 +337,7 @@ if (document.querySelector('item3') === null) {
         }
     }, 7000);
   }
-  }
+}
 }
 
 export {chartApi}

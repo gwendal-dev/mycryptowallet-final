@@ -34,8 +34,8 @@
 <% end %>
 
 <% if @portfolios %>
-  <% if (@portfolios.first) %>
-    <a href="/portfolios/<%= @portfolios.first.id %>/api" class="api"></a>
+  <% if (@portfolios.first) && @api%>
+    <a href="/portfolios/<%= @portfolios.first.id %>/api/<%= @api.id %>" class="api" data-exchange="<%= @api.exchange %>" data-key="<%= @api.key %>" data-secret_key="<%= @api.secret_key %>"></a>
   <% end %>
 <% end %>
  <!-- Button trigger modal -->

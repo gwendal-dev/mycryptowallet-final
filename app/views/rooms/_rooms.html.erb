@@ -7,7 +7,7 @@
 <% if @rooms.present? %>
   <nav class="nav flex-column">
     <% @rooms.each do |room| %>
-      <%= link_to room.name, room_path(room), class: 'nav-link room-nav-link' %>
+      <%= link_to 'Refresh', room_path(room, url_options), :data => { :method => :get } %>
     <% end %>
   </nav>
 <% else %>

@@ -8,6 +8,8 @@ require('highcharts/modules/accessibility')(Highcharts);
 
 const chart = () => {
   let i = 0;
+  if (document.querySelector("#container") != null) {
+
   const container = document.querySelector('#container');
         // Make monochrome colors
   var pieColors = (function () {
@@ -69,15 +71,18 @@ const chart = () => {
   });
   let j = 0;
   //charts.title.update({ text: JSON.parse(container.dataset.title)})
-    while (JSON.parse(container.dataset.coins)[j]) {
+  if (container.dataset.coins != "null") {
+    while (JSON.parse(container.dataset.coins)[j] != null) {
     if (JSON.parse(container.dataset.coins)[j].quantity > 0) {
       charts.series[0].addPoint({
         name: JSON.parse(container.dataset.coins)[j].title,
         y: JSON.parse(container.dataset.coins)[j].quantity * JSON.parse(container.dataset.coins)[j].price
       });
+    }
+      j += 1;
+    }
   }
-  j += 1;
-  }
+}
 }
 
 export {chart}

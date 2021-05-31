@@ -10,16 +10,21 @@
 
 .img-top {
     width: 100%;
-    height: 250px;
+    height: 200px;
     background-image: cover;
-
+    position: relative;
+    top: 50px;
     border-radius: 10px 10px 0px 0px;
-}
+    z-index: 0;
+  }
 .logo-coin {
     width: 90px;
-    margin-left: 36%;
-    margin-top: -50px;
+    height: 90px;
+    position: relative;
+    top: 5px;
+    left: 36%;
     border-radius: 50%;
+    z-index: 1;
 }
 .cards {
   display: flex;
@@ -71,7 +76,7 @@
   text-decoration: underline;
  }
 .value-card {
-  color: $orange;
+  color: $yellow;
 }
 
 .total-card, .last-price-card {
@@ -83,8 +88,12 @@
 .debit-card {
     color: violet;
 }
-.variation-card {
+.variation-card-red {
     color: $orange;
+}
+
+.variation-card-green {
+  color: turquoise;
 }
 
 .container {

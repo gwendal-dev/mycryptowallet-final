@@ -31,7 +31,7 @@ class PositionsController < ApplicationController
         render :new
       end
    end
-   render :new
+    render :new if @coin == 0
   end
 
   def destroy

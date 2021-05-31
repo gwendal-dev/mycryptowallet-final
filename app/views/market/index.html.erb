@@ -7,7 +7,7 @@
           <%= link_to coin_index_path(coin.title), action: 'go' do %>
           <div class="item">
             <div class="text-logo">
-              <%= image_tag(coin.avatar) %>
+              <%= image_tag(coin.avatar.to_s) %>
               <div class="title-marketcap">
                 <h1 class="title-coin"><%= coin.title %></h1>
                 <h1 class="marketcap"><%= number_with_delimiter(coin.marketcap, delimiter: ',') %></h1>

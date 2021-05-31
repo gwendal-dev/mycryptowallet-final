@@ -1,0 +1,10 @@
+<div class="container_form">
+  <div class="container_input">
+    <%= simple_form_for @api, url: portfolio_api_index_path(@portfolio) do |f| %>
+      <%= f.input :key, as: :string %>
+      <%= f.input :secret_key, as: :string %>
+      <%= f.input :exchange, as: :string %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

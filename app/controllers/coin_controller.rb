@@ -3,5 +3,6 @@ class CoinController < ApplicationController
 
   def index
     @coin = Coin.where(title: params[:format])
+    @apis = Api.all
   end
 end

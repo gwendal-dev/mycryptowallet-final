@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     resources :positions, only: [:new, :create, :destroy]
     resources :api
   end
+  resources :room_messages
+  resources :rooms
   resources :infos, only: [:index, :show]
+
+
   resources :coin, only: :index
+
 end

@@ -11,20 +11,27 @@ class PositionsController < ApplicationController
     @portfolio = Portfolio.find(params[:portfolio_id])
     @position = Position.new(position_params)
     @position.portfolio_id = @portfolio.id
-    @coin = Coin.find(params[:position][:coin])
+    if params[:position][:coin] != ""
+      @coin = Coin.find(params[:position][:coin])
+    else
+      @coin = 0
+    end
     if params[:position][:coin] != ""
       @coin.quantity = @coin.sum(params[:portfolio_id])
     end
-    @position.coin = @coin
-    if @position.save!
-      if params[:position][:card] == "0"
-        redirect_to portfolio_path(params[:portfolio_id])
-      elsif params[:position][:card] == "1"
-        redirect_to portfolio_cards_path(params[:portfolio_id])
+    if @coin != 0
+      @position.coin = @coin
+      if @position.save!
+        if params[:position][:card] == "0"
+          redirect_to portfolio_path(params[:portfolio_id])
+        elsif params[:position][:card] == "1"
+          redirect_to portfolio_cards_path(params[:portfolio_id])
+        end
+      else
+        render :new
       end
-    else
-      render :new
-    end
+   end
+   render :new
   end
 
   def destroy

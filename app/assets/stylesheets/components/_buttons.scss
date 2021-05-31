@@ -40,3 +40,37 @@
 .btn-login-userbar:hover {
   background-color: lightgrey;
 }
+
+
+.btn-signin-foot {
+  display: inline-block;
+  background-color: white ;
+  padding: 10px;
+  border-radius: 5px;
+  color: #2A458A;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 150px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.btn-signin-foot:hover {
+  color: #EE7E28 !important;
+}
+
+.btn-login-foot {
+  display: inline-block;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 150px;
+  text-align: center;
+}
+
+.btn-login-foot:hover {
+  color: #EE7E28 !important;
+}

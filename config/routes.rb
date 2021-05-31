@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :portfolios do
     resources :cards, only: :index
     resources :positions, only: [:new, :create, :destroy]
-    resources :api, only: :index
+    resources :api
   end
   resources :room_messages
   resources :rooms

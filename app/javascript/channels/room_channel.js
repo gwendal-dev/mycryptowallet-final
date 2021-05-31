@@ -1,13 +1,14 @@
-
+import consumer from './consumer'
+window.onload = function () {
 $(function() {
     $('[data-channel-subscribe="room"]').each(function(index, element) {
       var $element = $(element),
-          room_id = $element.data('room-id')
+          room_id = $element.data('room-id'),
           messageTemplate = $('[data-role="message-template"]');
   
       $element.animate({ scrollTop: $element.prop("scrollHeight")}, 1000)        
   
-      App.cable.subscriptions.create(
+      consumer.subscriptions.create(
         {
           channel: "RoomChannel",
           room: room_id
@@ -24,4 +25,4 @@ $(function() {
         }
       );
     });
-  });
+  })};

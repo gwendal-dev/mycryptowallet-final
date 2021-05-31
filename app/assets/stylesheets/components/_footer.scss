@@ -46,6 +46,7 @@ ul.footer-menu a {
 
 .footer-menu {
   font-size: 16px;
+  padding: 15px;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -62,11 +63,17 @@ ul.footer-menu a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 
 .social-media {
   display: flex;
   justify-content: space-between;
-  width: 200px;
+  width: 150px;
+  padding: 20px;
 }

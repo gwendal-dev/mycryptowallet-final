@@ -11,7 +11,7 @@ class PortfoliosController < ApplicationController
   def show
     require 'net/http'
     require 'json'
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
     @coins = Coin.all
     i = 0
     @moyenne_change = 0
@@ -46,13 +46,13 @@ class PortfoliosController < ApplicationController
 
   def new
     @portfolio = Portfolio.new
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
   end
 
   def create
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
     if @portfolio.save
       redirect_to portfolios_path
     else
@@ -62,21 +62,21 @@ class PortfoliosController < ApplicationController
 
   def edit
     @portfolio = Portfolio.find(params[:id])
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
   end
 
   def update
     @portfolio = Portfolio.find(params[:id])
     @portfolio.update(portfolio_params)
     redirect_to portfolios_path
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
   end
 
   def destroy
     @portfolio = Portfolio.find(params[:id])
     @portfolio.destroy
     redirect_to portfolios_path
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
   end
 
   private

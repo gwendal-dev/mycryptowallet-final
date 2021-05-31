@@ -6,7 +6,7 @@ class MarketController < ApplicationController
     require 'json'
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
     @coins = Coin.all
     i = 0
     @moyenne_change = 0

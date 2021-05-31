@@ -13,11 +13,11 @@ class ApiController < ApplicationController
   def new
     @portfolio = Portfolio.find(params[:portfolio_id])
     @api = Api.new
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
   end
 
   def create
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
     @portfolio = Portfolio.find(params[:portfolio_id])
     @api = Api.new(api_params)
     if @api.save!

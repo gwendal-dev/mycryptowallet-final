@@ -3,7 +3,7 @@ class CardsController < ApplicationController
     require 'net/http'
     require 'json'
     @coins = Coin.all
-    @apis = Api.all
+    @apis = Api.where(key: ENV["KEY"])
     i = 0
     @moyenne_change = 0
     @total_value = 0

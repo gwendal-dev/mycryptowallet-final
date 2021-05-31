@@ -25,6 +25,7 @@ const chartApi = () => {
   let key = '';
   let secret_key = '';
   let exchange2 ='';
+  let valid = 0;
 
 if ( container5 != null || api != null) {
 if (container5) {
@@ -48,7 +49,7 @@ const create = (async function () {
 
     Object.entries((await exchange.fetchBalance()).total).forEach(item => {
       if (Math.round((item[1] * 100) / 100) > 0) {
-
+        valid = 1;
         const pourcentChangePromise = (async function () {
             return (await exchange.fetchTicker(`${item[0]}/USDT`)).info.priceChangePercent;
           }) ();
@@ -196,6 +197,12 @@ const create = (async function () {
       }
     });
 }) ();
+
+setTimeout(function() {
+  if (valid === 0) {
+    alert("Invalid API error or zero balance");
+  }
+}, 7000);
 if (moyenneChange != null || loss != null) {
   setTimeout(function() {
       //your code to be executed after 5 second
@@ -293,7 +300,9 @@ if (moyenneChange != null || loss != null) {
 }
 
   var mydiv = document.querySelector(".api");
-if (document.querySelector('item3') === null) {
+  if (mydiv) {
+  mydiv.innerHTML = "";
+
   var apiWallet = document.createElement('div');
   apiWallet.setAttribute('class',"item3");
 
@@ -312,6 +321,7 @@ if (document.querySelector('item3') === null) {
   } else {
     apiWallet4.innerHTML = `<strong>API ${api.dataset.exchange}</strong>`;
   }
+
 
 
   var apiWallet6 = document.createElement('div');
@@ -336,7 +346,7 @@ if (document.querySelector('item3') === null) {
           apiWallet3.appendChild(apiWallet5);
         }
     }, 7000);
-  }
+}
 }
 }
 

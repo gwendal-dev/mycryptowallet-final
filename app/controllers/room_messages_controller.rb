@@ -7,7 +7,7 @@ class RoomMessagesController < ApplicationController
                                            room: @room,
                                            message: params.dig(:room_message, :message))
     
-                                           head :ok                                     
+    head :ok                                     
     RoomChannel.broadcast_to(@room, @room_message)
     
     #redirect_to controller: 'rooms', action: 'show', id: @room

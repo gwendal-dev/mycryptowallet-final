@@ -10,7 +10,9 @@ setTimeout(function() {
     body.classList.add('scroll');
 }, 7000);
 }
-body.classList.add('scroll');
+if (loader === null) {
+  body.classList.add('scroll');
+}
 }
 
 export {load}

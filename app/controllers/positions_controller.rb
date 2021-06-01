@@ -16,6 +16,9 @@ class PositionsController < ApplicationController
     else
       @coin = 0
     end
+    @api = Api.first
+    @position.api = @api
+
     if params[:position][:coin] != ""
       @coin.quantity = @coin.sum(params[:portfolio_id])
     end

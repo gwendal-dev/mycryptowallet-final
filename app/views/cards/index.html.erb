@@ -17,13 +17,16 @@
       <% end %>
     </h1>
     <div>
-      <%= link_to '+', new_portfolio_position_path(@portfolio, card: 1), class: 'small-darkblue'%>
+      <%= link_to '+', new_portfolio_position_path(@portfolio, card: 1, api:0), class: 'small-darkblue'%>
       <div class="recap"><p class="gain"><%= @moyenne_change.round(2) %>%</p><p class="period">24H</p></div>
     </div>
   </div>
   <h1 class="info-flip">Click to flip the card</h1>
 <% i = 0 %>
 <% @coins.each do |coin| %>
+  <% if coin.quantity < 0 %>
+    <% coin.quantity = 0 %>
+    <% end %>
     <% if coin.quantity > 0 %>
       <div class="card">
     <div class="card__inner">

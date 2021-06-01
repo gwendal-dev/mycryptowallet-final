@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_101546) do
+ActiveRecord::Schema.define(version: 2021_05_31_194834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2021_05_31_101546) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "card"
+    t.bigint "api_id"
+    t.index ["api_id"], name: "index_positions_on_api_id"
     t.index ["coin_id"], name: "index_positions_on_coin_id"
     t.index ["portfolio_id"], name: "index_positions_on_portfolio_id"
   end
@@ -102,6 +104,7 @@ ActiveRecord::Schema.define(version: 2021_05_31_101546) do
   end
 
   add_foreign_key "portfolios", "users"
+  add_foreign_key "positions", "apis"
   add_foreign_key "positions", "coins"
   add_foreign_key "positions", "portfolios"
   add_foreign_key "room_messages", "rooms"

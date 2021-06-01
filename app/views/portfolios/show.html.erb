@@ -18,7 +18,7 @@
       <% end %>
     </h1>
     <div>
-      <%= link_to '+', new_portfolio_position_path(@portfolio, card: 0), class: 'small-darkblue'%>
+      <%= link_to '+', new_portfolio_position_path(@portfolio, card: 0, api: 0), class: 'small-darkblue'%>
       <% if @moyenne_change <= 0 %>
         <div class="recap"><p class="loss"><%= @moyenne_change.round(2) %>%</p><p class="period">24H</p></div>
       <% else %>
@@ -30,6 +30,9 @@
     <div class="container2">
         <% @coins.each do |coin| %>
         <% i += 1 %>
+        <% if coin.quantity < 0 %>
+          <% coin.quantity = 0 %>
+        <% end %>
         <% if coin.quantity > 0 %>
         <%= link_to coin_index_path(coin.title), action: 'go' do %>
         <div class="item">

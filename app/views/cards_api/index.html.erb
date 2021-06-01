@@ -1,12 +1,12 @@
 <figure class="highcharts-figure">
-    <div id="container" data-positions="<%= @positions.to_json %>" data-coins="<%= @coins.to_json %>" data-title="<%= @portfolio.title.to_json %>">
+    <div id="container" data-positions="" data-coins="" data-title="">
     </div>
 </figure>
 <div class="main-portfolio">
       <h1 class="total-value"></h1>
     <div>
-      <%= link_to '+', new_portfolio_position_path(@portfolio, card: 1, api:0), class: 'small-darkblue'%>
-      <div class="recap"><p class="gain"><%= @moyenne_change.round(2) %>%</p><p class="period">24H</p></div>
+      <a href="#" class="small-darkblue"></a>
+      <div class="recap"><p class="gain"></p><p class="period">24H</p></div>
     </div>
   </div>
   <h1 class="info-flip">Click to flip the card</h1>
@@ -17,8 +17,8 @@
           <div class="img-top"></div>
           <div class="card-coin-title"></div>
           <div class="description">
-            <div class="total-card">%></div>
-            <div class="value-card">%>$</div>
+            <div class="total-card"></div>
+            <div class="value-card"></div>
               <div class="debit-card"></div>
               <div class="gain-card"></div>
             <div class="last-price-card"></div>
@@ -31,7 +31,7 @@
       <div class="card__face card__face--back">
         <div class="card__content">
           <div class="tradingview-widget-container">
-            <div id="tradingview<%= %>" data-coin="<%= coin.title.to_json %>"></div>
+            <div id="tradingview" data-coin=""></div>
             <div class="tradingview-widget-copyright"></a><span class="flip-card">Flip</span></div>
           </div>
         </div>

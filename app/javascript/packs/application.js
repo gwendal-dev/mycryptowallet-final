@@ -53,10 +53,8 @@ import {tradingview} from '../plugins/tradingview.js'
 import {showCoin} from '../plugins/showCoin.js'
 import {chartApi} from '../plugins/chartApi.js'
 import {load} from '../plugins/load.js'
-
+//import {cardsApi} from '../plugins/cardsApi.js'
 import {deleteChatInput} from '../plugins/room.js'
-
-import {cardsApi} from '../plugins/cardsApi.js'
 
 
 
@@ -69,7 +67,7 @@ document.addEventListener('turbolinks:load', () => {
   tradingview();
   showCoin();
   chartApi();
-  //cardsApi();
+  cardsApi();
   chart();
   deleteChatInput();
 });

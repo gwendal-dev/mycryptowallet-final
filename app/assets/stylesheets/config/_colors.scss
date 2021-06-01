@@ -9,4 +9,6 @@ $green: #5b9279;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
 $black: #12130f;
-$main: #2A458A
+$main: #2A458A;
+
+.bg-main {background-color: $main !important;}

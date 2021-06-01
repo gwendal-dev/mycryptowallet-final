@@ -1,6 +1,7 @@
 .container_input {
   margin-top: 30px;
-  width: 400px;
+  width: 70vw;
+  height: 70vh;
   border: 1px solid darkgray;
   padding: 20px;
   border-radius: 5px;
@@ -23,7 +24,7 @@
 .container_form_edit {
   display: flex;
   justify-content: space-around;
-  height: 100vh;
+  height: 120vh;
   width: 100vw;
   background-color: white ;
   position: absolute;
@@ -34,24 +35,25 @@
 .container_form_login {
   display: flex;
   justify-content: space-around;
-  height: 70vh;
+  height: 80vh;
   width: 100vw;
   background-color: white ;
   position: absolute;
   top: 50px;
   margin-top: 1em;
+  color: #2A458A !important;
+  h2 {
+    font-size: 24px;
+  }
+  
+  a{
+    text-decoration: none;
+    color: white !important;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color: gray !important;
+  }  
 }
 
-h2 {
-  font-size: 24px;
-}
-
-a{
-  text-decoration: none;
-  color: darkgrey;
-}
-
-a:hover {
-  text-decoration: none;
-  color: gray !important;
-}

@@ -65,7 +65,7 @@ document.addEventListener('turbolinks:load', () => {
   tradingview();
   showCoin();
   chartApi();
-  cardsApi();
+  //cardsApi();
   chart();
 });
 

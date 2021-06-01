@@ -5,7 +5,6 @@ class PortfoliosController < ApplicationController
     @positions = Position.where(portfolio: @portfolios)
     @portfolio = Portfolio.new
     @apis = Api.all
-    @api = Api.where(key: ENV["KEY"]).first
   end
 
   def show

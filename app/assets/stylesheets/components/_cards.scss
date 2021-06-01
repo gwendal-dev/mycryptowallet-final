@@ -31,16 +31,14 @@
   justify-content: space-around;
 }
 .card-coin-title {
+  margin-top: 20px;
   color : white;
   text-decoration-style: dotted;
   font-size: x-large;
   font-weight: bold;
   text-align: center;
 }
-.description {
-    color: whitesmoke;
-    font-size: 32px;
-}
+
 .container {
   margin-top: 150px;
 }
@@ -58,8 +56,8 @@
 
 .description {
     color: whitesmoke;
-    padding: 1em;
-    font-size: 20px;
+    padding: 0 1em 2em 1em;
+    font-size: 16px;
 }
 
 .info-flip {
@@ -67,9 +65,7 @@
   color: darkgrey;
   margin: 0 auto;
   margin-top: 30px;
-  position: absolute;
-  top: 600px;
-  left: 17%;
+  text-align: center;
 }
  .flip-card {
   color: white;
@@ -103,8 +99,8 @@
 
 
 .card {
-  margin: 100px 35px;
-  width: 80%;
+  margin: 10px 35px 100px 35px;
+  width: 310px;
   height: 430px;
   border-radius: 20px;
   border: none;

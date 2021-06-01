@@ -1,0 +1,14 @@
+<div class="container_form">
+  <div class="container_input">
+    <%= simple_form_for @position, url: api_positions_api_index_path(@api) do |f| %>
+      <%= f.input :entry_date, as: :date %>
+      <%= f.input :quantity, as: :float, placeholder: 'use less to sell'%>
+      <%= f.input :exchange, as: :string %>
+      <%= f.input :coin, collection: @coins %>
+      <%= f.input :card, :as => :hidden, :input_html => { :value =>  params[:card] } %>
+      <%= f.input :api, :as => :hidden, :input_html => { :value =>  params[:api] } %>
+      <%= f.input :id_api, :as => :hidden, :input_html => { :value =>  params[:id_api] } %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

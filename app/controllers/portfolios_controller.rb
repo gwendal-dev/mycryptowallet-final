@@ -10,7 +10,7 @@ class PortfoliosController < ApplicationController
   def show
     require 'net/http'
     require 'json'
-    @apis = Api.where(key: ENV["KEY"])
+    @apis = Api.all
     @coins = Coin.all
     i = 0
     @moyenne_change = 0

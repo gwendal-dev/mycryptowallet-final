@@ -7,6 +7,11 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+//= require_tree .
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -50,10 +55,15 @@ import {chartApi} from '../plugins/chartApi.js'
 import {load} from '../plugins/load.js'
 import {cardsApi} from '../plugins/cardsApi.js'
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
+ 
+
   load();
+
   burger();
   flip();
   tradingview();
@@ -61,5 +71,7 @@ document.addEventListener('turbolinks:load', () => {
   chartApi();
   //cardsApi();
   chart();
+ 
+ 
 });
 

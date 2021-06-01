@@ -56,8 +56,6 @@ import {load} from '../plugins/load.js'
 //import {cardsApi} from '../plugins/cardsApi.js'
 import {deleteChatInput} from '../plugins/room.js'
 
-
-
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();

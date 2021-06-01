@@ -1,5 +1,11 @@
+<div class="loader2">
+    <span class="lettre">M</span>
+    <span class="lettre">C</span>
+    <span class="lettre">W</span>
+</div>
+
 <figure class="highcharts-figure">
-    <div id="container2">
+    <div id="container10">
     </div>
 </figure>
 <div class="main-portfolio">
@@ -9,28 +15,30 @@
       <div class="recap"><p class="gain"></p><p class="period"></p></div>
     </div>
   </div>
-  <h1 class="info-flip">Click to flip the card</h1>
+  <h1 class="info-flip" data-exchange="<%= @api.exchange %>" data-key="<%= @api.key %>" data-secret_key="<%= @api.secret_key %>">Click to flip the card</h1>
       <div class="card">
-    <div class="card__inner">
-      <div class="card__face card__face--front">
-        <div class="container-card-coin">
-          <div class="img-top"></div>
-          <div class="card-coin-title"></div>
-          <div class="description">
-            <div class="total-card"></div>
-            <div class="value-card"></div>
-              <div class="debit-card"></div>
-              <div class="gain-card"></div>
-            <div class="last-price-card"></div>
-              <div class="variation-card-red"></div>
-              <div class="variation-card-green"></div>
+        <div class="card__inner">
+          <div class="card__face card__face--front">
+            <div class="container-card-coin">
+              <div class="img-top"></div>
+              <div class="card-coin-title"></div>
+                <div class="description">
+                  <div class="total-card"></div>
+                  <div class="value-card"></div>
+
+                  <div class="debit-card"></div>
+                  <div class="gain-card"></div>
+
+                  <div class="last-price-card"></div>
+                  <div class="variation-card-red"></div>
+                  <div class="variation-card-green"></div>
+              </div>
           </div>
-        </div>
       </div>
       <div class="card__face card__face--back">
         <div class="card__content">
           <div class="tradingview-widget-container">
-            <div id="tradingview2"></div>
+            <div id="tradingview3"></div>
             <div class="tradingview-widget-copyright"></a><span class="flip-card">Flip</span></div>
           </div>
         </div>

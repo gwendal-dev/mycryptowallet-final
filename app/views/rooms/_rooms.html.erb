@@ -1,11 +1,11 @@
 <div class="mb-3">
-  <%= link_to new_room_path, class: 'btn btn-primary' do %>
+  <%= link_to new_room_path, class: 'btn btn-primary ml-3' do %>
     Create a room
   <% end %>
 </div>
 
 <% if @rooms.present? %>
-  <nav class="nav flex-column">
+  <nav class="nav flex-column ml-3">
     <% @rooms.each do |room| %>
       <%= link_to room.name, room_path(room, url_options), :data => { :method => :get } %>
     <% end %>

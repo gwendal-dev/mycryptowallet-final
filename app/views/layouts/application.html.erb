@@ -17,7 +17,6 @@
   <body>
     <%= render 'shared/flashes' %>
     <%= render 'shared/userbar' %>
-    <%= render partial: 'shared/navigation_bar' %>
     <%= yield %>
     <% if @home === nil%>
       <%= render 'shared/navbar' %>

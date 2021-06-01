@@ -24,6 +24,9 @@
           <% if Portfolio.where(user: current_user).first %>
             <li><%= link_to 'CARDS', portfolio_cards_path(Portfolio.where(user: current_user).first), class: 'text-navbar' %></li>
           <% end %>
+          <% if Api.all.first %>
+            <li><%= link_to 'CARDS API', api_cards_api_index_path(Api.all.first), class: 'text-navbar'%></li>
+          <% end %>
           <li><%= link_to 'PORTFOLIOS', portfolios_path, class: 'text-navbar'%></li>
           <% if @apis%>
               <li><%= link_to 'API', api_index_path, class: 'text-navbar' %></li>

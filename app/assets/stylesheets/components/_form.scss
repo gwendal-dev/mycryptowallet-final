@@ -1,11 +1,11 @@
 .container_input {
   margin-top: 30px;
-  height: 110vh;
+  height: 50vh;
   width: 400px;
   border: 1px solid darkgray;
   padding: 20px;
   border-radius: 5px;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   color: darkgray;
 }
@@ -24,24 +24,25 @@
 .container_form_edit {
   display: flex;
   justify-content: space-around;
-  height: 13
-  0vh;
+  height: 130vh;
   width: 100vw;
   background-color: white ;
   position: absolute;
   top: 50px;
   margin-top: 1em;
+  margin-bottom: 100px
 }
 
 .container_form_login {
   display: flex;
   justify-content: space-around;
-  height: 80vh;
+  height: 40vh;
   width: 100vw;
   background-color: white ;
   position: absolute;
   top: 50px;
   margin-top: 1em;
+  margin-bottom: 100px
 }
 
 h2 {

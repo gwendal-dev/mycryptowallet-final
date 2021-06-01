@@ -27,7 +27,7 @@
         <li><%= total.round(2) %>$</li>
      </ul>
      <div class="line"></div>
-        <%= link_to new_portfolio_position_path(portfolio), action: 'go' do %>
+        <%= link_to new_portfolio_position_path(portfolio, card: 0, api: 0), action: 'go' do %>
         <i class="fas fa-plus"></i>
         <% end %>
         <%= link_to edit_portfolio_path(portfolio), action: 'go' do %>

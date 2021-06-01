@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :portfolios do
     resources :cards, only: :index
     resources :positions, only: [:new, :create, :destroy]
-    resources :api
   end
   resources :infos, only: [:index, :show]
   resources :coin, only: :index
+  resources :api do
+    resources :positions_api, only: [:new, :create, :destroy]
+    resources :cards_api, only: :index
+  end
 end

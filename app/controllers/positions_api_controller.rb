@@ -1,6 +1,6 @@
-class PositionsController < ApplicationController
+class PositionsApiController < ApplicationController
   def new
-    @portfolio = Portfolio.find(params[:portfolio_id])
+    @api = Api.find(params[:api_id])
     @position = Position.new
     @coins = Coin.all
     @apis = Api.all
@@ -8,22 +8,15 @@ class PositionsController < ApplicationController
 
   def create
     @apis = Api.all
-    @portfolio = Portfolio.find(params[:portfolio_id])
+    @api = Api.find(params[:api_id])
     @position = Position.new(position_params)
-    @position.portfolio_id = @portfolio.id
+    @position.api_id = @api.id
     @coin = Coin.find(params[:position][:coin])
-    @api = Api.first
-    @position.api = @api
-    if params[:position][:coin] != ""
-      @coin.quantity = @coin.sum(params[:portfolio_id])
-    end
+    @portfolio = Portfolio.first
+    @position.portfolio = @portfolio
     @position.coin = @coin
     if @position.save!
-      if params[:position][:card] == "0"
-        redirect_to portfolio_path(params[:portfolio_id])
-      elsif params[:position][:card] == "1"
-        redirect_to portfolio_cards_path(params[:portfolio_id])
-      end
+      redirect_to api_path(params[:api_id])
     else
       render :new
     end

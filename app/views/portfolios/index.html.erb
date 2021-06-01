@@ -11,6 +11,11 @@
         <% total = 0 %>
         <% portfolio.positions.each do |position|%>
           <% @coins.each do |coin| %>
+          <% if coin.quantity != nil %>
+            <% if coin.quantity < 0 %>
+              <% coin.quantity = 0 %>
+            <% end %>
+          <% end %>
             <% if coin.id == position.coin_id %>
               <% total_quantity = position.quantity %>
               <% if total_quantity != nil %>
@@ -32,12 +37,13 @@
    </a>
   <% end %>
 <% end %>
-
-<% if @portfolios %>
-  <% if (@portfolios.first) && @api%>
-    <a href="/portfolios/<%= @portfolios.first.id %>/api/<%= @api.id %>" class="api" data-exchange="<%= @api.exchange %>" data-key="<%= @api.key %>" data-secret_key="<%= @api.secret_key %>"></a>
+  <% if @apis%>
+    <% @apis.each do |api| %>
+      <% if api != nil %>
+        <a href="/api/<%= api.id %>" class="api" data-exchange="<%= api.exchange %>" data-key="<%= api.key %>" data-secret_key="<%= api.secret_key %>"></a>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
  <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Add a new portfolio

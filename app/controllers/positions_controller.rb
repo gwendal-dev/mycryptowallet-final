@@ -16,12 +16,13 @@ class PositionsController < ApplicationController
     else
       @coin = 0
     end
+
     @api = Api.first
-    if @api != nil
-      @position.api = @api
-    else
-      @position.api = Api.new()
-    end
+      if @api != nil
+        @position.api = @api
+      else
+        @position.api = Api.new
+      end
 
     if params[:position][:coin] != ""
       @coin.quantity = @coin.sum(params[:portfolio_id])

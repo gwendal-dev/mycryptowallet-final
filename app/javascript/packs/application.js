@@ -54,6 +54,8 @@ import {showCoin} from '../plugins/showCoin.js'
 import {chartApi} from '../plugins/chartApi.js'
 import {load} from '../plugins/load.js'
 //import {cardsApi} from '../plugins/cardsApi.js'
+import {deleteChatInput} from '../plugins/room.js'
+
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -67,5 +69,6 @@ document.addEventListener('turbolinks:load', () => {
   chartApi();
   //cardsApi();
   chart();
+  deleteChatInput();
 });
 

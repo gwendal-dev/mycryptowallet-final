@@ -26,6 +26,7 @@ const chartApi = () => {
   let secret_key = '';
   let exchange2 ='';
   let valid = 0;
+  let z = 0;
 
 if ( container5 != null || apis != null) {
 if (container5) {
@@ -194,11 +195,12 @@ const create = (async function () {
     });
 }) ();
 } else {
+
   apis.forEach((api) => {
-    console.log(api);
     exchange2 = api.dataset.exchange;
-  key = api.dataset.key;
-  secret_key = api.dataset.secret_key;
+    key = api.dataset.key;
+    secret_key = api.dataset.secret_key;
+    z += 1;
 
   const create = (async function () {
     const exchangeId = exchange2
@@ -268,7 +270,9 @@ const create = (async function () {
                 aTag.appendChild(aTag3);
               }
 
+
               sum += obj.lastPrice * item[1];
+
 
               price = obj.lastPrice;
 
@@ -399,10 +403,10 @@ const create = (async function () {
 
     setTimeout(function() {
       //your code to be executed after 5 second
-      apiWallet5.innerHTML = `${Math.round((sum * 100) / 100)}$`;
+      apiWallet5.innerHTML = `${Math.round(((sum / z) * 100) / 100)}$`;
       if (api != null) {
           apiWallet3.appendChild(apiWallet5);
-        }
+        };
     }, 7000);
 
   })

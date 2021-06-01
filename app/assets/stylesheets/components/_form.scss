@@ -1,5 +1,6 @@
 .container_input {
   margin-top: 30px;
+  height: 110vh;
   width: 400px;
   border: 1px solid darkgray;
   padding: 20px;
@@ -23,7 +24,8 @@
 .container_form_edit {
   display: flex;
   justify-content: space-around;
-  height: 100vh;
+  height: 13
+  0vh;
   width: 100vw;
   background-color: white ;
   position: absolute;
@@ -34,7 +36,7 @@
 .container_form_login {
   display: flex;
   justify-content: space-around;
-  height: 70vh;
+  height: 80vh;
   width: 100vw;
   background-color: white ;
   position: absolute;

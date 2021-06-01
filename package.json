@@ -19,6 +19,7 @@
     "lightweight-charts": "^3.3.0",
     "node-binance-api": "^0.12.5",
     "popper.js": "^1.16.1",
+    "raygun4js": "^2.22.3",
     "redis": "^3.1.2",
     "redis-server": "^1.2.2",
     "stripe-client": "^1.1.5",

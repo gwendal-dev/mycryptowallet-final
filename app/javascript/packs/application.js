@@ -55,6 +55,7 @@ import {chartApi} from '../plugins/chartApi.js'
 import {load} from '../plugins/load.js'
 //import {cardsApi} from '../plugins/cardsApi.js'
 import {deleteChatInput} from '../plugins/room.js'
+import {hide} from '../plugins/hide.js'
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -68,5 +69,6 @@ document.addEventListener('turbolinks:load', () => {
   //cardsApi();
   chart();
   deleteChatInput();
+  hide();
 });
 

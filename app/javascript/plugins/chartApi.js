@@ -27,6 +27,7 @@ const chartApi = () => {
   let exchange2 ='';
   let valid = 0;
   let z = 0;
+  const arr_sum = [];
 
 if ( container5 != null || apis != null) {
 if (container5) {
@@ -194,14 +195,14 @@ const create = (async function () {
       }
     });
 }) ();
-} else {
+}
+}
+if (apis) {
 
   apis.forEach((api) => {
     exchange2 = api.dataset.exchange;
     key = api.dataset.key;
     secret_key = api.dataset.secret_key;
-    z += 1;
-
   const create = (async function () {
     const exchangeId = exchange2
         , exchangeClass = ccxt[exchangeId]
@@ -218,7 +219,6 @@ const create = (async function () {
         const pourcentChangePromise = (async function () {
             return (await exchange.fetchTicker(`${item[0]}/USDT`)).info.priceChangePercent;
           }) ();
-
       pourcentChangePromise.then((value) => {
         pourcentChange = value;
 
@@ -269,10 +269,6 @@ const create = (async function () {
                 aTag.appendChild(aTag2);
                 aTag.appendChild(aTag3);
               }
-
-
-              sum += obj.lastPrice * item[1];
-
 
               price = obj.lastPrice;
 
@@ -364,52 +360,22 @@ const create = (async function () {
       }
     });
 }) ();
+})
 
-  var apiWallet = document.createElement('div');
-  apiWallet.setAttribute('class',"item3");
-
-  var divContainer = document.createElement('div');
-  divContainer.setAttribute('class',"divContainer");
-
-  var apiWallet2 = document.createElement('div');
-  apiWallet2.setAttribute('class',"fas fa-wallet")
-  apiWallet2.setAttribute("id", "wallet");
-
-  var apiWallet3 = document.createElement('ul');
-
-  var apiWallet4 = document.createElement('li');
-  if (container5) {
-    apiWallet4.innerHTML = `<strong>API ${container5.dataset.exchange}</strong>`;
-  } else {
-    apiWallet4.innerHTML = `<strong>API ${api.dataset.exchange}</strong>`;
-  }
-
-
-
-  var apiWallet6 = document.createElement('div');
-      apiWallet6.setAttribute("class", "line3");
-
-  var apiWallet5 = document.createElement('li');
-  apiWallet5.innerHTML = `Loading...`;
-      if (api != null) {
-          api.appendChild(apiWallet);
-          apiWallet.appendChild(divContainer);
-          divContainer.appendChild(apiWallet2);
-          divContainer.appendChild(apiWallet3);
-          apiWallet3.appendChild(apiWallet4);
-          apiWallet3.appendChild(apiWallet5);
-          divContainer.appendChild(apiWallet6);
-        }
-
-    setTimeout(function() {
-      //your code to be executed after 5 second
-      apiWallet5.innerHTML = `${Math.round(((sum / z) * 100) / 100)}$`;
-      if (api != null) {
-          apiWallet3.appendChild(apiWallet5);
-        };
-    }, 7000);
-
+  var arr_title_exchange = [];
+  var y = 0;
+  var a = 0;
+  var arr_api = document.querySelectorAll(".api");
+  var arr_apiWallet4 = document.querySelectorAll('.portfolio-title');
+  arr_api.forEach((api) => {
+    arr_title_exchange.push(api);
   })
+
+  arr_apiWallet4.forEach((apiWallet4) => {
+    apiWallet4.innerHTML = `API ${arr_title_exchange[y].dataset.exchange}`;
+    y += 1;
+  })
+}
 // message d'erreur:
 
 // setTimeout(function() {
@@ -417,7 +383,7 @@ const create = (async function () {
 //     alert("Invalid API error or zero balance");
 //   }
 // }, 7000);
-}
+
 if (moyenneChange != null || loss != null) {
 
   setTimeout(function() {
@@ -514,7 +480,6 @@ if (moyenneChange != null || loss != null) {
             });
       }
     }, 7000);
-}
 }
 }
 

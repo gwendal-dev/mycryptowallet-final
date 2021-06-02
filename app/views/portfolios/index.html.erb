@@ -24,7 +24,7 @@
             <% end %>
           <% end %>
         <% end %>
-        <li><%= total.round(2) %>$</li>
+        <li class="balance"><%= total.round(2) %>$</li>
      </ul>
      <div class="line"></div>
         <%= link_to new_portfolio_position_path(portfolio, card: 0, api: 0), action: 'go' do %>
@@ -33,7 +33,7 @@
         <%= link_to edit_portfolio_path(portfolio), action: 'go' do %>
         <i class="far fa-edit"></i>
        <% end %>
-       <%= link_to(portfolio_path(portfolio), method: :delete, data: { confirm: "Are you sure?" }) do %>
+       <%= link_to portfolio_path(portfolio), method: :delete, data: { confirm: "Are you sure?" } do %>
         <i class="far fa-trash-alt"></i>
       <% end %>
      </div>
@@ -43,7 +43,25 @@
   <% if @apis%>
     <% @apis.each do |api| %>
       <% if api != nil %>
-        <a href="/api/<%= api.id %>" class="api" data-exchange="<%= api.exchange %>" data-key="<%= api.key %>" data-secret_key="<%= api.secret_key %>"></a>
+        <a href="/api/<%= api.id %>" class="api" data-exchange="<%= api.exchange %>" data-key="<%= api.key %>" data-secret_key="<%= api.secret_key %>">
+          <div class="item">
+          <i class="fas fa-wallet" id="wallet"></i>
+          <ul>
+              <li><strong class="portfolio-title"></strong></li>
+              <li class="total-wallet">*******</li>
+          </ul>
+          <div class="line"></div>
+          <%= link_to new_api_positions_api_path(api, card: 0, api: 0, index: 1), action: 'go' do %>
+            <i class="fas fa-plus fa_more"></i>
+          <% end %>
+          <%= link_to edit_api_path(api), api: 0, action: 'go' do %>
+            <i class="far fa-edit fa_edit"></i>
+          <% end %>
+          <%= link_to api_path(api, api: 0), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <i class="far fa-trash-alt fa_trash"></i>
+          <% end %>
+          </div>
+        </a>
       <% end %>
     <% end %>
   <% end %>

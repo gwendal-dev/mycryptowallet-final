@@ -8,13 +8,13 @@
   color: $black;
   margin: 0px 5px;
   margin-top: 10px;
-  border-radius: 15px;
+  border-radius: 5px;
   position: sticky;
   top: 80px;
   left: 0px;
   right: 0px;
-  border: 1px solid lightgray;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: 1px solid $main;
+  box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 10x;
   z-index: 90;
 }
 .main-portfolio2{
@@ -25,12 +25,13 @@
   font-size: 32px;
   background: white;
   color: $black;
-  border-radius: 15px;
+  border-radius: 5px;
   position: sticky;
   top: 120px;
   left: 0px;
   right: 0px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: 3px solid $main;
+  box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 10px;
   z-index: 99;
 }
 .small-darkblue {

@@ -15,10 +15,18 @@ class PositionsApiController < ApplicationController
     @portfolio = Portfolio.first
     @position.portfolio = @portfolio
     @position.coin = @coin
-    if @position.save!
-      redirect_to api_path(params[:api_id])
+    if params[:api] == 1
+      if @position.save!
+        redirect_to api_path(params[:api_id])
+      else
+        render :new
+      end
     else
-      render :new
+      if @position.save!
+        redirect_to portfolios_path
+      else
+        render :new
+      end
     end
   end
 
@@ -30,6 +38,6 @@ class PositionsApiController < ApplicationController
   end
 
   def position_params
-    params.require(:position).permit(:coin_id, :entry_date, :quantity, :exit_date, :exchange, :portfolio, :card)
+    params.require(:position).permit(:coin_id, :entry_date, :quantity, :exit_date, :exchange, :portfolio, :card, :index)
   end
 end

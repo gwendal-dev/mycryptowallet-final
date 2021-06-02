@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_06_02_091318) do
 
   # These are extensions that must be enabled in order to support this database
@@ -86,6 +87,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_091318) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "card"
     t.bigint "api_id"
+    t.integer "index"
     t.index ["api_id"], name: "index_positions_on_api_id"
     t.index ["coin_id"], name: "index_positions_on_coin_id"
     t.index ["portfolio_id"], name: "index_positions_on_portfolio_id"

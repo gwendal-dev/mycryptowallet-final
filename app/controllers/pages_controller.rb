@@ -4,4 +4,5 @@ class PagesController < ApplicationController
     @apis = Api.all
     @homes = 1
   end
+
 end

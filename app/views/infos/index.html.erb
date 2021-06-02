@@ -1,23 +1,24 @@
 <div class="container-news" >
 
-    <div class="row justify-content-center">
-        <h1 class="h1 text-center mx-2" id="title-info">Last market news...</h1>
-    </div>
+  <div class="p-3">
+    <h1 class="h1 text-center" id="title-info">Last market news...</h1>
+  </div>
 
-    <div class="row p-3 justify-content-center">
-        <% @data["data"].each do |news| %>
-          <div class="card mb-3 m-2" style="width: 18rem; border-radius: 5px 5px 0px 0px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px">
-            <img src="<%= news["thumbnail"] %>" class="card-img-top" alt="..." height="200px" style="border-radius: 5px 5px 0px 0px; border: 1px solid #A9A9A9">
-            <div class="card-body" height="200px" style="border-radius: 0px 0px 5px 5px; border: 1px solid #A9A9A9">
-              <h5 class="card-title"> <%= news["symbol"] %> - <%= news["name"] %></h5>
-              <p class="card-text"><%= news["title"] %></p>
-              <p class="card-text"><small class="text-muted">Published by <%= news["publisher"] %> </small></p>
-              <a href='<%= news["url"] %>'><button class="btn btn-primary sticky-bottom " style="border-radius: 3px">More</button></a>
-            </div>
-          </div>
-        <% end  %>
-    </div>
-
+  <div class="p-4 justify-content-center">
+    <% @data["data"].each do |news| %>
+      <div class="mb-4" style="border-radius: 5px 5px 0px 0px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px">
+        <% if news["thumbnail"] %>
+          <img src="<%= news["thumbnail"] %>" class="card-img-top" alt="..." height="200px" style="border-radius: 5px 5px 0px 0px; border: 1px solid #A9A9A9">
+        <% end %>
+        <div class="card-body" height="200px" style="border-radius: 0px 0px 5px 5px; border: 1px solid #A9A9A9">
+          <h5 class="card-title"> <%= news["symbol"] %> - <%= news["name"] %></h5>
+          <p class="card-text"><%= news["title"] %></p>
+          <p class="card-text"><small class="text-muted">Published by <%= news["publisher"] %> </small></p>
+          <a href='<%= news["url"] %>'><button class="btn btn-primary sticky-bottom " style="border-radius: 3px">More</button></a>
+        </div>
+      </div>
+    <% end  %>
+  </div>
 </div>
 
 

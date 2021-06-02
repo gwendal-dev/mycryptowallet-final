@@ -43,6 +43,28 @@
   margin-top: 150px;
 }
 
+.row {
+  margin-left: -30px;
+}
+
+@media (max-width: 370px) {
+  .row {
+    margin-left: -50px;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 765px) {
+  .row {
+    margin-left: 10vw;
+  }
+}
+
+@media (min-width: 765px) {
+  .row {
+    margin-left: -20px;
+  }
+}
+
 .container-card-coin {
     display: block;
     background-color: rgb(10, 4, 82);

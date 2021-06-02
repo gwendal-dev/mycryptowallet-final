@@ -23,11 +23,15 @@
   </div>
   <h1 class="info-flip">Click to flip the card</h1>
 <% i = 0 %>
+<div class="container ">
+  <div class="row">
+
 <% @coins.each do |coin| %>
   <% if coin.quantity < 0 %>
     <% coin.quantity = 0 %>
     <% end %>
     <% if coin.quantity > 0 %>
+    <div class="col-md-6 col-lg-4 ">
       <div class="card">
     <div class="card__inner">
       <div class="card__face card__face--front">
@@ -62,5 +66,9 @@
         </div>
       </div>
     </div>
+  </div>
     <% end %>
 <% end %>
+</div>
+  <div>
+</div>

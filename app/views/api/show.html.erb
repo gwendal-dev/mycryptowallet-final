@@ -13,5 +13,9 @@
       <div class="recap"><div class="gain2"></div><div class="loss2"></div><p class="period">24H</p></div>
     </div>
   </div>
-
-<div class="container5" data-key="<%= @api.key %>" data-secret_key="<%= @api.secret_key %>" data-exchange="<%= @api.exchange %>"></div>
+<div class="cors">
+  <a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf" class="chrome-cors">Allow Cors on Chrome.</a>
+  <br><br>
+  <p class="cors-safari">To disable the same-origin policy <strong class="safari">on Safari</strong>, you only need to enable the developer menu, and select "Disable Cross-Origin Restrictions" from the develop menu.</p>
+</div>
+<div class="container5" data-key="<%= @api.key %>" data-secret_key="<%= @api.secret_key %>" data-exchange="<%= @api.exchange %>" data-hide="<%= @hide.hide %>"></div>

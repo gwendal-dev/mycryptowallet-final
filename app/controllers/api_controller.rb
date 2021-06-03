@@ -27,6 +27,7 @@ class ApiController < ApplicationController
       @quantity_total += coin.quantity
       end
     end
+    @hide = Hide.all.last
   end
 
   def new

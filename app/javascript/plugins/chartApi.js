@@ -28,10 +28,12 @@ const chartApi = () => {
   let valid = 0;
   let z = 0;
   const arr_sum = [];
+  let hide = false;
 
 if ( container5 != null || apis != null) {
 if (container5) {
   exchange2 = container5.dataset.exchange;
+  hide = container5.dataset.hide;
   key = container5.dataset.key;
   secret_key = container5.dataset.secret_key;
 
@@ -139,7 +141,11 @@ const create = (async function () {
 
             k += 1;
             if (mydiv != null) {
-              document.querySelector(".total-value2").innerHTML = `$${Math.round(sum * 100) / 100}`;
+              if (hide === "false") {
+                document.querySelector(".total-value2").innerHTML = `$${Math.round(sum * 100) / 100}`;
+              } else {
+                document.querySelector(".total-value2").innerHTML = "*********";
+              }
             }
         }
         ourRequest.send();
@@ -304,7 +310,11 @@ if (apis) {
 
             k += 1;
             if (mydiv != null) {
-              document.querySelector(".total-value2").innerHTML = `$${Math.round(sum * 100) / 100}`;
+              if (hide === "false") {
+                document.querySelector(".total-value2").innerHTML = `$${Math.round(sum * 100) / 100}`;
+              } else {
+                document.querySelector(".total-value2").innerHTML = "*********";
+              }
             }
         }
         ourRequest.send();

@@ -25,13 +25,15 @@ Coin.create!([{title: "DOT", price: 24, avatar: "DOT.jpg", background: "dot2.jpe
 Coin.create!([{title: "BNT", price: 8.3, avatar: "BNT.jpg", background: "bnt2.jpeg"}])
 Coin.create!([{title: "AAVE", price: 358, avatar: "AAVE.jpg", background: "aave2.jpeg"}])
 Coin.create!([{title: "USDT", price: 1, avatar: "USDT.jpg", background: "usdt2.webp"}])
+
 Coin.create!([{title: "XRP", price: 1, avatar: "XRP.jpg", background: "xrp2.jpg"}])
 Coin.create!([{title: "UNI", price: 1, avatar: "UNI.jpg", background: "uni2.jpg"}])
-
 Coin.create!([{title: "ICP", price: 1, avatar: "ICP.jpg", background: "icp2.webp"}])
 Coin.create!([{title: "BCH", price: 1, avatar: "BCH.jpg", background: "bch2.png"}])
 Coin.create!([{title: "LTC", price: 1, avatar: "LTC.jpg", background: "ltc2.jpg"}])
 Coin.create!([{title: "MATIC", price: 1, avatar: "MATIC.jpg", background: "matic2.png"}])
+Coin.create!([{title: "XLM", price: 1, avatar: "XLM.jpg", background: "xlm2.jpg"}])
+Coin.create!([{title: "SOL", price: 1, avatar: "SOL.jpg", background: "sol2.jpg"}])
 
 puts 'coins done'
 puts '-----------------------------------------'

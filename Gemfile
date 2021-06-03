@@ -30,6 +30,21 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 
+gem 'pay', '~> 2.0'
+
+# To use Stripe, also include:
+gem 'stripe', '< 6.0', '>= 2.8'
+
+# To use Braintree + PayPal, also include:
+gem 'braintree', '< 3.0', '>= 2.92.0'
+
+# To use Paddle, also include:
+gem 'paddle_pay', '~> 0.1'
+
+# To use Receipts
+gem 'receipts', '~> 1.0.0'
+
+
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'

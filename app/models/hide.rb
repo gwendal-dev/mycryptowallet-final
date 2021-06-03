@@ -1,0 +1,2 @@
+class Hide < ApplicationRecord
+end

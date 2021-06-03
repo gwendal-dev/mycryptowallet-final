@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     resources :positions_api, only: [:new, :create, :destroy]
     resources :cards_api, only: :index
   end
+  resources :hide, only: [:new, :create]
 end

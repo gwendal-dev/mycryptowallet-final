@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   resources :rooms
   resources :infos, only: [:index, :show]
 
-
   resources :coin, only: :index
   resources :api do
     resources :positions_api, only: [:new, :create, :destroy]
     resources :cards_api, only: :index
+
   end
   resources :hide, only: [:new, :create]
 end

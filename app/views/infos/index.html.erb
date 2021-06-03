@@ -7,7 +7,7 @@
   <div class="p-4 justify-content-center">
     <% @data["data"].each do |news| %>
       <div class="mb-4" style="border-radius: 5px 5px 0px 0px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px">
-        <% if news["thumbnail"] %>
+        <% if news["thumbnail"] != "" %>
           <img src="<%= news["thumbnail"] %>" class="card-img-top" alt="..." height="200px" style="border-radius: 5px 5px 0px 0px; border: 1px solid #A9A9A9">
         <% end %>
         <div class="card-body" height="200px" style="border-radius: 0px 0px 5px 5px; border: 1px solid #A9A9A9">

@@ -6,7 +6,7 @@ Rails.application.configure do
 
   config.cache_classes = true
 
-  config.hosts << "www.mycryptowallet.fr", "https://mycryptowallet.herokuapp.com"
+  config.hosts << "www.mycryptowallet.fr"
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers

@@ -5,6 +5,7 @@
 </div>
 
 <% if @rooms.present? %>
+  <p class="join-room">Join a room</p>
   <nav class="nav flex-column ml-3">
     <% @rooms.each do |room| %>
       <%= link_to room.name, room_path(room, url_options), :data => { :method => :get } %>

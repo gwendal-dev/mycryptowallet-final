@@ -34,6 +34,8 @@ Coin.create!([{title: "LTC", price: 1, avatar: "LTC.jpg", background: "ltc2.jpg"
 Coin.create!([{title: "MATIC", price: 1, avatar: "MATIC.jpg", background: "matic2.png"}])
 Coin.create!([{title: "XLM", price: 1, avatar: "XLM.jpg", background: "xlm2.jpg"}])
 Coin.create!([{title: "SOL", price: 1, avatar: "SOL.jpg", background: "sol2.jpg"}])
+Coin.create!([{title: "THETA", price: 1, avatar: "THETA.jpg", background: "theta2.jpeg"}])
+Coin.create!([{title: "VET", price: 1, avatar: "VET.jpg", background: "vet2.jpg"}])
 
 puts 'coins done'
 puts '-----------------------------------------'

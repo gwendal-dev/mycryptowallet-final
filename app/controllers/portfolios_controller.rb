@@ -5,7 +5,11 @@ class PortfoliosController < ApplicationController
     @positions = Position.where(portfolio: @portfolios)
     @portfolio = Portfolio.new
     @apis = Api.where(user: current_user)
-    @hide = Hide.all.last
+     @hide = Hide.all.last
+      if @hide == nil
+        @hide = Hide.new(hide: false)
+         @hide.save!
+      end
   end
 
   def show
@@ -43,6 +47,10 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.find(params[:id])
     @positions = Position.where(portfolio_id: params[:id])
     @hide = Hide.all.last
+      if @hide == nil
+        @hide = Hide.new(hide: false)
+         @hide.save!
+      end
   end
 
   def new

@@ -27,7 +27,11 @@ class ApiController < ApplicationController
       @quantity_total += coin.quantity
       end
     end
-    @hide = Hide.all.last
+     @hide = Hide.all.last
+      if @hide == nil
+        @hide = Hide.new(hide: false)
+         @hide.save!
+      end
   end
 
   def new
@@ -38,6 +42,12 @@ class ApiController < ApplicationController
   def create
     @apis = Api.where(user: current_user)
     @api = Api.new(api_params)
+    @api.user = current_user
+    @hide = Hide.all.last
+      if @hide == nil
+        @hide = Hide.new(hide: false)
+         @hide.save!
+      end
     if @api.save!
         redirect_to api_path(@api)
     else

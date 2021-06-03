@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   end
   resources :hide, only: [:new, :create]
+  resources :stat, only: :index
 end

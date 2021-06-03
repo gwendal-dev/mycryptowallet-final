@@ -35,7 +35,11 @@ Rails.application.configure do
   config.assets.compile = false
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+<<<<<<< HEAD
   # config.action_controller.asset_host = "https://mycryptowallet.herokuapp.com/"
+=======
+  config.action_controller.asset_host = "https://mycryptowallet.herokuapp.com/"
+>>>>>>> dbcf1cb5f262e48e5c9a575a56ebf7bcd6ce462a
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache

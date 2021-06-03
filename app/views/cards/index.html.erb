@@ -63,16 +63,17 @@
             <% sum = 0 %>
             <% j = 0 %>
             <% @positions.each do |position| %>
-              <% if position.coin == coin && position.price_entry != nil%>
+              <% if position.coin == coin && position.price_entry != nil && position.quantity > 0 %>
                 <% sum += position.price_entry %>
                 <% j += 1 %>
                 <% end %>
             <% end %>
             <% if j != 0 %>
-              <% if (coin.price - (sum / j)) <= 0 %>
-                <div class="debit-card">Loss : <%= (((coin.price - (sum / j)) / (sum / j)) * 100).round(2) %>%</div>
+              <% result = (coin.price) - (sum / j) %>
+              <% if result <= 0 %>
+                <div class="debit-card">Loss : <%= result.round(2) %>$</div>
               <% else %>
-                <div class="gain-card">Gain : <%= (((coin.price - (sum / j)) / (sum / j)) * 100).round(2) %>%</div>
+                <div class="gain-card">Gain : <%= result.round(2) %>$</div>
               <% end %>
             <% end %>
             <div class="last-price-card">Current price : <%= coin.price.round(2) %>$</div>

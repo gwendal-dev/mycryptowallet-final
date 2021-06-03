@@ -1,12 +1,11 @@
 class HideController < ApplicationController
   def new
     @hide = Hide.new
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
   def create
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
     @hide = Hide.new(hide_params)
-    @apis = Api.all
     if @hide.save
       redirect_to portfolios_path
     else

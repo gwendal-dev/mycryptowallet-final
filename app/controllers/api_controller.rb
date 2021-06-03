@@ -1,12 +1,12 @@
 class ApiController < ApplicationController
 
   def index
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   def show
     @coins = Coin.all
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
     @api = Api.find(params[:id])
     @moyenne_change = 0
     @total_value = 0
@@ -32,11 +32,11 @@ class ApiController < ApplicationController
 
   def new
     @api = Api.new
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   def create
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
     @api = Api.new(api_params)
     if @api.save!
         redirect_to api_path(@api)
@@ -47,26 +47,26 @@ class ApiController < ApplicationController
 
   def edit
     @api = Api.find(params[:id])
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   def update
     @api = Api.find(params[:id])
     @api.update(api_params)
     redirect_to api_index_path
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   def destroy
     @api = Api.find(params[:id])
     @api.destroy
     redirect_to api_index_path
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   private
 
   def api_params
-    params.require(:api).permit(:exchange, :key, :amount, :secret_key)
+    params.require(:api).permit(:exchange, :key, :amount, :secret_key, :user)
   end
 end

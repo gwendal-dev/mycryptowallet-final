@@ -3,11 +3,11 @@ class PositionsController < ApplicationController
     @portfolio = Portfolio.find(params[:portfolio_id])
     @position = Position.new
     @coins = Coin.all
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   def create
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
     @portfolio = Portfolio.find(params[:portfolio_id])
     @position = Position.new(position_params)
     @position.portfolio_id = @portfolio.id
@@ -43,7 +43,7 @@ class PositionsController < ApplicationController
   end
 
   def destroy
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
     @position = Position.find(params[:id])
     @position.destroy
     redirect_to portfolio_path(:portfolio_id)

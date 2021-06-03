@@ -54,7 +54,7 @@
     <div class="card__inner">
       <div class="card__face card__face--front">
         <div class="container-card-coin">
-          <div class="img-top" style="background-image: url(<%= image_path '/assets/' + coin.background %>); background-position: center center; background-size: cover;"></div>
+          <div class="img-top" style="background-image: url(<%= asset_path '/assets/' + coin.background %>); background-position: center center; background-size: cover;"></div>
           <%= image_tag(coin.avatar, class: 'logo-coin') %>
           <div class="card-coin-title"><%= coin.title %></div>
           <div class="description">

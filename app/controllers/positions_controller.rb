@@ -50,6 +50,6 @@ class PositionsController < ApplicationController
   end
 
   def position_params
-    params.require(:position).permit(:coin_id, :entry_date, :quantity, :exit_date, :exchange, :portfolio, :card)
+    params.require(:position).permit(:coin_id, :entry_date, :quantity, :exit_date, :exchange, :portfolio, :card, :price_entry)
   end
 end

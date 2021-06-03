@@ -23,14 +23,14 @@
         <% end %>
       <% else %>
         <% if @total_value >= 1000000 %>
-                    <% million  = @total_value.to_i %>
-                    <% million = million.to_s.reverse.gsub(/\A....../, 'M').reverse %>
-                    <%= "$#{million}" %>
-          <% elsif @total_value >= 100000 %>
-              <%= "$#{@total_value.round(0)}" %>$
-          <% elsif @total_value < 100000 && @total_value > 0%>
-            <%= "$#{@total_value.round(2)}" %>
-          <% else %>
+            <% million  = @total_value.to_i %>
+            <% million = million.to_s.reverse.gsub(/\A....../, 'M').reverse %>
+            <%= "$#{million}" %>
+        <% elsif @total_value >= 100000 %>
+            <%= "$#{@total_value.round(0)}" %>$
+        <% elsif @total_value < 100000 && @total_value > 0%>
+          <%= "$#{@total_value.round(2)}" %>
+        <% else %>
             0$
       <% end %>
       <% end %>

@@ -18,6 +18,32 @@
         </div>
       </div>
   </div>
+  <div class="container20">
+    <div>
+    <h1 class="paypal">Subscribe</h1>
+    <div id="paypal-button-container-P-8P3048303V7418107MC34USI"></div>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYsKuupVfivcXFd-toZODsz1r8y_1UU68JuBmjPlC8Gbsp68S-GpLV4iUv5TqxOi4hoK2175ZQgk-QUU&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+    <script>
+      paypal.Buttons({
+          style: {
+              shape: 'pill',
+              color: 'blue',
+              layout: 'vertical',
+              label: 'paypal'
+          },
+          createSubscription: function(data, actions) {
+            return actions.subscription.create({
+              /* Creates the subscription */
+              plan_id: 'P-8P3048303V7418107MC34USI'
+            });
+          },
+          onApprove: function(data, actions) {
+            alert(data.subscriptionID); // You can add optional success message for the subscriber here
+          }
+      }).render('#paypal-button-container-P-8P3048303V7418107MC34USI'); // Renders the PayPal button
+    </script>
+  </div>
+  </div>
 <div>
     <%= render 'shared/footer' %>
 </div>

@@ -9,11 +9,12 @@
 
 
 .img-top {
-    width: 100%;
+    width: 105%;
     height: 200px;
     background-image: cover;
     position: relative;
     top: 50px;
+    left: -5px;
     border-radius: 10px 10px 0px 0px;
     z-index: 0;
   }

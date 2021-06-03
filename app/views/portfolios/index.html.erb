@@ -24,7 +24,17 @@
             <% end %>
           <% end %>
         <% end %>
-        <li class="balance"><%= total.round(2) %>$</li>
+        <li class="balance">
+          <% if @hide %>
+          <% if @hide.hide == false %>
+            <%= total.round(2) %>$
+          <% else %>
+            *********
+          <% end %>
+          <% else %>
+            <%= total.round(2) %>$
+          <% end %>
+        </li>
      </ul>
      <div class="line"></div>
         <%= link_to new_portfolio_position_path(portfolio, card: 0, api: 0), action: 'go' do %>

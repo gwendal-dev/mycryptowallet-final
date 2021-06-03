@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_02_091318) do
+ActiveRecord::Schema.define(version: 2021_06_02_164020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,12 +57,54 @@ ActiveRecord::Schema.define(version: 2021_06_02_091318) do
     t.integer "marketcap"
   end
 
+  create_table "hides", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "hide"
+  end
+
   create_table "infos", force: :cascade do |t|
     t.string "title"
     t.string "content"
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pay_charges", id: :serial, force: :cascade do |t|
+    t.string "owner_type"
+    t.integer "owner_id"
+    t.string "processor", null: false
+    t.string "processor_id", null: false
+    t.integer "amount", null: false
+    t.integer "amount_refunded"
+    t.string "card_type"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.jsonb "data"
+    t.string "currency"
+    t.integer "application_fee_amount"
+    t.integer "pay_subscription_id"
+  end
+
+  create_table "pay_subscriptions", id: :serial, force: :cascade do |t|
+    t.string "owner_type"
+    t.integer "owner_id"
+    t.string "name", null: false
+    t.string "processor", null: false
+    t.string "processor_id", null: false
+    t.string "processor_plan", null: false
+    t.integer "quantity", default: 1, null: false
+    t.datetime "trial_ends_at"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "status"
+    t.jsonb "data"
+    t.decimal "application_fee_percent", precision: 8, scale: 2
   end
 
   create_table "portfolios", force: :cascade do |t|
@@ -121,6 +163,17 @@ ActiveRecord::Schema.define(version: 2021_06_02_091318) do
     t.string "avatar"
     t.string "api_key"
     t.string "api_secret"
+    t.jsonb "pay_data"
+    t.string "processor"
+    t.string "processor_id"
+    t.datetime "trial_ends_at"
+    t.string "card_type"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.text "extra_billing_info"
+    t.string "stripe_id"
+    t.string "card_brand"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

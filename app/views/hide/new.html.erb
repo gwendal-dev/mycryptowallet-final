@@ -1,0 +1,9 @@
+<div class="container_form">
+  <div class="container_input">
+    <%= simple_form_for @hide, url: hide_index_path do |f| %>
+      <%= f.input :hide, as: :boolean %>
+
+      <%= f.button :submit, 'Save' %>
+    <% end %>
+  </div>
+</div>

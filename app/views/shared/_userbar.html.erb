@@ -6,7 +6,8 @@
         <a class="session-text" href="/rooms">Chats</a>
         <%= link_to 'Log-out', destroy_user_session_path, :method => :delete, class: 'session-text'%>
       <% else %>
-        <%= link_to "Log in", new_user_session_path, class: 'btn-login-userbar mb-3 mr-1' %>
+        <%= link_to 'Sign-up', new_user_registration_path, class: 'sign-up' %>
+        <%= link_to "Log in", new_user_session_path, class: 'btn-login-userbar mb-3' %>
       <% end %>
     </div>
     <% if user_signed_in? %>
@@ -36,8 +37,8 @@
           <% end %>
           <li><%= link_to 'MARKET', market_index_path, class: 'text-navbar'%></li>
           <li><%= link_to 'NEWS', infos_path, class: 'text-navbar' %></li>
-          <li><%= link_to 'MY PROFIL', edit_user_registration_path, class: 'text-navbar'%></li>
-          <li class="hide text-navbar">Hide/show Balance</li>
+          <li><%= link_to 'MY PROFIL', edit_user_registration_path, class: 'text-navbar' %></li>
+          <li><%= link_to 'Hide/show BALANCE', new_hide_path, class: 'text-navbar' %> </li>
         </ul>
       </nav>
       <% end %>

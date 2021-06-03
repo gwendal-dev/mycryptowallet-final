@@ -4,17 +4,35 @@
 </figure>
 <div class="main-portfolio">
       <h1 class="total-value">
-      <% if @total_value >= 1000000 %>
-                <% million  = @total_value.to_i %>
-                <% million = million.to_s.reverse.gsub(/\A....../, 'M').reverse %>
-                <%= million %>$
-      <% elsif @total_value >= 100000 %>
-          <%= @total_value.round(0) %>$
-      <% elsif @total_value < 100000 && @total_value > 0%>
-        <%= @total_value.round(2) %>$
-      <% else %>
-        0$
-      <% end %>
+        <% if @hide %>
+        <% if @hide.hide == false %>
+          <% if @total_value >= 1000000 %>
+                    <% million  = @total_value.to_i %>
+                    <% million = million.to_s.reverse.gsub(/\A....../, 'M').reverse %>
+                    <%= million %>$
+          <% elsif @total_value >= 100000 %>
+              <%= @total_value.round(0) %>$
+          <% elsif @total_value < 100000 && @total_value > 0%>
+            <%= @total_value.round(2) %>$
+          <% else %>
+            0$
+          <% end %>
+        <% else %>
+          *********
+        <% end %>
+        <% else %>
+          <% if @total_value >= 1000000 %>
+                    <% million  = @total_value.to_i %>
+                    <% million = million.to_s.reverse.gsub(/\A....../, 'M').reverse %>
+                    <%= million %>$
+          <% elsif @total_value >= 100000 %>
+              <%= @total_value.round(0) %>$
+          <% elsif @total_value < 100000 && @total_value > 0%>
+            <%= @total_value.round(2) %>$
+          <% else %>
+            0$
+          <% end %>
+        <% end %>
     </h1>
     <div>
       <%= link_to '+', new_portfolio_position_path(@portfolio, card: 1, api:0), class: 'small-darkblue'%>
@@ -36,7 +54,7 @@
     <div class="card__inner">
       <div class="card__face card__face--front">
         <div class="container-card-coin">
-          <div class="img-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/assets/<%= coin.background %>'); background-position: center center; background-size: cover;"></div>
+          <div class="img-top" style="background-image: url('/assets/<%= coin.background %>'); background-position: center center; background-size: cover;"></div>
           <%= image_tag(coin.avatar, class: 'logo-coin') %>
           <div class="card-coin-title"><%= coin.title %></div>
           <div class="description">

@@ -27,5 +27,6 @@ class CardsController < ApplicationController
     @portfolio = Portfolio.find(params[:portfolio_id])
     @card = 1
     @positions = Position.where(portfolio_id: params[:portfolio_id])
+    @hide = Hide.all.last
   end
 end

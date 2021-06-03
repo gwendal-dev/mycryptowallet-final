@@ -4,14 +4,14 @@ class PortfoliosController < ApplicationController
     @coins = Coin.all
     @positions = Position.where(portfolio: @portfolios)
     @portfolio = Portfolio.new
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
     @hide = Hide.all.last
   end
 
   def show
     require 'net/http'
     require 'json'
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
     @coins = Coin.all
     i = 0
     @moyenne_change = 0
@@ -47,13 +47,13 @@ class PortfoliosController < ApplicationController
 
   def new
     @portfolio = Portfolio.new
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   def create
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
     if @portfolio.save
       redirect_to portfolios_path
     else
@@ -63,21 +63,21 @@ class PortfoliosController < ApplicationController
 
   def edit
     @portfolio = Portfolio.find(params[:id])
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   def update
     @portfolio = Portfolio.find(params[:id])
     @portfolio.update(portfolio_params)
     redirect_to portfolios_path
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   def destroy
     @portfolio = Portfolio.find(params[:id])
     @portfolio.destroy
     redirect_to portfolios_path
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
   end
 
   private

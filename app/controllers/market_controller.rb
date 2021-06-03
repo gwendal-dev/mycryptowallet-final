@@ -6,7 +6,7 @@ class MarketController < ApplicationController
     require 'json'
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
-    @apis = Api.all
+    @apis = Api.where(user: current_user)
     @coins = Coin.all
     i = 0
     @moyenne_change = 0
@@ -30,6 +30,12 @@ class MarketController < ApplicationController
     @coins = @coins.sort_by(&:marketcap).reverse
 
     @moyenne_change = @moyenne_change / i.to_f
+    if Portfolio.where(user: current_user).first == nil
+      @portfolio = Portfolio.new
+      @portfolio.user = current_user
+      @portfolio.title = "Main"
+      @portfolio.save
+    end
     @portfolios = Portfolio.where(user: current_user)
     @portfolio = @portfolios.first
     @positions = Position.where(portfolio: @portfolios)

@@ -36,6 +36,15 @@
   color: $main;
 }
 
+.info-portfolio-create {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-portfolio-create p {
+  color: grey;
+}
+
 .cors {
   margin-top: 30px;
   margin-left: 10px;

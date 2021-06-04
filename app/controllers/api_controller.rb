@@ -11,7 +11,9 @@ class ApiController < ApplicationController
     @moyenne_change = 0
     @total_value = 0
     @quantity_total = 0
+    @coins_avatar = {}
     @coins.each do |coin|
+      @coins_avatar[coin.title] = coin.avatar
       coin.quantity = coin.sum(params[:id])
       if coin.quantity > 0
       url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"

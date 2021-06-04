@@ -85,7 +85,11 @@ const create = (async function () {
               link.setAttribute("href", `/coin.${item[0]}`);
 
               var aTag5 = document.createElement('img');
-              aTag5.setAttribute('src',`/assets/${item[0]}.jpg`);
+              for (const coin in JSON.parse(mydiv.dataset.coins)) {
+                if (coin === item[0]) {
+                  aTag5.setAttribute('src',`/assets/${JSON.parse(mydiv.dataset.coins)[coin]}`);
+                }
+              }
 
               var aTag2 = document.createElement('h1');
               aTag2.setAttribute('class',"name-coin2");

@@ -87,7 +87,7 @@ const create = (async function () {
               var aTag5 = document.createElement('img');
               for (const coin in JSON.parse(mydiv.dataset.coins)) {
                 if (coin === item[0]) {
-                  aTag5.setAttribute('src',`/assets/${JSON.parse(mydiv.dataset.coins)[coin]}`);
+                  aTag5.setAttribute('src',`${JSON.parse(mydiv.dataset.coins)[coin]}`);
                 }
               }
 
@@ -173,7 +173,11 @@ const create = (async function () {
         var mydiv = document.querySelector(".container5");
 
         var aTag5 = document.createElement('img');
-        aTag5.setAttribute('src',`/assets/${item[0]}.jpg`);
+        for (const coin in JSON.parse(mydiv.dataset.coins)) {
+          if (coin === item[0]) {
+            aTag5.setAttribute('src',`${JSON.parse(mydiv.dataset.coins)[coin]}`);
+          }
+        }
 
         var aTag = document.createElement('div');
         aTag.setAttribute('class',"item2");

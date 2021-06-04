@@ -14,9 +14,17 @@ class CardsController < ApplicationController
         uri = URI(url)
         response = Net::HTTP.get(uri)
         reponse = JSON.parse(response)
-        price = reponse['data'][0]['price'].to_f
+        begin
+          price = reponse['data'][0]['price'].to_f
+        rescue
+          price = 0
+        end
         coin.price = price
-        change = reponse['data'][0]['percent_change_24h'].to_f
+        begin
+          change = reponse['data'][0]['percent_change_24h'].to_f
+        rescue
+          change = 0
+        end
         coin.change = change
         @moyenne_change += change * (coin.price * coin.quantity)
         @total_value += price * coin.quantity

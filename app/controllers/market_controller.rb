@@ -17,11 +17,23 @@ class MarketController < ApplicationController
       uri = URI(url)
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
-      marketcap = reponse['data'][0]['market_cap']
+      begin
+        marketcap = reponse['data'][0]['market_cap']
+      rescue
+        marketcap = 0
+      end
       coin.marketcap = marketcap
-      price = reponse['data'][0]['price'].to_f
+      begin
+        price = reponse['data'][0]['price'].to_f
+      rescue
+        price = 0
+      end
       coin.price = price
-      change = reponse['data'][0]['percent_change_24h'].to_f
+      begin
+        change = reponse['data'][0]['percent_change_24h'].to_f
+      rescue
+        change = 0
+      end
       coin.change = change
       @moyenne_change += change * (coin.price * coin.quantity)
       @total_value += price * coin.quantity

@@ -1,4 +1,24 @@
 .container-news {
   margin-bottom: 50px;
   color: $main;
+  display: inline;
+}
+
+.container-info-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 850px) {
+  .container-info-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .container-info-card {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }

@@ -3,12 +3,12 @@
   <% i = 0 %>
   <div class="container-next-page">
     <div></div>
-    <%= link_to "Next Page", page2_path ,class: "next-page2"%>
+    <%= link_to "Back", market_index_path ,class: "next-page2"%>
   </div>
-    <%= simple_form_for market_index_path, html: { class: "form-search"} do |f| %>
-      <%= f.input :coins, placeholder: 'ex: BTC, ETH, ADA,...'%>
-      <%= f.button :submit, 'Search', class: "btn btn-primary" %>
-    <% end %>
+  <%= simple_form_for market_index_path, html: { class: "form-search"} do |f| %>
+    <%= f.input :coins, placeholder: 'ex: BTC, ETH, ADA,...' %>
+    <%= f.button :submit, 'Search',class: "btn btn-primary" %>
+  <% end %>
   <div class="container-bar-info">
     <div class="container-name-mc">
       <p>Name</p>
@@ -44,6 +44,6 @@
       <% end %>
     <div class="container-next-page">
       <div></div>
-      <%= link_to "Next Page", page2_path ,class: "next-page2"%>
+      <%= link_to "Back", market_index_path ,class: "next-page2"%>
     </div>
 </div>

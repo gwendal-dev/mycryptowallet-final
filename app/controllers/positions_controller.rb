@@ -12,7 +12,7 @@ class PositionsController < ApplicationController
     @position = Position.new(position_params)
     @position.portfolio_id = @portfolio.id
     if params[:position][:coin] != ""
-      @coin = Coin.find(params[:position][:coin])
+      @coin = Coin.where(title: params[:position][:coin]).first
     else
       @coin = 0
     end
@@ -24,10 +24,10 @@ class PositionsController < ApplicationController
         @position.api = Api.new
       end
 
-    if params[:position][:coin] != ""
+    if @coin != 0 && @coin != nil
       @coin.quantity = @coin.sum(params[:portfolio_id])
     end
-    if @coin != 0
+    if @coin != 0 && @coin != nil
       @position.coin = @coin
       if @position.save!
         if params[:position][:card] == "0"
@@ -39,7 +39,7 @@ class PositionsController < ApplicationController
         render :new
       end
    end
-    render :new if @coin == 0
+    render :new if @coin == 0 || @coin == nil
   end
 
   def destroy

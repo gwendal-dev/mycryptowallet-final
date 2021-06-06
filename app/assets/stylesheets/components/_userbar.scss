@@ -22,3 +22,15 @@ p {
   top: 25px;
   right: 30px;
 }
+
+.portfolio-userbar {
+  color: black;
+  position: relative;
+  left: -30px;
+}
+
+@media (max-width: 467px) {
+  .portfolio-userbar {
+    display: none;
+  }
+}

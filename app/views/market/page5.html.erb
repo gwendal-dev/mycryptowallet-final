@@ -2,10 +2,10 @@
   <img src="https://alternative.me/crypto/fear-and-greed-index.png" alt="Latest Crypto Fear & Greed Index" width="300" style="display: flex; margin: auto; border: 1px solid darkgrey; margin-top: 40px "/>
   <% i = 0 %>
   <div class="container-next-page">
-    <div></div>
-    <%= link_to "Next Page", page2_path ,class: "next-page2"%>
+    <%= link_to "Previous Page", page4_path ,class: "prec-page"%>
+    <%= link_to "Next Page", page6_path ,class: "next-page2"%>
   </div>
-    <%= simple_form_for market_index_path, html: { class: "form-search"} do |f| %>
+  <%= simple_form_for market_index_path, html: { class: "form-search"} do |f| %>
       <%= f.input :coins, placeholder: 'ex: BTC, ETH, ADA,...'%>
       <%= f.button :submit, 'Search', class: "btn btn-primary" %>
     <% end %>
@@ -43,7 +43,7 @@
         <% i += 1 %>
       <% end %>
     <div class="container-next-page">
-      <div></div>
-      <%= link_to "Next Page", page2_path ,class: "next-page2"%>
+      <%= link_to "Previous Page", page4_path ,class: "prec-page"%>
+      <%= link_to "Next Page", page6_path ,class: "next-page2"%>
     </div>
 </div>

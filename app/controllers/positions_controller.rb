@@ -12,7 +12,7 @@ class PositionsController < ApplicationController
     @position = Position.new(position_params)
     @position.portfolio_id = @portfolio.id
     if params[:position][:coin] != ""
-      @coin = Coin.where(title: params[:position][:coin]).first
+      @coin = Coin.where(title: params[:position][:coin].upcase).first
     else
       @coin = 0
     end

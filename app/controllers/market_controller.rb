@@ -540,35 +540,6 @@ class MarketController < ApplicationController
     @positions = Position.where(portfolio: @portfolios)
   end
 
-  def page11
-  end
-
-  def page12
-  end
-
-  def page13
-  end
-
-  def page14
-  end
-
-  def page15
-  end
-
-  def page16
-  end
-
-  def page17
-  end
-
-  def page18
-  end
-
-  def page19
-  end
-
-  def page20
-  end
   def post_page2
     redirect_to search_path(params["/market"][:coins])
   end
@@ -596,35 +567,4 @@ class MarketController < ApplicationController
   def post_page10
     redirect_to search_path(params["/market"][:coins])
   end
-  def post_page11
-    redirect_to search_path(params["/market"][:coins])
-  end
-  def post_page12
-    redirect_to search_path(params["/market"][:coins])
-  end
-  def post_page13
-    redirect_to search_path(params["/market"][:coins])
-  end
-  def post_page14
-    redirect_to search_path(params["/market"][:coins])
-  end
-  def post_page15
-    redirect_to search_path(params["/market"][:coins])
-  end
-  def post_page16
-    redirect_to search_path(params["/market"][:coins])
-  end
-  def post_page17
-    redirect_to search_path(params["/market"][:coins])
-  end
-  def post_page18
-    redirect_to search_path(params["/market"][:coins])
-  end
-  def post_page19
-    redirect_to search_path(params["/market"][:coins])
-  end
-  def post_page20
-    redirect_to search_path(params["/market"][:coins])
-  end
-
 end

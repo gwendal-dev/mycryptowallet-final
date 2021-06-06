@@ -7,32 +7,29 @@
         <i class="fas fa-wallet" id="wallet"></i>
       <ul>
         <li><strong><%= portfolio.title %></strong></li>
-        <% total_quantity = 0 %>
-        <% total = 0 %>
-        <% portfolio.positions.each do |position|%>
-          <% @coins.each do |coin| %>
-          <% if coin.quantity != nil %>
-            <% if coin.quantity < 0 %>
-              <% coin.quantity = 0 %>
-            <% end %>
-          <% end %>
-            <% if coin.id == position.coin_id %>
-              <% total_quantity = position.quantity %>
-              <% if total_quantity != nil %>
-                <% total += total_quantity * coin.price %>
-              <% end %>
-            <% end %>
+        <% i = 0 %>
+        <% total_value = 0 %>
+        <% @coins.each do |coin| %>
+          <% coin.quantity = coin.sum(portfolio.id) %>
+          <% if coin.quantity > 0 %>
+          <% url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}" %>
+          <% uri = URI(url) %>
+          <% response = Net::HTTP.get(uri) %>
+          <% reponse = JSON.parse(response) %>
+          <% price = reponse['data'][0]['price'].to_f %>
+          <% coin.price = price %>
+          <% total_value += price * coin.quantity %>
           <% end %>
         <% end %>
         <li class="balance">
           <% if @hide %>
           <% if @hide.hide == false %>
-            <%= total.round(2) %>$
+            <%= total_value.round(2) %>$
           <% else %>
             *********
           <% end %>
           <% else %>
-            <%= total.round(2) %>$
+            <%= total_value.round(2) %>$
           <% end %>
         </li>
      </ul>
@@ -103,3 +100,4 @@
     </div>
   </div>
 </div>
+

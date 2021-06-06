@@ -30,6 +30,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 
+gem 'bullet', group: 'development'
+
+gem 'cryptocompare'
+
 gem 'pay', '~> 2.0'
 
 # To use Stripe, also include:

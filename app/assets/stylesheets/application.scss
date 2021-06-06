@@ -46,3 +46,8 @@ body {
 ul {
     list-style-type: none;
 }
+@media (min-width: 800px) {
+  .container_navbar {
+    display: none;
+  }
+}

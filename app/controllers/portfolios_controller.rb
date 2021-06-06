@@ -4,7 +4,6 @@ class PortfoliosController < ApplicationController
     @coins = Coin.all
     @positions = Position.where(portfolio: @portfolios)
     @portfolio = Portfolio.new
-    @apis = Api.where(user: current_user)
      @hide = Hide.all.last
       if @hide == nil
         @hide = Hide.new(hide: false)

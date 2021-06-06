@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_084833) do
+ActiveRecord::Schema.define(version: 2021_06_06_130215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_084833) do
     t.string "background"
     t.float "change"
     t.float "quantity"
-    t.integer "marketcap"
+    t.bigint "marketcap"
   end
 
   create_table "hides", force: :cascade do |t|

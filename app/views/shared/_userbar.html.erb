@@ -4,7 +4,8 @@
     <div class="session-container">
       <% if user_signed_in? %>
         <%= link_to "PORTFOLIOS", portfolios_path, class: "portfolio-userbar" %>
-        <a class="session-text" href="/rooms">Chats</a>
+        <%= link_to "NEWS", infos_path, class: "news-userbar" %>
+        <a class="session-text" href="/rooms">CHATS</a>
         <%= link_to 'Log-out', destroy_user_session_path, :method => :delete, class: 'session-text'%>
       <% else %>
         <%= link_to "Log in", new_user_session_path, class: 'btn-login-userbar mb-3 mr-2' %>

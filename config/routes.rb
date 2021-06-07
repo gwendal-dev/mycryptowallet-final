@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :hide, only: [:new, :create]
   resources :stat, only: :index
   resources :fallowed, only: :index
+  resources :alert ,only: :index
   post '/search', to: 'market#research'
   get '/search', to: 'market#search'
   get '/page2', to: 'market#page2'

@@ -14,6 +14,7 @@
   <div class="text-home">
     <h2>Start your crypto wallet today</h2>
     <p>MyCryptoWallet is the most efficient way to manage different portfolios, to know your earnings, to receive alerts.</p>
+    <p>Follow the stock market prices in real time.</p>
   </div>
         <div class="second-image">
         </div>
@@ -25,27 +26,17 @@
   <div class="container20">
     <div>
     <h1 class="paypal">Offer us a coffee !</h1>
-    <div id="paypal-button-container-P-8P3048303V7418107MC34USI"></div>
-    <script>
-      paypal.Buttons({
-          style: {
-              shape: 'pill',
-              color: 'blue',
-              layout: 'vertical',
-              label: 'paypal'
-          },
-          createSubscription: function(data, actions) {
-            return actions.subscription.create({
-              /* Creates the subscription */
-              plan_id: 'P-8P3048303V7418107MC34USI'
-            });
-          },
-          onApprove: function(data, actions) {
-            alert(data.subscriptionID); // You can add optional success message for the subscriber here
-          }
-      }).render('#paypal-button-container-P-8P3048303V7418107MC34USI'); // Renders the PayPal button
-    </script>
-  </div>
+    <div id="smart-button-container">
+          <div style="text-align: center;">
+            <div style="margin-bottom: 1.25rem;">
+              <p></p>
+              <select id="item-options"><option value="One coffee" price="0.5">One coffee - 0.5 USD</option><option value="Many coffee" price="2">Many coffee - 2 USD</option></select>
+              <select style="visibility: hidden" id="quantitySelect"></select>
+            </div>
+          <div id="paypal-button-container"></div>
+          </div>
+        </div>
+    </div>
   </div>
 <div>
     <%= render 'shared/footer' %>

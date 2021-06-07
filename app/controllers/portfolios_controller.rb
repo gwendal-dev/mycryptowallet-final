@@ -9,6 +9,7 @@ class PortfoliosController < ApplicationController
         @hide = Hide.new(hide: false)
          @hide.save!
       end
+    @apis = Api.where(user: current_user)
   end
 
   def show

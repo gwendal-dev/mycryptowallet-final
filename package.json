@@ -23,6 +23,8 @@
     "node-binance-api": "^0.12.5",
     "popper.js": "^1.16.1",
     "raygun4js": "^2.22.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "redis": "^3.1.2",
     "redis-server": "^1.2.2",
     "stripe": "^8.150.0",

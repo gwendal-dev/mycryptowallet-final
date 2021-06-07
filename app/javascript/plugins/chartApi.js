@@ -29,7 +29,11 @@ const chartApi = () => {
   let z = 0;
   const arr_sum = [];
   let hide = false;
+  const item2 = document.querySelector(".item2");
 
+if (item2 != null) {
+  container5.innerHTML = "";
+}
 if ( container5 != null || apis != null) {
 if (container5) {
   exchange2 = container5.dataset.exchange;

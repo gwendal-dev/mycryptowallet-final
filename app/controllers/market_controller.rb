@@ -15,12 +15,26 @@ class MarketController < ApplicationController
     @coins = @coins.sort_by(&:marketcap).reverse
     @coins = @coins.take(10)
     @moyenne_change = 0
+    @volume24h = 0
+    @max_supply = 0
     @total_value = 0
     @coins.each do |coin|
       url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
       uri = URI(url)
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
+      begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
       begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
@@ -74,6 +88,18 @@ class MarketController < ApplicationController
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
       begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
+      begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
         marketcap = 0
@@ -126,6 +152,18 @@ class MarketController < ApplicationController
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
       begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
+      begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
         marketcap = 0
@@ -173,6 +211,18 @@ class MarketController < ApplicationController
       uri = URI(url)
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
+      begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
       begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
@@ -222,6 +272,18 @@ class MarketController < ApplicationController
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
       begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
+      begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
         marketcap = 0
@@ -269,6 +331,18 @@ class MarketController < ApplicationController
       uri = URI(url)
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
+      begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
       begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
@@ -318,6 +392,18 @@ class MarketController < ApplicationController
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
       begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
+      begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
         marketcap = 0
@@ -365,6 +451,18 @@ class MarketController < ApplicationController
       uri = URI(url)
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
+      begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
       begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
@@ -414,6 +512,18 @@ class MarketController < ApplicationController
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
       begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
+      begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
         marketcap = 0
@@ -462,6 +572,18 @@ class MarketController < ApplicationController
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
       begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
+      begin
         marketcap = reponse['data'][0]['market_cap']
       rescue
         marketcap = 0
@@ -509,6 +631,18 @@ class MarketController < ApplicationController
       uri = URI(url)
       response = Net::HTTP.get(uri)
       reponse = JSON.parse(response)
+      begin
+        @volume24h = reponse["data"][0]["volume_24h"]
+      rescue
+        @volume24h = 0
+      end
+        coin.volume = @volume24h
+      begin
+        @max_supply = reponse["data"][0]["max_supply"]
+      rescue
+        @max_supply = 0
+      end
+        coin.max_supply = @max_supply
       begin
         marketcap = reponse['data'][0]['market_cap']
       rescue

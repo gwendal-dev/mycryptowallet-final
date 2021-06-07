@@ -232,12 +232,34 @@
 
 .coin-price {
   position: relative;
-  right: 15px;
+  right: 30px;
   top: 28px;
-  color: $black;
+  color: #2A458A;
   font-size: 16px;
   width: 50px;
 }
+
+.info-market {
+  position: relative;
+  right: 15px;
+  top: 28px;
+  color: black;
+  font-size: 16px;
+  width: 50px;
+}
+
+@media (max-width: 689px) {
+    .info-market {
+    display: none;
+  }
+  .max-supply {
+    display: none;
+  }
+  .volume24h {
+    display: none;
+  }
+}
+
 .logo-text {
   margin-top: 8px;
   position: relative;

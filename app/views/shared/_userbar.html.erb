@@ -21,7 +21,7 @@
       <!-- Responsive Menu -->
       <nav role="navigation" id="topnav_responsive_menu">
         <ul>
-          <li><%= link_to 'HOME', root_path, class: 'text-navbar'%></li>
+          <li><%= link_to 'HOME', root_path, class: 'text-navbar', data: {turbolinks: "false"}%></li>
           <% if Portfolio.where(user: current_user).first %>
             <li><%= link_to 'CARDS', portfolio_cards_path(Portfolio.where(user: current_user).first), class: 'text-navbar' %></li>
           <% end %>

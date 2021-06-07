@@ -1,21 +1,24 @@
 <div class="container2">
   <img src="https://alternative.me/crypto/fear-and-greed-index.png" alt="Latest Crypto Fear & Greed Index" width="300" style="display: flex; margin: auto; border: 1px solid darkgrey; margin-top: 40px "/>
   <% i = 0 %>
-  <div class="container-next-page">
+  <h1 class="search-over">Search over 1800 coins</h1>
+    <%= simple_form_for market_index_path, html: { class: "form-search"} do |f| %>
+      <%= f.input :coins, placeholder: 'ex: BTC ETH ADA...'%>
+      <%= f.button :submit, 'Search', class: "btn btn-primary" %>
+    <% end %>
+    <div class="container-next-page">
     <%= link_to "Previous Page", page9_path ,class: "prec-page"%>
     <div></div>
   </div>
-  <%= simple_form_for market_index_path, html: { class: "form-search"} do |f| %>
-      <%= f.input :coins, placeholder: 'ex: BTC, ETH, ADA,...'%>
-      <%= f.button :submit, 'Search', class: "btn btn-primary" %>
-    <% end %>
   <div class="container-bar-info">
     <div class="container-name-mc">
       <p>Name</p>
       <div class="space"></div>
       <p>Marketcap</p>
     </div>
+    <p class="max-supply">Max supply</p>
     <p class="change-info">Change %</p>
+    <p class="volume24h">Volume 24h</p>
     <p>Value</p>
   </div>
        <% @coins.each do |coin| %>
@@ -29,6 +32,7 @@
                 <h1 class="marketcap"><%= number_with_delimiter(coin.marketcap, delimiter: ',') %></h1>
               </div>
             </div>
+            <p class="info-market"><%= number_with_delimiter(coin.max_supply, delimiter: ',') %></p>
             <% if coin.change != nil %>
             <% if coin.change.round(2) > 0 %>
                 <div class="percent-green"><%= coin.change.round(2) %>%</div>
@@ -36,7 +40,8 @@
                 <div class="percent-red"><%= coin.change.round(2) %>%</div>
               <% end %>
             <% end %>
-            <h1 class="coin-price"><%= coin.price.round(2) %>$</h1>
+            <p class="info-market"><%= number_with_delimiter(coin.volume, delimiter: ',') %>$</p>
+            <h1 class="coin-price"><%= number_with_delimiter(coin.price.round(2), delimiter: ',') %>$</h1>
           </div>
         <% end %>
         <% end %>

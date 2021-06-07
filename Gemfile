@@ -36,6 +36,7 @@ gem 'cryptocompare'
 
 gem 'pay', '~> 2.0'
 
+gem "recaptcha"
 # To use Stripe, also include:
 gem 'stripe', '< 6.0', '>= 2.8'
 

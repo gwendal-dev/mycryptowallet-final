@@ -27,16 +27,56 @@ p {
   color: black;
   position: relative;
   left: -40px;
+  top: 10px;
+}
+
+.log-out-userbar {
+  padding: 10px;
+  background-color: lightgrey;
+  color: white;
+  border-radius: 5px;
+}
+
+.market-userbar {
+  color: black;
+  position: relative;
+  left: -60px;
+  top: 10px;
 }
 
 .news-userbar {
   color: black;
   position: relative;
   left: -20px;
+  top: 10px;
 }
 
+.portfolio-userbar:hover {
+  text-decoration: underline;
+}
+
+.log-out-userbar:hover {
+  text-decoration: underline;
+}
+
+.market-userbar:hover {
+  text-decoration: underline;
+}
+
+.news-userbar:hover {
+  text-decoration: underline;
+}
 @media (max-width: 467px) {
   .portfolio-userbar {
     display: none;
+  }
+  .market-userbar {
+    display: none;
+  }
+  .news-userbar {
+    display: none;
+  }
+  .log-out-userbar {
+    color: white;
   }
 }

@@ -76,6 +76,7 @@
 .search-over {
   margin-left: 30px;
   color: orange;
+  margin-top: 10px;
 }
 
 .volume24h {
@@ -101,3 +102,11 @@
     left: 0px;
   }
 }
+@media (max-width: 411px) {
+  .search-over {
+    font-size: 32px;
+  }
+
+}
+
+

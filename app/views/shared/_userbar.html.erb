@@ -3,10 +3,11 @@
     <a id="home_link" class="topnav_link" href="/"><h1 class="title">MCW</h1></a>
     <div class="session-container">
       <% if user_signed_in? %>
+        <%= link_to "MARKET", market_index_path, class: "market-userbar" %>
         <%= link_to "PORTFOLIOS", portfolios_path, class: "portfolio-userbar" %>
         <%= link_to "NEWS", infos_path, class: "news-userbar" %>
         <a class="session-text" href="/rooms">CHATS</a>
-        <%= link_to 'Log-out', destroy_user_session_path, :method => :delete, class: 'session-text'%>
+        <%= link_to 'Log-out', destroy_user_session_path, :method => :delete, class: 'session-text', class: "log-out-userbar"%>
       <% else %>
         <%= link_to "Log in", new_user_session_path, class: 'btn-login-userbar mb-3 mr-2' %>
       <% end %>

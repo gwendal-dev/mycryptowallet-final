@@ -20,6 +20,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= flash[:recaptcha_error] %>
     <%= recaptcha_tags %>
     </div>
     <div class="form-actions btn btn-primary mb-3">

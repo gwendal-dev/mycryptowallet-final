@@ -5,7 +5,7 @@
   <div class="p-4">
      <div class="container-info-card">
     <% @data["data"].each do |news| %>
-      <div class="col-10" style="border-radius: 5px 5px 0px 0px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px">
+      <div class="col-10 mb-5" style="border-radius: 5px 5px 0px 0px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px">
         <% if news["thumbnail"] != "" %>
           <img src="<%= news["thumbnail"] %>" class="card-img-top" alt="..." height="200px" style="border-radius: 5px 5px 0px 0px; border: 1px solid #A9A9A9">
         <% end %>

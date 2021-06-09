@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   end
   resources :hide, only: [:new, :create]
   resources :stat, only: :index
-  resources :fallowed, only: :index
   resources :alert ,only: :index
   devise_for :users, controllers: { registrations: 'registrations' }
   post '/search', to: 'market#research'

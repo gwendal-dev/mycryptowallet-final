@@ -1,78 +1,63 @@
-
-var Highcharts = require('highcharts');
-require('highcharts/highcharts');
-require('highcharts/modules/exporting')(Highcharts);
-// Create the chart
-require('highcharts/modules/export-data')(Highcharts);
-require('highcharts/modules/accessibility')(Highcharts);
-
 const stat = () => {
-  if (document.querySelector("#container12") != null) {
+  if (document.querySelector("#container12")) {
+    var container = document.querySelector("#container12");
+    var data = JSON.parse(container.dataset.data);
+    Highcharts.chart('container12', {
+      chart: {
+        zoomType: 'x'
+      },
+      title: {
+        text: 'Fallow your main wallet'
+      },
+      subtitle: {
+        text: document.ontouchstart === undefined ?
+          'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+      },
+      xAxis: {
+        type: 'datetime'
+      },
+      yAxis: {
+        title: {
+          text: 'Value'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        area: {
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 1
+            },
+            stops: [
+              [0, Highcharts.getOptions().colors[0]],
+              [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            ]
+          },
+          marker: {
+            radius: 2
+          },
+          lineWidth: 1,
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          },
+          threshold: null
+        }
+      },
 
-  const container = document.querySelector('#container12');
-  // Create the chart
-let charts = Highcharts.chart('container12', {
-  chart: {
-    type: 'column'
-  },
-  title: {
-    text: 'MyCryptoWallet'
-  },
-  subtitle: {
-    text: ''
-  },
-  accessibility: {
-    announceNewData: {
-      enabled: true
-    }
-  },
-  xAxis: {
-    type: 'Coins'
-  },
-  yAxis: {
-    title: {
-      text: 'Total'
-    }
-
-  },
-  legend: {
-    enabled: false
-  },
-  plotOptions: {
-    series: {
-      borderWidth: 0,
-      dataLabels: {
-        enabled: true,
-        format: '{point.y:.1f}$'
-      }
-    }
-  },
-
-  tooltip: {
-    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
-  },
-
-  series: [
-    {
-      colorByPoint: true,
-    }
-  ],
-});
-let j = 0;
-
-if (container.dataset.coins != "null") {
-    while (JSON.parse(container.dataset.coins)[j] != null) {
-    if (JSON.parse(container.dataset.coins)[j].quantity > 0) {
-      charts.series[0].addPoint({
-        name: JSON.parse(container.dataset.coins)[j].title,
-        y: JSON.parse(container.dataset.result)[j]
-      });
-    }
-      j += 1;
-    }
+      series: [{
+        type: 'area',
+        name: 'USD',
+        data: data
+      }]
+    });
   }
-}
 }
 
 export {stat}

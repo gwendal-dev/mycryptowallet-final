@@ -1,9 +1,4 @@
- <% if @result %>
   <figure class="highcharts-figure">
-    <div id="container12" data-coins= "<%= @coins.to_json %>" data-result = "<%= @result.json %>"></div>
-    <p class="highcharts-description">
-    </p>
+    <div id="container12" data-data="<%= @data.to_json %>"></div>
+    <p class="highcharts-description"></p>
   </figure>
-  <% else %>
-  <p class="mr-3">Add a Position with a entry price.</p>
-<% end %>

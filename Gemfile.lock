@@ -262,6 +262,7 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    time (0.1.0)
     ttfunk (1.7.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -330,6 +331,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   stripe (>= 2.8, < 6.0)
+  time
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

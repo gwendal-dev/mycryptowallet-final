@@ -26,6 +26,13 @@ p {
 .portfolio-userbar {
   color: black;
   position: relative;
+  left: -60px;
+  top: 10px;
+}
+
+.stat-userbar {
+  color: black;
+  position: relative;
   left: -40px;
   top: 10px;
 }
@@ -35,12 +42,13 @@ p {
   background-color: lightgrey;
   color: white;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 .market-userbar {
   color: black;
   position: relative;
-  left: -60px;
+  left: -80px;
   top: 10px;
 }
 
@@ -55,7 +63,7 @@ p {
   text-decoration: underline;
 }
 
-.log-out-userbar:hover {
+.stat-userbar:hover {
   text-decoration: underline;
 }
 
@@ -66,7 +74,16 @@ p {
 .news-userbar:hover {
   text-decoration: underline;
 }
+
+.log-out-userbar:hover {
+  text-decoration: none;
+}
+
 @media (max-width: 467px) {
+  .stat-userbar {
+    display: none;
+  }
+
   .portfolio-userbar {
     display: none;
   }

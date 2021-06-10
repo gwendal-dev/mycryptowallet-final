@@ -21,6 +21,7 @@
     "lightweight-charts": "^3.3.0",
     "local-time": "^2.1.0",
     "node-binance-api": "^0.12.5",
+    "node-fetch": "^2.6.1",
     "popper.js": "^1.16.1",
     "raygun4js": "^2.22.3",
     "react": "^17.0.2",

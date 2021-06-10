@@ -75,7 +75,7 @@ const create = (async function () {
         ourRequest.open('GET',url, true);
 
         var aTag = document.createElement('div');
-        aTag.setAttribute('class',"item2");
+        aTag.setAttribute('class',"item10");
 
         ourRequest.onload = function(){
             const obj = JSON.parse(ourRequest.responseText);
@@ -141,7 +141,7 @@ const create = (async function () {
         aTag5.setAttribute('src',`/assets/${item[0]}.jpg`);
 
         var aTag = document.createElement('div');
-        aTag.setAttribute('class',"item2");
+        aTag.setAttribute('class',"item10");
 
         var link = document.createElement('a');
         link.setAttribute("action", "go");

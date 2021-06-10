@@ -59,11 +59,13 @@ import {load} from '../plugins/load.js'
 import {deleteChatInput} from '../plugins/room.js'
 import {stat} from '../plugins/stat.js'
 import {initPayPalButton} from "../plugins/paypal.js"
+import {alert} from "../plugins/alert.js"
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   load();
+  alert();
   burger();
   initPayPalButton();
   stat();

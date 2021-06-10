@@ -229,6 +229,30 @@
   width: 75px;
 }
 
+.value-alert {
+  min-width: 20vw;
+  font-size: 20px;
+  position: relative;
+  // left: 29vw;
+  top: 22px;
+  color: $orange;
+  text-align: center;
+  vertical-align: baseline;
+}
+
+.value-price {
+  position: relative;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+}
+
+.alert-title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #2A458A;
+}
 
 .coin-price {
   position: relative;
@@ -264,6 +288,13 @@
   margin-top: 8px;
   position: relative;
   left: 10px;
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+}
+
+.logo-text-alert {
+  margin-top: 8px;
   display: flex;
   justify-content: space-around;
   width: 200px;
@@ -318,6 +349,14 @@
   font-size: 16px;
 }
 
+.name-coin-alert {
+  margin-top: 10px;
+  font-size: 20px;
+  position: relative;
+  top: 8px;
+  left: -20px;
+}
+
 .name-coin2 {
   margin-top: 30px;
   font-size: 16px;
@@ -354,3 +393,24 @@
   position: relative;
   left: 14px;
 }
+
+@media (max-width: 671px) {
+  .value-price {
+    display: none;
+ }
+}
+
+@media (max-width: 440px) {
+  .logo-text-alert {
+    position: relative;
+    left: -30px;
+    width: 150px;
+  }
+
+ .name-coin-alert {
+  position: relative;
+  left: -30px;
+ }
+}
+
+

@@ -1,0 +1,29 @@
+<h1 class="alert-title">Alerts</h1>
+
+<div class="alert_notification" data-alert="<%= @arr_alert.to_json %>"></div>
+
+<div class="container2">
+  <% if @alerts != [] %>
+    <% @coins.each do |coin| %>
+      <% @alerts.each do |alert| %>
+      <% if alert.coin != nil %>
+      <% if alert.coin.upcase == coin.title %>
+        <%= link_to edit_alert_path(alert), action: 'go' do %>
+        <div class="item">
+          <div class="logo-text-alert">
+            <%= image_tag(coin.avatar) %>
+            <h1 class="name-coin-alert"><%= coin.title %></h1>
+          </div>
+          <h2 class="value-alert">Alert : <%= number_with_delimiter(alert.value.round(3), delimiter: ',') %>$</h2>
+          <div class="value-price">Price : <%= number_with_delimiter(coin.price.round(3), delimiter: ',') %>$</div>
+        </div>
+      <% end %>
+      <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+    <%= link_to "New" , new_alert_path, class: "new_alert_btn" %>
+  <% else %>
+  <%= link_to "New", new_alert_path, class: "new-alert" %>
+  <% end %>
+</div>

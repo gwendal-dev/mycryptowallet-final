@@ -26,14 +26,14 @@ p {
 .portfolio-userbar {
   color: black;
   position: relative;
-  left: -60px;
+  left: -80px;
   top: 10px;
 }
 
 .stat-userbar {
   color: black;
   position: relative;
-  left: -40px;
+  left: -60px;
   top: 10px;
 }
 
@@ -45,14 +45,26 @@ p {
   text-decoration: none;
 }
 
+.log-out-userbar:hover {
+  background-color: darkgray;
+  color: white !important;
+}
+
 .market-userbar {
   color: black;
   position: relative;
-  left: -80px;
+  left: -100px;
   top: 10px;
 }
 
 .news-userbar {
+  color: black;
+  position: relative;
+  left: -40px;
+  top: 10px;
+}
+
+.alert-userbar {
   color: black;
   position: relative;
   left: -20px;
@@ -75,15 +87,18 @@ p {
   text-decoration: underline;
 }
 
+.alert-userbar:hover {
+  text-decoration: underline;
+}
+
 .log-out-userbar:hover {
   text-decoration: none;
 }
 
-@media (max-width: 467px) {
+@media (max-width: 763px) {
   .stat-userbar {
     display: none;
   }
-
   .portfolio-userbar {
     display: none;
   }
@@ -95,5 +110,10 @@ p {
   }
   .log-out-userbar {
     color: white;
+  }
+}
+@media (max-width: 415px) {
+.session-text {
+    display: none;
   }
 }

@@ -4,3 +4,62 @@
   right: 16px;
   z-index: 1000;
 }
+
+.alert_notif {
+  height: 25px;
+  width: 25px;
+  background-color: $red;
+  position: absolute;
+  top: 40px;
+  border-radius: 50%;
+  z-index: 999;
+  text-align: center;
+  right: 160px;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+
+.alert_notif p {
+  position: relative;
+  top: 2px;
+  color: white;
+}
+
+
+.new_alert_btn {
+  float: right;
+  margin-top: 20px;
+  margin-right: 50px;
+  padding: 10px 40px;
+  border-radius: 5px;
+  font-size: 24px;
+  color: white;
+  background-color: $orange;
+}
+.new_alert_btn:hover {
+  color: white !important;
+  opacity: 0.9;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.new-alert {
+  margin-top: 50px;
+  color: white;
+  padding: 10px 30px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: $orange;
+  display: flex;
+  justify-content: space-around;
+  font-size: 24px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.new-alert:hover {
+  text-decoration: none;
+  color: white !important;
+  opacity: 0.9;
+  }
+
+

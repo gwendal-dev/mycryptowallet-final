@@ -5,16 +5,18 @@
   <div class="p-4">
      <div class="container-info-card">
     <% @data["data"].each do |news| %>
+    <% if news["thumbnail"] != nil%>
       <div class="col-10 mb-5 p-0" style="border-radius: 5px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border: 1px solid #A9A9A9;">
-        <% if news["thumbnail"] != "" %>
-          <img src="<%= news["thumbnail"] %>" class="card-img-top" alt="..." height="200px" style="border-radius: 5px 5px 0px 0px; border-bottom: 1px solid #A9A9A9;">
-        <% end %>
+          <img src="<%= news["thumbnail"] %>" onerror="this.style.display='none'" class="card-img-top" alt="News" height="200px" style="border-radius: 5px 5px 0px 0px; border-bottom: 1px solid #A9A9A9;">
         <div class="card-body" height="200px" style="border-radius: 0px 0px 5px 5px";>
           <h5 class="card-title"> <%= news["symbol"] %> - <%= news["name"] %></h5>
           <p class="card-text"><%= news["title"] %></p>
-          <p class="card-text"><small class="text-muted">Published by <%= news["publisher"] %> </small></p>
+          <% if news["publisher"] != nil %>
+            <p class="card-text"><small class="text-muted">Published by <%= news["publisher"] %> </small></p>
+          <% end %>
           <a href='<%= news["url"] %>'><button class="btn btn-primary sticky-bottom " style="border-radius: 3px">More</button></a>
         </div>
+        <% end %>
       </div>
     <% end %>
     </div>

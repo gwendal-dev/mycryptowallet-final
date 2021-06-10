@@ -88,6 +88,9 @@ const create = (async function () {
               link.setAttribute("action", "go");
               link.setAttribute("href", `/coin.${item[0]}`);
 
+              var logoText = document.createElement('div');
+              logoText.setAttribute("class", "logo-text");
+
               var aTag5 = document.createElement('img');
               for (const coin in JSON.parse(mydiv.dataset.coins)) {
                 if (coin === item[0]) {
@@ -96,11 +99,11 @@ const create = (async function () {
               }
 
               var aTag2 = document.createElement('h1');
-              aTag2.setAttribute('class',"name-coin2");
+              aTag2.setAttribute('class',"name-coin");
               aTag2.innerHTML = item[0];
 
               var aTag3 = document.createElement('h1');
-              aTag3.setAttribute('class',"value2");
+              aTag3.setAttribute('class',"value");
               aTag3.innerHTML = `${Math.round(obj.lastPrice * 100) / 100}$`;
 
               coins[item[0]] = obj.lastPrice * item[1];
@@ -108,9 +111,10 @@ const create = (async function () {
               if (mydiv != null) {
                 mydiv.appendChild(link);
                 link.appendChild(aTag);
-                aTag.appendChild(aTag5);
-                aTag.appendChild(aTag2);
-                aTag.appendChild(aTag3);
+                aTag.appendChild(logoText)
+                logoText.appendChild(aTag5);
+                logoText.appendChild(aTag2);
+                logoText.appendChild(aTag3);
               }
 
               sum += obj.lastPrice * item[1];
@@ -176,6 +180,13 @@ const create = (async function () {
 
         var mydiv = document.querySelector(".container5");
 
+        var link = document.createElement('a');
+        link.setAttribute("action", "go");
+        link.setAttribute("href", `/coin.${item[0]}`);
+
+        var logoText = document.createElement('div');
+        logoText.setAttribute("class", "logo-text");
+
         var aTag5 = document.createElement('img');
         for (const coin in JSON.parse(mydiv.dataset.coins)) {
           if (coin === item[0]) {
@@ -183,29 +194,23 @@ const create = (async function () {
           }
         }
 
-        var aTag = document.createElement('div');
-        aTag.setAttribute('class',"item2");
-
-        var link = document.createElement('a');
-        link.setAttribute("action", "go");
-        link.setAttribute("href", `/coin.${item[0]}`);
-
-        price = parseInt(obj.lastPrice);
-
         var aTag2 = document.createElement('h1');
-        aTag2.setAttribute('class',"name-coin2");
+        aTag2.setAttribute('class',"name-coin");
         aTag2.innerHTML = item[0];
 
         var aTag3 = document.createElement('h1');
-        aTag3.setAttribute('class',"value2");
-        aTag3.innerHTML = `1$`;
+        aTag3.setAttribute('class',"value");
+        aTag3.innerHTML = `${Math.round(obj.lastPrice * 100) / 100}$`;
+
+        coins[item[0]] = obj.lastPrice * item[1];
 
         if (mydiv != null) {
           mydiv.appendChild(link);
           link.appendChild(aTag);
-          aTag.appendChild(aTag5);
-          aTag.appendChild(aTag2);
-          aTag.appendChild(aTag3);
+          aTag.appendChild(logoText)
+          logoText.appendChild(aTag5);
+          logoText.appendChild(aTag2);
+          logoText.appendChild(aTag3);
         }
         sum += item[1];
       }

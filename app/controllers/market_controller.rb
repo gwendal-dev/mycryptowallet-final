@@ -85,7 +85,6 @@ class MarketController < ApplicationController
       end
       coin.change = change
     end
-
     if Portfolio.where(user: current_user).first == nil
       @portfolio = Portfolio.new
       @portfolio.user = current_user

@@ -1,0 +1,10 @@
+<div class="container_form">
+  <div class="container_input">
+    <%= simple_form_for @alert do |f| %>
+      <%= f.input :coin, as: :string %>
+      <%= f.input :value, as: :float %>
+
+      <%= f.button :submit, "Edit", class: 'btn btn-primary'%>
+    <% end %>
+  </div>
+</div>

@@ -5,8 +5,14 @@
 }
 
 .container-info-card {
+  position: relative;
+  left: 25px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+#title-info {
+  color: #2A458A;
 }
 
 @media (max-width: 850px) {

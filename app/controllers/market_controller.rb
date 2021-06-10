@@ -2,15 +2,46 @@ class MarketController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    require 'net/http'
-    require 'json'
+    if current_user
+      require 'net/http'
+      require 'json'
+      @coins = Coin.all
+      price = 0
+      alerts = Alert.all
+      @arr_alert = []
+      alerts.each do |alert|
+        @coins.each do |coin|
+          if coin.title == alert.coin.upcase
+            coin.quantity = coin.sum(params[:id])
+            url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+            uri = URI(url)
+            response = Net::HTTP.get(uri)
+            reponse = JSON.parse(response)
+            price = reponse['data'][0]['price'].to_f
+            alert.new_price = price
+            alert.save
+          end
+        end
+
+        if alert.price < alert.value
+          if alert.new_price >= alert.value
+            alert.alert = true
+            alert.save
+            @arr_alert << [alert.alert, alert.user_id]
+          end
+        elsif alert.price > alert.value
+          if alert.new_price <= alert.value
+            alert.alert = true
+            alert.save
+            @arr_alert << [alert.alert, alert.user_id]
+          end
+        end
+      end
+      @user_id = current_user.id
+    end
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
     @apis = Api.where(user: current_user)
-    @coins = Coin.where(marketcap: nil?)
-    @coins.each do |coin|
-      coin.destroy
-    end
     @coins = Coin.all
     @coins = @coins.sort_by(&:marketcap).reverse
     @coins = @coins.take(10)
@@ -67,12 +98,80 @@ class MarketController < ApplicationController
   end
 
   def create
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     redirect_to search_path(params["/market"][:coins])
   end
 
   def search
     require 'net/http'
     require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
     coins_title = params[:format].upcase.gsub(",", "").split(" ")
@@ -131,10 +230,80 @@ class MarketController < ApplicationController
   end
 
   def research
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     redirect_to search_path(params["/market"][:coins])
   end
 
   def page2
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     require 'net/http'
     require 'json'
     require 'active_support'
@@ -197,6 +366,41 @@ class MarketController < ApplicationController
   def page3
     require 'net/http'
     require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
+    require 'net/http'
+    require 'json'
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
     @apis = Api.where(user: current_user)
@@ -255,6 +459,41 @@ class MarketController < ApplicationController
   end
 
   def page4
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     require 'net/http'
     require 'json'
     require 'active_support'
@@ -317,6 +556,41 @@ class MarketController < ApplicationController
   def page5
     require 'net/http'
     require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
+    require 'net/http'
+    require 'json'
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
     @apis = Api.where(user: current_user)
@@ -375,6 +649,41 @@ class MarketController < ApplicationController
   end
 
   def page6
+  require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     require 'net/http'
     require 'json'
     require 'active_support'
@@ -437,6 +746,41 @@ class MarketController < ApplicationController
   def page7
     require 'net/http'
     require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
+    require 'net/http'
+    require 'json'
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
     @apis = Api.where(user: current_user)
@@ -495,6 +839,41 @@ class MarketController < ApplicationController
   end
 
   def page8
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     require 'net/http'
     require 'json'
     require 'active_support'
@@ -557,6 +936,41 @@ class MarketController < ApplicationController
   def page9
     require 'net/http'
     require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
+    require 'net/http'
+    require 'json'
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
     @apis = Api.where(user: current_user)
@@ -615,6 +1029,41 @@ class MarketController < ApplicationController
   end
 
   def page10
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     require 'net/http'
     require 'json'
     require 'active_support'

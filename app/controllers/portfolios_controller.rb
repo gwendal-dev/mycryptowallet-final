@@ -1,5 +1,40 @@
 class PortfoliosController < ApplicationController
   def index
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     @portfolios = Portfolio.where(user: current_user)
     @coins = Coin.all
     @positions = Position.where(portfolio: @portfolios)
@@ -13,6 +48,41 @@ class PortfoliosController < ApplicationController
   end
 
   def show
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     require 'net/http'
     require 'json'
     @apis = Api.where(user: current_user)
@@ -54,11 +124,81 @@ class PortfoliosController < ApplicationController
   end
 
   def new
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     @portfolio = Portfolio.new
     @apis = Api.where(user: current_user)
   end
 
   def create
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
     @apis = Api.where(user: current_user)
@@ -70,11 +210,81 @@ class PortfoliosController < ApplicationController
   end
 
   def edit
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     @portfolio = Portfolio.find(params[:id])
     @apis = Api.where(user: current_user)
   end
 
   def update
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     @portfolio = Portfolio.find(params[:id])
     @portfolio.update(portfolio_params)
     redirect_to portfolios_path
@@ -82,6 +292,41 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
+    require 'net/http'
+    require 'json'
+    @coins = Coin.all
+    price = 0
+    alerts = Alert.all
+    @arr_alert = []
+    alerts.each do |alert|
+      @coins.each do |coin|
+        if coin.title == alert.coin.upcase
+          coin.quantity = coin.sum(params[:id])
+          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+          uri = URI(url)
+          response = Net::HTTP.get(uri)
+          reponse = JSON.parse(response)
+          price = reponse['data'][0]['price'].to_f
+          alert.new_price = price
+          alert.save
+        end
+      end
+
+      if alert.price < alert.value
+        if alert.new_price >= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      elsif alert.price > alert.value
+        if alert.new_price <= alert.value
+          alert.alert = true
+          alert.save
+          @arr_alert << [alert.alert, alert.user_id]
+        end
+      end
+    end
+    @user_id = current_user.id
     @portfolio = Portfolio.find(params[:id])
     @portfolio.destroy
     redirect_to portfolios_path

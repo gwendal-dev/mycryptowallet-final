@@ -8,6 +8,7 @@
          <%= link_to "STATS", stat_index_path, class: "stat-userbar" %>
         <%= link_to "NEWS", infos_path, class: "news-userbar" %>
         <a class="session-text" href="/rooms">CHATS</a>
+        <%= link_to "ALERTS", alerts_path, class: "alert-userbar" %>
         <%= link_to 'Log-out', destroy_user_session_path, :method => :delete, class: 'session-text', class: "log-out-userbar"%>
       <% else %>
         <%= link_to "Log in", new_user_session_path, class: 'btn-login-userbar mb-3 mr-2' %>
@@ -40,8 +41,9 @@
           <% end %>
           <li><%= link_to 'MARKET', market_index_path, class: 'text-navbar'%></li>
           <li><%= link_to 'NEWS', infos_path, class: 'text-navbar' %></li>
-          <li><%= link_to 'MY PROFIL', edit_user_registration_path, class: 'text-navbar' %></li>
           <li><%= link_to 'STATS', stat_index_path, class: 'text-navbar' %></li>
+          <li><%= link_to 'ALERTS', alerts_path, class: 'text-navbar' %></li>
+          <li><%= link_to 'MY PROFIL', edit_user_registration_path, class: 'text-navbar' %></li>
           <li><%= link_to 'Hide/show BALANCE', new_hide_path, class: 'text-navbar' %></li>
         </ul>
       </nav>

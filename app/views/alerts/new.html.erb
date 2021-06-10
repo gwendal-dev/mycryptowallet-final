@@ -1,0 +1,10 @@
+<div class="container_form">
+  <div class="container_input">
+    <%= simple_form_for @alert, url: alerts_path do |f| %>
+      <%= f.input :coin, as: :string, placeholder: "Enter the short name of the coin. Ex: eth"  %>
+      <%= f.input :value, as: :float %>
+
+      <%= f.button :submit, "Create", class: 'btn btn-primary'%>
+    <% end %>
+  </div>
+</div>

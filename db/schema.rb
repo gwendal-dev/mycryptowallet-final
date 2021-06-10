@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_125037) do
+ActiveRecord::Schema.define(version: 2021_06_09_161739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 2021_06_08_125037) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "alerts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.string "coin"
+    t.float "value"
+    t.boolean "alert", default: false
+    t.float "price"
+    t.float "new_price"
+    t.index ["user_id"], name: "index_alerts_on_user_id"
   end
 
   create_table "apis", force: :cascade do |t|
@@ -193,6 +205,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_125037) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "alerts", "users"
   add_foreign_key "apis", "users"
   add_foreign_key "portfolios", "users"
   add_foreign_key "positions", "apis"

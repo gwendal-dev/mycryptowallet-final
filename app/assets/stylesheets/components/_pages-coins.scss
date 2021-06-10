@@ -24,12 +24,25 @@
   border-radius: 5px;
 }
 
+.next-page2:hover {
+  color: white !important;
+  opacity: 0.9;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .prec-page {
   background-color: $main;
   color: white;
   padding: 10px 10px;
   border-radius: 5px;
 }
+
+.prec-page:hover {
+  color: white !important;
+  opacity: 0.9;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .container-next-page {
    margin-top: 10px;
    display: flex;

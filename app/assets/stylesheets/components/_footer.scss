@@ -7,6 +7,8 @@ ul.footer-menu a {
   color: white;
   flex-grow: 1;
   column-count: 3;
+  position: relative;
+  left: -39px;
   @media (max-width: 767px) {
     flex-direction: column;
     column-count: 2;

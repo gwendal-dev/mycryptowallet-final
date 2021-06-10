@@ -35,8 +35,6 @@ class StatController < ApplicationController
       end
     end
     @user_id = current_user.id
-    require 'net/http'
-    require 'json'
     require 'cryptocompare'
     require 'time'
       arr_time = []
@@ -51,7 +49,7 @@ class StatController < ApplicationController
       @portfolios = Portfolio.where(user: current_user)
       @positions = Position.where(portfolio_id: @portfolios.ids)
       @positions = @positions.sort_by(&:created_at)
-       # Stat.all.destroy_all
+       Stat.all.destroy_all
       stats = Stat.where(user: current_user)
       if stats != []
         stats = stats.sort_by(&:created_at)

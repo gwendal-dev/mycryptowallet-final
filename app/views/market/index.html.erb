@@ -1,5 +1,10 @@
 <% @title = "Market - MyCryptoWallet" %>
 
+<div class="loader3">
+    <span class="lettre">M</span>
+    <span class="lettre">C</span>
+    <span class="lettre">W</span>
+</div>
 
 <div class="container2">
   <img src="https://alternative.me/crypto/fear-and-greed-index.png" alt="Latest Crypto Fear & Greed Index" width="300" style="display: flex; margin: auto; border: 1px solid darkgrey; margin-top: 40px "/>
@@ -26,30 +31,28 @@
   </div>
   <% i = 0 %>
        <% @coins.each do |coin| %>
-        <% if coin.price != 0 %>
           <%= link_to coin_index_path(coin.title), action: 'go' do %>
           <div class="item<%= i %>" data-coins="<%= coin.title %>">
             <div class="text-logo">
               <%= image_tag(coin.avatar.to_s) %>
               <div class="title-marketcap">
                 <h1 class="title-coin"><%= coin.title %></h1>
-                <h1 class="marketcap<%= i %>"><%= number_with_delimiter(coin.marketcap, delimiter: ',') %></h1>
+                <h1 class="marketcap<%= i %>"><div class="rectangle1"></div></h1>
               </div>
             </div>
-            <p class="max-supply-info<%= i %>"><%= number_with_delimiter(coin.max_supply, delimiter: ',') %></p>
-            <% if coin.change != nil %>
+            <p class="max-supply-info<%= i %>"><%#= number_with_delimiter(coin.max_supply, delimiter: ',') %></p>
+            <%# if coin.change != nil %>
               <div class="change<%= i %>">
-              <% if coin.change.round(2) > 0 %>
-                <div class="percent-green<%= i %>"><%= coin.change.round(2) %>%</div>
-              <% else %>
-                <div class="percent-red<%= i %>"><%= coin.change.round(2) %>%</div>
-              <% end %>
+              <%# if coin.change.round(2) > 0 %>
+                <!-- <div class="percent-green<%= i %>"><%#= coin.change.round(2) %>%</div> -->
+              <%# else %>
+                <!-- <div class="percent-red<%= i %>"><%#= coin.change.round(2) %>%</div> -->
+              <%# end %>
             </div>
-            <% end %>
-            <p class="info-market<%= i %>"><%= number_with_delimiter(coin.volume, delimiter: ',') %>$</p>
-            <h1 class="coin-price<%= i %>"><%= number_with_delimiter(coin.price.round(2), delimiter: ',') %>$</h1>
+            <%# end %>
+            <p class="info-market<%= i %>"></p>
+            <h1 class="coin-price<%= i %>"></h1>
           </div>
-        <% end %>
         <% end %>
         <% i += 1 %>
       <% end %>

@@ -29,9 +29,9 @@ const chartApi = () => {
   let z = 0;
   const arr_sum = [];
   let hide = false;
-  const item10 = document.querySelector(".item10");
+  const item200 = document.querySelector(".item200");
 
-if (item10 != null) {
+if (item200 != null) {
   container5.innerHTML = "";
 }
 if ( container5 != null || apis != null) {
@@ -76,7 +76,7 @@ const create = (async function () {
         ourRequest.open('GET',url, true);
 
         var aTag = document.createElement('div');
-        aTag.setAttribute('class',"item10");
+        aTag.setAttribute('class',"item200");
 
         ourRequest.onload = function(){
             const obj = JSON.parse(ourRequest.responseText);
@@ -122,7 +122,7 @@ const create = (async function () {
               price = obj.lastPrice;
 
               var mydiv = document.querySelector(".container5");
-              var aTags = document.querySelectorAll(".item10");
+              var aTags = document.querySelectorAll(".item200");
               moyenne += parseInt(pourcentChange) * (price * item[1]);
               moyenneArr.push(moyenne);
 
@@ -260,7 +260,7 @@ if (apis) {
         ourRequest.open('GET',url, true);
 
         var aTag = document.createElement('div');
-        aTag.setAttribute('class',"item10");
+        aTag.setAttribute('class',"item200");
 
         ourRequest.onload = function(){
             const obj = JSON.parse(ourRequest.responseText);
@@ -296,7 +296,7 @@ if (apis) {
               price = obj.lastPrice;
 
               var mydiv = document.querySelector(".container5");
-              var aTags = document.querySelectorAll(".item10");
+              var aTags = document.querySelectorAll(".item200");
               moyenne += parseInt(pourcentChange) * (price * item[1]);
               moyenneArr.push(moyenne);
 
@@ -358,7 +358,7 @@ if (apis) {
         aTag5.setAttribute('src',`/assets/${item[0]}.jpg`);
 
         var aTag = document.createElement('div');
-        aTag.setAttribute('class',"item10");
+        aTag.setAttribute('class',"item200");
 
         var link = document.createElement('a');
         link.setAttribute("action", "go");

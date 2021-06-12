@@ -36,6 +36,8 @@ h1, h2, h3, h4 {
 body {
   background-color: var(--background-color);
   color: var(--text-color);
+   //filter: grayscale(1);
+  // background-color: #343a40 !important;
 }
 
 * {

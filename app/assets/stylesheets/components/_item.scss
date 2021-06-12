@@ -20,7 +20,7 @@
 
 $i: 0;
 
-@while $i < 10 {
+@while $i < 200 {
 
       .item#{$i} {
         font-family: 'Open Sans', sans-serif;
@@ -231,7 +231,7 @@ $i: 0;
   }
 }
 
-.item10{
+.item200{
   margin: 5px 5px;
   padding: 10px 20px;
   padding-bottom: 20px;
@@ -246,12 +246,12 @@ $i: 0;
   border: 1px solid darkgrey;
 }
 
-.item10:hover {
+.item200:hover {
   background-color: lightgrey;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.item10 img{
+.item200 img{
   width: 40px;
   height: 40px;
   border-radius: 50%;

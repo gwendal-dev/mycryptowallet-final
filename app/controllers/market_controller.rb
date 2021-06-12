@@ -44,47 +44,50 @@ class MarketController < ApplicationController
     @apis = Api.where(user: current_user)
     @coins = Coin.all
     @coins = @coins.sort_by(&:marketcap).reverse
-    @coins = @coins.take(10)
-    @moyenne_change = 0
-    @volume24h = 0
-    @max_supply = 0
-    @total_value = 0
-    @coins.each do |coin|
-      url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-      uri = URI(url)
-      response = Net::HTTP.get(uri)
-      reponse = JSON.parse(response)
-      begin
-        @volume24h = reponse["data"][0]["volume_24h"]
-      rescue
-        @volume24h = 0
-      end
-        coin.volume = @volume24h
-      begin
-        @max_supply = reponse["data"][0]["max_supply"]
-      rescue
-        @max_supply = 0
-      end
-        coin.max_supply = @max_supply
-      begin
-        marketcap = reponse['data'][0]['market_cap']
-      rescue
-        marketcap = 0
-      end
-      coin.marketcap = marketcap
-      begin
-        price = reponse['data'][0]['price'].to_f
-      rescue
-        price = 0
-      end
-      coin.price = price
-      begin
-        change = reponse['data'][0]['percent_change_24h'].to_f
-      rescue
-        change = 0
-      end
-      coin.change = change
-    end
+    @coins = @coins.take(200)
+    # @moyenne_change = 0
+    # @volume24h = 0
+    # @max_supply = 0
+    # @total_value = 0
+    # @coins.each do |coin|
+    #   url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+    #   uri = URI(url)
+    #   response = Net::HTTP.get(uri)
+    #   reponse = JSON.parse(response)
+    #   begin
+    #     @volume24h = reponse["data"][0]["volume_24h"]
+    #   rescue
+    #     @volume24h = 0
+    #   end
+    #     coin.volume = @volume24h
+    #   begin
+    #     @max_supply = reponse["data"][0]["max_supply"]
+    #   rescue
+    #     @max_supply = 0
+    #   end
+    #     coin.max_supply = @max_supply
+    #   begin
+    #     marketcap = reponse['data'][0]['market_cap']
+    #   rescue
+    #     marketcap = 0
+    #   end
+    #   coin.marketcap = marketcap
+    #   begin
+    #     price = reponse['data'][0]['price'].to_f
+    #   rescue
+    #     price = 0
+    #   end
+    #   coin.price = price
+    #   begin
+    #     change = reponse['data'][0]['percent_change_24h'].to_f
+    #   rescue
+    #     change = 0
+    #   end
+    #   coin.change = change
+    #   coin.save
+    #   # if coin.change != 0 && coin.marketcap != 0 && coin
+    # end
+
     if Portfolio.where(user: current_user).first == nil
       @portfolio = Portfolio.new
       @portfolio.user = current_user
@@ -310,46 +313,46 @@ class MarketController < ApplicationController
     @apis = Api.where(user: current_user)
     @coins = Coin.all
     @coins = @coins.sort_by(&:marketcap).reverse
-    @coins = @coins.take(20)
-    @coins = @coins.drop(10)
-    @moyenne_change = 0
-    @total_value = 0
-    @coins.each do |coin|
-      url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-      uri = URI(url)
-      response = Net::HTTP.get(uri)
-      reponse = JSON.parse(response)
-      begin
-        @volume24h = reponse["data"][0]["volume_24h"]
-      rescue
-        @volume24h = 0
-      end
-        coin.volume = @volume24h
-      begin
-        @max_supply = reponse["data"][0]["max_supply"]
-      rescue
-        @max_supply = 0
-      end
-        coin.max_supply = @max_supply
-      begin
-        marketcap = reponse['data'][0]['market_cap']
-      rescue
-        marketcap = 0
-      end
-      coin.marketcap = marketcap
-      begin
-        price = reponse['data'][0]['price'].to_f
-      rescue
-        price = 0
-      end
-      coin.price = price
-      begin
-        change = reponse['data'][0]['percent_change_24h'].to_f
-      rescue
-        change = 0
-      end
-      coin.change = change
-    end
+    @coins = @coins.take(400)
+    @coins = @coins.drop(200)
+    # @moyenne_change = 0
+    # @total_value = 0
+    # @coins.each do |coin|
+    #   url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
+    #   uri = URI(url)
+    #   response = Net::HTTP.get(uri)
+    #   reponse = JSON.parse(response)
+    #   begin
+    #     @volume24h = reponse["data"][0]["volume_24h"]
+    #   rescue
+    #     @volume24h = 0
+    #   end
+    #     coin.volume = @volume24h
+    #   begin
+    #     @max_supply = reponse["data"][0]["max_supply"]
+    #   rescue
+    #     @max_supply = 0
+    #   end
+    #     coin.max_supply = @max_supply
+    #   begin
+    #     marketcap = reponse['data'][0]['market_cap']
+    #   rescue
+    #     marketcap = 0
+    #   end
+    #   coin.marketcap = marketcap
+    #   begin
+    #     price = reponse['data'][0]['price'].to_f
+    #   rescue
+    #     price = 0
+    #   end
+    #   coin.price = price
+    #   begin
+    #     change = reponse['data'][0]['percent_change_24h'].to_f
+    #   rescue
+    #     change = 0
+    #   end
+    #   coin.change = change
+    # end
 
     if Portfolio.where(user: current_user).first == nil
       @portfolio = Portfolio.new
@@ -398,53 +401,13 @@ class MarketController < ApplicationController
       end
     end
     @user_id = current_user.id
-    require 'net/http'
-    require 'json'
-    require 'active_support'
-    extend ActionView::Helpers::NumberHelper
+
     @apis = Api.where(user: current_user)
     @coins = Coin.all
     @coins = @coins.sort_by(&:marketcap).reverse
-    @coins = @coins.take(30)
-    @coins = @coins.drop(20)
-    @moyenne_change = 0
-    @total_value = 0
-    @coins.each do |coin|
-      url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-      uri = URI(url)
-      response = Net::HTTP.get(uri)
-      reponse = JSON.parse(response)
-      begin
-        @volume24h = reponse["data"][0]["volume_24h"]
-      rescue
-        @volume24h = 0
-      end
-        coin.volume = @volume24h
-      begin
-        @max_supply = reponse["data"][0]["max_supply"]
-      rescue
-        @max_supply = 0
-      end
-        coin.max_supply = @max_supply
-      begin
-        marketcap = reponse['data'][0]['market_cap']
-      rescue
-        marketcap = 0
-      end
-      coin.marketcap = marketcap
-      begin
-        price = reponse['data'][0]['price'].to_f
-      rescue
-        price = 0
-      end
-      coin.price = price
-      begin
-        change = reponse['data'][0]['percent_change_24h'].to_f
-      rescue
-        change = 0
-      end
-      coin.change = change
-    end
+    @coins = @coins.take(600)
+    @coins = @coins.drop(400)
+
 
     if Portfolio.where(user: current_user).first == nil
       @portfolio = Portfolio.new

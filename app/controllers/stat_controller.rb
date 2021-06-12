@@ -49,14 +49,14 @@ class StatController < ApplicationController
       @portfolios = Portfolio.where(user: current_user)
       @positions = Position.where(portfolio_id: @portfolios.ids)
       @positions = @positions.sort_by(&:created_at)
-       #Stat.all.destroy_all
+        #Stat.all.destroy_all
       stats = Stat.where(user: current_user)
       if stats != []
         stats = stats.sort_by(&:created_at)
       end
 
         while i >= 0
-          arr_time << (Time.now.to_time.to_f * 1000) - (86400000 * i)
+          arr_time << (Time.now.to_time.to_f * 1000) - (43200000 * i)
           i -=1
         end
 
@@ -132,16 +132,50 @@ class StatController < ApplicationController
       end
       arr_value_total << arr_value.sum
     end
+      # require 'net/http'
+      # require 'json'
+      # require 'net/http'
+      # destroy = Stat.all.destroy_all
+      # arr_prices = []
+      # coins_title = []
+      # portfolio = Portfolio.where(user: current_user).first
+      # positions = Position.where(portfolio: portfolio)
+      # positions.each do |position|
+      #   coins_title << position.coin.title
+      #     @coins.each do |coin|
+      #       if position.coin.title == coin.title
+      #         coin.quantity = coin.sum(portfolio.id)
+      #         coin.save
+      #       end
+      #   end
+      # end
+      # @coins = Coin.where(title: coins_title)
+      # arr_value_total = []
+      # arr_time_total = []
+      # arr_time.each do |time|
+      #   arr_value = []
+      #   @coins.each do |coin|
+      #     if coin.sum(portfolio.id) > 0
+      #       uri = URI("https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}&start=#{time.to_i}&end=#{time.to_i + 43200}")
+      #       response = JSON.parse(Net::HTTP.get(uri))
 
-      @hide = Hide.all.last
+      #       arr_value << response["data"][0]["close"] * coin.quantity
+      #     end
+      #   end
+      #   arr_value_total << arr_value.sum
+      # end
+
+        # arr_value_total = arr_value_total.flatten
+        @hide = Hide.all.last
         if @hide == nil
           @hide = Hide.new(hide: false)
            @hide.save!
         end
         i = 0
+
       while i < arr_time.size
         if arr_value_total[i] != 0 && arr_value_total[i] != nil
-          stat = Stat.new(time: arr_time[i], position: arr_value_total[i], user: current_user)
+          stat = Stat.new(time: arr_time[i].to_i, position: arr_value_total[i], user: current_user)
           stat.save
         end
         i += 1

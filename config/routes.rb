@@ -15,9 +15,11 @@ Rails.application.routes.draw do
     resources :cards_api, only: :index
 
   end
+  resources :dark_mode, only: [:new, :create]
   resources :hide, only: [:new, :create]
   resources :stat, only: :index
   resources :alerts
+  resources :actualiser_coins, only: :index
   devise_for :users, controllers: { registrations: 'registrations' }
   post '/search', to: 'market#research'
   get '/search', to: 'market#search'
@@ -25,18 +27,4 @@ Rails.application.routes.draw do
   post '/page2', to: 'market#post_page2'
   get '/page3', to: 'market#page3'
   post '/page3', to: 'market#post_page3'
-  get '/page4', to: 'market#page4'
-  post '/page4', to: 'market#post_page4'
-  get '/page5', to: 'market#page5'
-  post '/page5', to: 'market#post_page5'
-  get '/page6', to: 'market#page6'
-  post '/page6', to: 'market#post_page6'
-  get '/page7', to: 'market#page7'
-  post '/page7', to: 'market#post_page7'
-  get '/page8', to: 'market#page8'
-  post '/page8', to: 'market#post_page8'
-  get '/page9', to: 'market#page9'
-  post '/page9', to: 'market#post_page9'
-  get '/page10', to: 'market#page10'
-  post '/page10', to: 'market#post_page10'
 end

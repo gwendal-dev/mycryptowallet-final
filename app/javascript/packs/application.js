@@ -61,6 +61,7 @@ import {stat} from '../plugins/stat.js'
 import {initPayPalButton} from "../plugins/paypal.js"
 import {alert} from "../plugins/alert.js"
 import {market} from "../plugins/market.js"
+import {darkMode} from "../plugins/darkMode.js"
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -72,7 +73,7 @@ document.addEventListener('turbolinks:load', () => {
   stat();
   flip();
   tradingview();
-  market();
+  market(0);
   showCoin();
   chartApi();
   //cardsApi();

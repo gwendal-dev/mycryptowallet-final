@@ -2,7 +2,7 @@ const alert = () => {
   const alertsDiv = document.querySelector(".alert_notification")
   if (alertsDiv) {
     setTimeout(function() {
-      const body = document.querySelector("body");
+      const root = document.querySelector("#root");
       let i = 0;
       const alerts = JSON.parse(alertsDiv.dataset.alert);
       if (alertsDiv.dataset.user) {
@@ -19,7 +19,7 @@ const alert = () => {
           var aTag2 = document.createElement('p');
           aTag2.innerHTML = i;
 
-          body.appendChild(aTag);
+          root.appendChild(aTag);
           aTag.appendChild(aTag2);
         }
       }

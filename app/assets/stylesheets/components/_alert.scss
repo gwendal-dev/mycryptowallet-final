@@ -42,6 +42,13 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+.alert-title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: $orange;
+}
+
 .new-alert {
   margin-top: 50px;
   color: white;
@@ -62,4 +69,13 @@
   opacity: 0.9;
   }
 
-
+.background {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  height: 120%;
+  width: 80%;
+  z-index: -1;
+  background-image: url("https://res.cloudinary.com/deph8klff/image/upload/v1623701465/cool-background_vqrzp5.svg") !important;
+  background-repeat: no-repeat;
+}

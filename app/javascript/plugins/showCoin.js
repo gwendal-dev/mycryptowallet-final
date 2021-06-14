@@ -14,10 +14,8 @@ function showCoin() {
           "locale": "fr",
           "toolbar_bg": "#f1f3f6",
           "enable_publishing": false,
-          "allow_symbol_change": true,
-          "studies": [
-            "BB@tv-basicstudies",
-          ],
+          "allow_symbol_change": false,
+          "hide_side_toolbar": false,
           "container_id": "tradingview"
         }
           );
@@ -26,7 +24,7 @@ function showCoin() {
           {
           "width": "100%",
           "height": 500,
-          "symbol": `BINANCE:${JSON.parse(tradingview.dataset.coin)}USD`,
+          "symbol": `KRAKEN:${JSON.parse(tradingview.dataset.coin)}USD`,
           "interval": "D",
           "timezone": "Etc/UTC",
           "theme": "light",
@@ -34,10 +32,8 @@ function showCoin() {
           "locale": "fr",
           "toolbar_bg": "#f1f3f6",
           "enable_publishing": false,
-          "allow_symbol_change": true,
-          "studies": [
-            "BB@tv-basicstudies",
-          ],
+          "allow_symbol_change": false,
+          "hide_side_toolbar": false,
           "container_id": "tradingview"
         }
           );

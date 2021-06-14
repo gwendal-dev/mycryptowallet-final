@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_161739) do
+ActiveRecord::Schema.define(version: 2021_06_14_171000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_161739) do
     t.bigint "marketcap"
     t.bigint "max_supply"
     t.bigint "volume"
+    t.string "description"
   end
 
   create_table "hides", force: :cascade do |t|

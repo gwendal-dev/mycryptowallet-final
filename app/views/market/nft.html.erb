@@ -1,4 +1,4 @@
-<% @title = "Market page 2 - MyCryptoWallet" %>
+<% @title = "Market defi - MyCryptoWallet" %>
 
 <div class="loader3">
     <span class="lettre">M</span>
@@ -14,13 +14,12 @@
       <%= f.input :coins, placeholder: 'ex: BTC ETH ADA...'%>
       <%= f.button :submit, 'Search', class: "btn btn-primary" %>
     <% end %>
-     <div class="container-next-page">
-    <%= link_to "Previous Page", market_index_path ,class: "prec-page"%>
-    <div>
-      <%= link_to "DeFi", defi_path, class: "markets2" %>
-      <%= link_to "NFT", nft_path, class: "markets2"  %>
-    </div>
-    <%= link_to "Next Page", page3_path ,class: "next-page2"%>
+     <div class="container-next-page2">
+      <div>
+        <%= link_to "Market", market_index_path, class: "markets"  %>
+        <%= link_to "DeFi", defi_path, class: "markets" %>
+      </div>
+    <div></div>
   </div>
   <div class="container-bar-info">
     <div class="container-name-mc">
@@ -54,7 +53,7 @@
         <% i += 1 %>
       <% end %>
     <div class="container-next-page">
-      <%= link_to "Previous Page", market_index_path ,class: "prec-page"%>
-      <%= link_to "Next Page", page3_path ,class: "next-page2"%>
+      <%= link_to "Market", market_index_path ,class: "defi"%>
+      <div></div>
     </div>
 </div>

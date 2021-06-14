@@ -20,6 +20,7 @@ const market = (number) => {
       await Promise.all(
         arr.map(async (i) => {
           const coin = document.querySelector(`.item${i}`);
+        if (coin) {
           const coinTitle = coin.dataset.coins;
 
           const answer = await fetch(`https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=${coinTitle}`);
@@ -32,9 +33,12 @@ const market = (number) => {
 
             const change = document.querySelector(`.change${i}`);
 
-            volume.innerHTML = `${numberWithCommas(Math.round(response["data"][0]["volume_24h"]))}$`;
-
-            marketCap.innerHTML = numberWithCommas(response['data'][0]['market_cap']);
+            if (volume) {
+              volume.innerHTML = `${numberWithCommas(Math.round(response["data"][0]["volume_24h"]))}$`;
+            }
+            if (marketCap) {
+              marketCap.innerHTML = numberWithCommas(response['data'][0]['market_cap']);
+            }
 
             if (Math.round((response['data'][0]['price'] * 100) / 100) > 0) {
 
@@ -71,7 +75,7 @@ const market = (number) => {
             } else {
               change.innerHTML = 0;
             }
-
+          }
           })
         )
     }
@@ -84,6 +88,7 @@ const market = (number) => {
       await Promise.all(
         arr.map(async (i) => {
           const coin = document.querySelector(`.item${i}`);
+        if (coin) {
           const coinTitle = coin.dataset.coins;
 
           const answer = await fetch(`https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=${coinTitle}`);
@@ -197,17 +202,17 @@ const market = (number) => {
             percentRed = document.querySelector(`.percent-red${i}`);
 
             if (percentGreen && j === 1) {
-              percentGreen.classList.add("black");
+              percentGreen.classList.add("green");
               setTimeout(function() {
-                percentGreen.classList.remove("black");
+                percentGreen.classList.remove("green");
               }, 1000);
             } else if (percentRed && j === 1) {
-              percentRed.classList.add("black");
+              percentRed.classList.add("red");
               setTimeout(function() {
-                percentRed.classList.remove("black");
+                percentRed.classList.remove("red");
               }, 1000);
             }
-
+          }
           })
         )
     }

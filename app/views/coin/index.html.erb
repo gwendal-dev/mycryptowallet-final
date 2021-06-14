@@ -1,4 +1,5 @@
 <% @title = "Coin - MyCryptoWallet" %>
 
 <div id="tradingview" data-coin="<%= @coin.first.title.to_json %>"></div>
-<div class="line2"></div>
+<h1 class="coin_title"><%= @coin.first.title %></h1>
+<p class="coin_description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @coin.first.description %></p>

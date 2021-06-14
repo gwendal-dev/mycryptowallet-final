@@ -27,4 +27,8 @@ Rails.application.routes.draw do
   post '/page2', to: 'market#post_page2'
   get '/page3', to: 'market#page3'
   post '/page3', to: 'market#post_page3'
+  get '/defi', to: 'market#defi'
+  post '/defi', to: 'market#post_defi'
+  post '/nft', to: 'market#post_nft'
+  get '/nft', to: 'market#nft'
 end

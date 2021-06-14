@@ -15,8 +15,11 @@
       <%= f.button :submit, 'Search', class: "btn btn-primary" %>
     <% end %>
     <div class="container-next-page">
-    <div></div>
-    <%= link_to "Next Page", page2_path ,class: "next-page2"%>
+      <div>
+        <%= link_to "DeFi", defi_path, class: "markets" %>
+        <%= link_to "NFT", nft_path, class: "markets"  %>
+      </div>
+      <%= link_to "Next Page", page2_path ,class: "next-page2"%>
   </div>
   <div class="container-bar-info">
     <div class="container-name-mc">

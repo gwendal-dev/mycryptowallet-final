@@ -43,8 +43,80 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.markets {
+  position: relative;
+  top: 10px;
+  left: 30px;
+  margin-right: 30px;
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
+  padding: 6px 20px;
+  border-radius: 10px;
+}
+
+.markets:hover {
+  color: grey;
+  opacity: 0.9;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.markets2 {
+  position: relative;
+  top: 10px;
+  left: 10px;
+  margin-right: 50px;
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
+  padding: 6px 20px;
+  border-radius: 10px;
+}
+
+.markets2:hover {
+  color: grey;
+  opacity: 0.9;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.markets3 {
+  position: relative;
+  top: 10px;
+  right: 40px;
+  margin-right: 50px;
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
+  padding: 6px 20px;
+  border-radius: 10px;
+}
+
+.markets3:hover {
+  color: grey;
+  opacity: 0.9;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media (max-width: 502px) {
+  .markets2 {
+    display: none;
+  }
+  .markets3 {
+    display: none;
+  }
+}
+
 .container-next-page {
-   margin-top: 10px;
+   margin-top: 20px;
+   display: flex;
+   justify-content: space-between;
+   margin-left: 10px;
+   margin-right: 10px;
+}
+
+.container-next-page2 {
+   margin-top: 20px;
+   margin-bottom: 30px;
    display: flex;
    justify-content: space-between;
    margin-left: 10px;

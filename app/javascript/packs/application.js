@@ -67,7 +67,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   load();
-  alert();
+  alert(0);
   burger();
   initPayPalButton();
   stat();

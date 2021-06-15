@@ -235,6 +235,10 @@ $i: 0;
   }
 }
 
+.background-red {
+  background-color: $red;
+}
+
 .item200{
   margin: 5px 5px;
   padding: 10px 20px;
@@ -253,6 +257,10 @@ $i: 0;
 .item200:hover {
   background-color: lightgrey;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.white {
+  color: white !important;
 }
 
 .item200 img{

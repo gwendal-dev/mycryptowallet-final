@@ -63,7 +63,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <%= render 'shared/flashes' %>
     <%= render 'shared/userbar' %>
-    <div class="alert_notification" data-alert="<%= @arr_alert.to_json %>" data-user="<%= @user_id %>"></div>
+    <div class="alert_notification" data-coins="<%= @arr_coins.to_json %>" data-alerts="<%= @arr_alerts.to_json %>" data-prices="<%= @arr_prices.to_json %>"></div>
     <%= yield %>
     <% if @home === nil%>
       <%= render 'shared/navbar' %>

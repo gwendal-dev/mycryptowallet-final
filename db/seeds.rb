@@ -89,6 +89,7 @@
 # end
 
 # puts 'END'
+
 puts "Start add description to coins"
 coins = Coin.all
   require 'net/http'
@@ -105,5 +106,6 @@ coins = Coin.all
     puts "#{i} coins ok"
     i += 1
   end
-puts "END"
+puts "END description coins"
+
 

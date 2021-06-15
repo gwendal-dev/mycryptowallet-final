@@ -3,43 +3,17 @@ class MarketController < ApplicationController
 
   def index
     if current_user
-      require 'net/http'
-      require 'json'
-      @coins = Coin.all
-      price = 0
-      alerts = Alert.all
-      @arr_alert = []
-      alerts.each do |alert|
-        @coins.each do |coin|
-          if coin.title == alert.coin.upcase
-            coin.quantity = coin.sum(params[:id])
-            url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-            uri = URI(url)
-            response = Net::HTTP.get(uri)
-            reponse = JSON.parse(response)
-            price = reponse['data'][0]['price'].to_f
-            alert.new_price = price
-            alert.save
-          end
-        end
-
-        if alert.price < alert.value
-          if alert.new_price >= alert.value
-            alert.alert = true
-            alert.save
-            @arr_alert << [alert.alert, alert.user_id]
-          end
-        elsif alert.price > alert.value
-          if alert.new_price <= alert.value
-            alert.alert = true
-            alert.save
-            @arr_alert << [alert.alert, alert.user_id]
-          end
-        end
+      @alerts = Alert.where(user_id: current_user.id)
+      @arr_coins = []
+      @arr_alerts = []
+      @arr_prices = []
+      @alerts.each do |alert|
+        @arr_coins << alert.coin.upcase
+        @arr_alerts << alert.value
+        @arr_prices << alert.price
       end
-      @user_id = current_user.id
     end
-    require 'active_support'
+      require 'active_support'
     extend ActionView::Helpers::NumberHelper
     @apis = Api.where(user: current_user)
     @coins = Coin.all
@@ -100,80 +74,28 @@ class MarketController < ApplicationController
   end
 
   def create
-    require 'net/http'
-    require 'json'
-    @coins = Coin.all
-    price = 0
-    alerts = Alert.all
-    @arr_alert = []
-    alerts.each do |alert|
-      @coins.each do |coin|
-        if coin.title == alert.coin.upcase
-          coin.quantity = coin.sum(params[:id])
-          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-          uri = URI(url)
-          response = Net::HTTP.get(uri)
-          reponse = JSON.parse(response)
-          price = reponse['data'][0]['price'].to_f
-          alert.new_price = price
-          alert.save
-        end
-      end
-
-      if alert.price < alert.value
-        if alert.new_price >= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      elsif alert.price > alert.value
-        if alert.new_price <= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      end
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
     end
-    @user_id = current_user.id
     redirect_to search_path(params["/market"][:coins])
   end
 
   def search
-    require 'net/http'
-    require 'json'
-    @coins = Coin.all
-    price = 0
-    alerts = Alert.all
-    @arr_alert = []
-    alerts.each do |alert|
-      @coins.each do |coin|
-        if coin.title == alert.coin.upcase
-          coin.quantity = coin.sum(params[:id])
-          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-          uri = URI(url)
-          response = Net::HTTP.get(uri)
-          reponse = JSON.parse(response)
-          price = reponse['data'][0]['price'].to_f
-          alert.new_price = price
-          alert.save
-        end
-      end
-
-      if alert.price < alert.value
-        if alert.new_price >= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      elsif alert.price > alert.value
-        if alert.new_price <= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      end
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
     end
-    @user_id = current_user.id
     require 'active_support'
     extend ActionView::Helpers::NumberHelper
     coins_title = params[:format].upcase.gsub(",", "").split(" ")
@@ -232,80 +154,28 @@ class MarketController < ApplicationController
   end
 
   def research
-    require 'net/http'
-    require 'json'
-    @coins = Coin.all
-    price = 0
-    alerts = Alert.all
-    @arr_alert = []
-    alerts.each do |alert|
-      @coins.each do |coin|
-        if coin.title == alert.coin.upcase
-          coin.quantity = coin.sum(params[:id])
-          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-          uri = URI(url)
-          response = Net::HTTP.get(uri)
-          reponse = JSON.parse(response)
-          price = reponse['data'][0]['price'].to_f
-          alert.new_price = price
-          alert.save
-        end
-      end
-
-      if alert.price < alert.value
-        if alert.new_price >= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      elsif alert.price > alert.value
-        if alert.new_price <= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      end
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
     end
-    @user_id = current_user.id
     redirect_to search_path(params["/market"][:coins])
   end
 
   def page2
-    require 'net/http'
-    require 'json'
-    @coins = Coin.all
-    price = 0
-    alerts = Alert.all
-    @arr_alert = []
-    alerts.each do |alert|
-      @coins.each do |coin|
-        if coin.title == alert.coin.upcase
-          coin.quantity = coin.sum(params[:id])
-          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-          uri = URI(url)
-          response = Net::HTTP.get(uri)
-          reponse = JSON.parse(response)
-          price = reponse['data'][0]['price'].to_f
-          alert.new_price = price
-          alert.save
-        end
-      end
-
-      if alert.price < alert.value
-        if alert.new_price >= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      elsif alert.price > alert.value
-        if alert.new_price <= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      end
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
     end
-    @user_id = current_user.id
     require 'net/http'
     require 'json'
     require 'active_support'
@@ -366,42 +236,15 @@ class MarketController < ApplicationController
   end
 
   def page3
-    require 'net/http'
-    require 'json'
-    @coins = Coin.all
-    price = 0
-    alerts = Alert.all
-    @arr_alert = []
-    alerts.each do |alert|
-      @coins.each do |coin|
-        if coin.title == alert.coin.upcase
-          coin.quantity = coin.sum(params[:id])
-          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-          uri = URI(url)
-          response = Net::HTTP.get(uri)
-          reponse = JSON.parse(response)
-          price = reponse['data'][0]['price'].to_f
-          alert.new_price = price
-          alert.save
-        end
-      end
-
-      if alert.price < alert.value
-        if alert.new_price >= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      elsif alert.price > alert.value
-        if alert.new_price <= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      end
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
     end
-    @user_id = current_user.id
-
     @apis = Api.where(user: current_user)
     @coins = Coin.all
     @coins = @coins.sort_by(&:marketcap).reverse
@@ -421,41 +264,15 @@ class MarketController < ApplicationController
   end
 
   def defi
-    require 'net/http'
-    require 'json'
-    @coins = Coin.all
-    price = 0
-    alerts = Alert.all
-    @arr_alert = []
-    alerts.each do |alert|
-      @coins.each do |coin|
-        if coin.title == alert.coin.upcase
-          coin.quantity = coin.sum(params[:id])
-          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-          uri = URI(url)
-          response = Net::HTTP.get(uri)
-          reponse = JSON.parse(response)
-          price = reponse['data'][0]['price'].to_f
-          alert.new_price = price
-          alert.save
-        end
-      end
-
-      if alert.price < alert.value
-        if alert.new_price >= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      elsif alert.price > alert.value
-        if alert.new_price <= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      end
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
     end
-    @user_id = current_user.id
 
     @apis = Api.where(user: current_user)
     @coins = Coin.where(title: ["UNI", "LINK","WBTC", "DAI", "AAVE", "MKR", "CAKE", "AVAX", "LUNA", "COMP", "RUNE", "YFI", "SUSHI", "SNX", "BAT", "MDX", "BNT", "BAKE", "CRV", "GRT", "ZRX", "UMA", "FTM", "ANKR", "1INCH", "REN", "USDN", "RSR", "RENBTC", "LRC", "KNC", "RLC", "REEF", "GNO", "KAVA", "OCEAN", "XVS", "OGN", "BAND", "UQC", "INJ", "REP", "NMR", "SRM", "MLN", "SXP", "ALPHA", "BAL", "AMPL", "BTS", "XHV", "DODO", "JST", "STRK", "COTI", "FEI", "FIDA", "DFI", "LUSD", "NXM", "MIR", "KEEP", "SUSD", "RAY", "TRIBE", "ALCX", "ORN", "PERP", "KSP", "WAN", "FRAX", "BADGER", "LINA", "RPL", "CREAM", "BOND", "SCRT", "LON", "POLS", "VAI", "DAO", "SWAP", "BIFI"])
@@ -473,41 +290,15 @@ class MarketController < ApplicationController
   end
 
   def nft
-    require 'net/http'
-    require 'json'
-    @coins = Coin.all
-    price = 0
-    alerts = Alert.all
-    @arr_alert = []
-    alerts.each do |alert|
-      @coins.each do |coin|
-        if coin.title == alert.coin.upcase
-          coin.quantity = coin.sum(params[:id])
-          url = "https://api.lunarcrush.com/v2?data=assets&key=dobdvvfchtpmfr5qq1nu&symbol=#{coin.title}"
-          uri = URI(url)
-          response = Net::HTTP.get(uri)
-          reponse = JSON.parse(response)
-          price = reponse['data'][0]['price'].to_f
-          alert.new_price = price
-          alert.save
-        end
-      end
-
-      if alert.price < alert.value
-        if alert.new_price >= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      elsif alert.price > alert.value
-        if alert.new_price <= alert.value
-          alert.alert = true
-          alert.save
-          @arr_alert << [alert.alert, alert.user_id]
-        end
-      end
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
     end
-    @user_id = current_user.id
 
     @apis = Api.where(user: current_user)
     @coins = Coin.where(title: ["THETA"," XTZ", "CHZ", "ENJ", "MANA", "BAKE", "DGB", "FLOW", "OGN", "WAXP", "SAND", "OMI", "AXS", "TLM", "UOS", "CUMMIES", "SYS", "ALICE", "RFOX", "LYXe", "ERN", "CHR", "ATRI", "DVI", "GALA", "SUPER", "WHALE", "DEGO", "SLP", "FIO", "SURE", "NFT", "GET", "JGN", "RARI", "GHST", "TVK", "PNT", "XPR", "ERC20", "VISR", "ILV","DG","PYR", "COCOS", "DEP", "NFTX", "VIDT", "NIF", "SOUL", "FINE", "GAME"])
@@ -525,15 +316,51 @@ class MarketController < ApplicationController
   end
 
   def post_page2
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
+    end
     redirect_to search_path(params["/market"][:coins])
   end
   def post_page3
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
+    end
     redirect_to search_path(params["/market"][:coins])
   end
   def post_defi
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
+    end
     redirect_to search_path(params["/market"][:coins])
   end
   def post_nft
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
+    end
     redirect_to search_path(params["/market"][:coins])
   end
 end

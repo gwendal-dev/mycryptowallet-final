@@ -239,6 +239,24 @@ $i: 0;
   background-color: $red;
 }
 
+.background-red:hover {
+  background-color: $red !important;
+  opacity: 0.9;
+}
+
+.cross {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  height: 20px;
+}
+
+.container-alert-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .item200{
   margin: 5px 5px;
   padding: 10px 20px;

@@ -142,7 +142,21 @@ class AlertsController < ApplicationController
     redirect_to alerts_path
     @apis = Api.where(user: current_user)
   end
-
+  def destroy
+    @alerts = Alert.where(user_id: current_user.id)
+    @arr_coins = []
+    @arr_alerts = []
+    @arr_prices = []
+    @alerts.each do |alert|
+      @arr_coins << alert.coin.upcase
+      @arr_alerts << alert.value
+      @arr_prices << alert.price
+    end
+    @alert = Alert.find(params[:id])
+    @alert.destroy
+    redirect_to alerts_path
+    @apis = Api.where(user: current_user)
+  end
   private
 
   def alert_params

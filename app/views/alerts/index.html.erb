@@ -11,16 +11,20 @@
       <% @alerts.each do |alert| %>
       <% if alert.coin != nil %>
       <% if alert.coin.upcase == coin.title %>
-        <%= link_to edit_alert_path(alert), action: 'go' do %>
+
           <div class="item<%= i %>">
+            <%= link_to edit_alert_path(alert), class: 'container-alert-item', action: 'go' do %>
             <div class="logo-text-alert">
               <%= image_tag(coin.avatar) %>
               <h1 class="name-coin-alert"><%= coin.title %></h1>
             </div>
             <h2 class="value-alert">Alert : <%= number_with_delimiter(alert.value.round(3), delimiter: ',') %>$</h2>
             <div class="value-price">Price : <%= number_with_delimiter(coin.price.round(3), delimiter: ',') %>$</div>
+             <% end %>
+             <%= link_to 'X', alert_path(alert), :method => :delete, data: { confirm: "Are you sure?" }, class: "cross"%>
           </div>
-        <% end %>
+
+
         <% i += 1 %>
       <% end %>
       <% end %>

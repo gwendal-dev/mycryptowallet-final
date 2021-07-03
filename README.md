@@ -1,15 +1,19 @@
 # MyCryptoWallet
 
-# Start your crypto wallet today
+### Features : <br/>
+MyCryptoWallet gives access to over 1800 assets, allow you to manage different portfolios, know your earnings, receive alerts and keep in touch with last market updates.
 
-### MycryptoWallet is the most efficient way to manage different portfolios, to know your earnings, to receive alert
+[Visit Live Project !](http://www.mycryptowallet.fr)
+Loading may take up to 40s without any recent visit.
 
-### MyCryptoWallet gives access to one of the largest selections of Coins, allowing you to follow over 1800 assets with more to come
+![Market View](https://raw.githubusercontent.com/gwendal-dev/mycryptowallet-final/master/app/assets/images/mcw1_screenshot.png)
 
-#### Go to [MyCryptoWallet](http://www.mycryptowallet.fr) !
+![Responsive Portfolio](https://raw.githubusercontent.com/gwendal-dev/mycryptowallet-final/master/app/assets/images/mcw2_screenshot.png)
 
-#### collaborators
-  * Gwendal Le Loarer
-  * Charlotte Roederer
-  * Damien Vigouroux
-  * Xavier Hernandez
+Collaborators :
+ 1. Gwendal Le Loarer
+ 2. Charlotte Roederer
+ 3. Damien Vigouroux
+ 4. Xavier Hernandez
+
+Rails App created at the [Le Wagon coding bootcamp](https://www.lewagon.com).

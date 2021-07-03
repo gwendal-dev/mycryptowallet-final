@@ -1,5 +1,7 @@
 # MyCryptoWallet
 
+## 2-Weeks Bootcamp project.
+
 ### Features : <br/>
 MyCryptoWallet gives access to over 1800 assets, allow you to manage different portfolios, know your earnings, receive alerts and keep in touch with last market updates.
 
